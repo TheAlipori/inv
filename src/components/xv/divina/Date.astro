@@ -1,0 +1,202 @@
+---
+import "@fontsource/parisienne";
+import "@fontsource/abril-fatface";
+import "@fontsource/niconne";
+import "@fontsource/damion";
+import "@fontsource-variable/merriweather";
+import Ornamento1 from "../../../assets/icons/Ornamento1.astro";
+const { fecha_evento, fecha, imagenes } = Astro.props;
+---
+
+<section class="max-w-3xl mx-auto overflow-x-hidden bg-[#F2E5E9]">
+  <h1
+    class="text-center text-5xl font-damion mt-24 text-[#5A5A5A]"
+    data-aos="fade-down"
+    data-aos-easing="ease-in-out"
+    data-aos-duration="800"
+  >
+    Aparta la fecha
+  </h1>
+  <Ornamento1
+    class="fill-[#B46A7A] w-1/2 mx-auto"
+    data-aos="fade-up"
+    data-aos-delay="300"
+    data-aos-duration="600"
+  />
+
+  <div class="grid grid-cols-2 mt-14 font-merriweather">
+    <!-- Columna izquierda: Día (ocupa 2 filas) -->
+    <div
+      class="row-span-2 flex items-center justify-end pr-2 group"
+      data-aos="zoom-in"
+      data-aos-delay="400"
+    >
+      <span
+        class="text-9xl leading-none font-bold text-[#B46A7A] transition-transform group-hover:scale-110"
+      >
+        {fecha.dia}
+      </span>
+    </div>
+
+    <!-- Fila 1, columna derecha: Mes -->
+    <div class="flex items-center" data-aos="fade-right" data-aos-delay="600">
+      <span
+        class="text-5xl text-[#5A5A5A] transition-transform group-hover:scale-105"
+      >
+        {fecha.mes}
+      </span>
+    </div>
+
+    <!-- Fila 2, columna derecha: Año -->
+    <div class="flex items-center" data-aos="fade-left" data-aos-delay="600">
+      <span
+        class="text-4xl font-bold text-[#5A5A5A] transition-transform group-hover:scale-110"
+      >
+        {fecha.anio}
+      </span>
+    </div>
+  </div>
+  <img
+    src={imagenes.galeria3}
+    alt="Fecha del evento"
+    class="rounded-3xl mx-auto mt-8"
+    data-aos="fade-up"
+    data-aos-delay="800"
+  />
+
+  <h1
+    class="text-center text-5xl font-damion mt-24 text-[#5A5A5A]"
+    data-aos="fade-up"
+    data-aos-delay="800"
+    data-aos-offset="200"
+  >
+    Solo faltan
+  </h1>
+  <Ornamento1
+    class="fill-[#B46A7A] w-1/2 mx-auto"
+    data-aos="fade-up"
+    data-aos-delay="300"
+    data-aos-duration="600"
+  />
+  <div class="py-12 text-center" data-aos="fade-in" data-aos-duration="1000">
+    <div
+      class="flex flex-col items-center gap-8 lg:flex-row lg:flex-wrap lg:justify-center font-abril text-[#5A5A5A]"
+    >
+      <!-- Días -->
+      <div class="p-6" data-aos="flip-left" data-aos-delay="300">
+        <div class="text-7xl font-bold mb-2 animate-count" id="dias">0</div>
+        <div class="text-xl uppercase tracking-wide">Días</div>
+      </div>
+
+      <!-- Horas -->
+      <div class="p-6" data-aos="flip-up" data-aos-delay="350">
+        <div class="text-7xl font-bold mb-2 animate-count" id="horas">0</div>
+        <div class="text-xl uppercase tracking-wide">Horas</div>
+      </div>
+
+      <!-- Minutos -->
+      <div class="p-6" data-aos="flip-down" data-aos-delay="400">
+        <div class="text-7xl font-bold mb-2 animate-count" id="minutos">0</div>
+        <div class="text-xl uppercase tracking-wide">Minutos</div>
+      </div>
+
+      <!-- Segundos -->
+      <div class="p-6" data-aos="flip-right" data-aos-delay="450">
+        <div
+          class=`text-7xl font-bold mb-2  animate-count text-[#B46A7A]`
+          id="segundos"
+        >
+          0
+        </div>
+        <div class="text-xl uppercase tracking-wide text-[#B46A7A]">
+          Segundos
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .animate-count {
+      animation: countPop 0.5s ease-out;
+    }
+
+    @keyframes countPop {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .animate-pulse-slow {
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%,
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      50% {
+        opacity: 0.8;
+        transform: translateY(-5px);
+      }
+    }
+
+    .animate-bounce-horizontal {
+      animation: bounceH 1.5s ease-in-out infinite;
+    }
+
+    @keyframes bounceH {
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+      50% {
+        transform: translateX(5px);
+      }
+    }
+  </style>
+</section>
+
+<script define:vars={{ fecha_evento }} client:load>
+  function updateCountdown() {
+    const targetDate = new Date(fecha_evento).getTime();
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+
+    if (distance < 0) {
+      document.getElementById("countdown").innerHTML =
+        "<div class='text-xl font-bold'>¡El evento ha comenzado! 🎉</div>";
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(
+      (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("dias").innerText = days;
+    document.getElementById("horas").innerText = hours
+      .toString()
+      .padStart(2, "0");
+    document.getElementById("minutos").innerText = minutes
+      .toString()
+      .padStart(2, "0");
+    document.getElementById("segundos").innerText = seconds
+      .toString()
+      .padStart(2, "0");
+  }
+
+  // Actualizar cada segundo
+  setInterval(updateCountdown, 1000);
+  // Ejecutar inmediatamente al cargar
+  updateCountdown();
+</script>

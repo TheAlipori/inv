@@ -1,0 +1,76 @@
+---
+import Ornamento1 from "./icons/Ornamento1.astro";
+import Ornamento2 from "./icons/Ornamento2.astro";
+import Ornamento3 from "./icons/Ornamento3.astro";
+const { quinceanera, mensaje_principal, familiares, colorPrimario } =
+  Astro.props;
+---
+
+<section class="overflow-x-hidden">
+  <div class="relative max-w-2xl flex flex-col justify-center mx-auto">
+    <div class="relative size-60 mx-auto">
+      <Ornamento1
+        class=`absolute inset-0 w-full h-full fill-{colorPrimario}`
+        `
+        data-aos="zoom-in-up"
+        data-aos-duration="1500"
+        data-aos-easing="ease-out-quad"
+      />
+      <div class="absolute inset-0 flex items-center justify-center">
+        <h1
+          class="text-9xl font-gloock text-gray-800"
+          data-aos="zoom-in-down"
+          data-aos-duration="1500"
+          data-aos-easing="ease-out-quad"
+        >
+          {quinceanera.nombre.charAt(0)}
+        </h1>
+      </div>
+    </div>
+    <h1
+      class="text-pretty text-center p-8 text-gray-800 font-bold text-2xl font-elegant"
+      data-aos="fade-up"
+      data-aos-duration="1500"
+      data-aos-easing="ease-out-quad"
+    >
+      {mensaje_principal}
+    </h1>
+    <div
+      data-aos="fade-right"
+      data-aos-duration="1500"
+      data-aos-easing="ease-out-quad"
+    >
+      <Ornamento2 class="fill-amber-500 w-1/2 mx-auto" />
+      <div class="text-center space-y-2 font-pattaya">
+        <h1 class="text-2xl tracking-wide font-pattaya text-amber-500">
+          Mis amada madre
+        </h1>
+        <!-- <h1 class="text-3xl tracking-wide font-pattaya">{padres.padre}</h1>
+        <h1 class="text-3xl tracking-wide">&</h1> -->
+        <h1 class="text-3xl">{familiares.madre}</h1>
+
+        <Ornamento2 class="fill-amber-500 w-1/2 mx-auto rotate-180" />
+      </div>
+    </div>
+
+    <div
+      class="mt-16"
+      data-aos="fade-left"
+      data-aos-duration="1500"
+      data-aos-easing="ease-out-quad"
+    >
+      <Ornamento2 class="fill-amber-500 w-1/2 mx-auto" />
+      <div class="text-center space-y-2 font-pattaya">
+        <h1 class="text-2xl tracking-wide font-pattaya text-amber-500">
+          Mis padrinos
+        </h1>
+        <h1 class="text-3xl tracking-wide font-pattaya">
+          {familiares.padrino}
+        </h1>
+        <h1 class="text-3xl tracking-wide">&</h1>
+        <h1 class="text-3xl">{familiares.madrina}</h1>
+        <Ornamento2 class="fill-amber-500 w-1/2 mx-auto rotate-180" />
+      </div>
+    </div>
+  </div>
+</section>

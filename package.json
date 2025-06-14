@@ -9,6 +9,14 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.9.2"
+    "@fontsource-variable/merriweather": "^5.2.4",
+    "@fontsource/abril-fatface": "^5.2.6",
+    "@fontsource/damion": "^5.2.6",
+    "@fontsource/niconne": "^5.2.6",
+    "@fontsource/parisienne": "^5.2.6",
+    "@tailwindcss/vite": "^4.1.8",
+    "aos": "^2.3.4",
+    "astro": "^5.9.2",
+    "tailwindcss": "^4.1.8"
   }
 }

@@ -1,0 +1,74 @@
+---
+const { quinceanera, colorPrimario, imagenes } = Astro.props;
+import ScrollIcon from "../../../icons/ScrollIcon.astro";
+import "@fontsource/parisienne";
+import "@fontsource/abril-fatface";
+import "@fontsource/niconne";
+---
+
+<section class=`relative bg-rose-300 min-h-dvh overflow-hidden`>
+  <!-- Contenido centrado -->
+  <div class="relative max-w-xl mx-auto z-10">
+    <div
+      class="flex flex-col items-center justify-center h-full text-center p-4 pt-36"
+    >
+      <h1
+        class="text-5xl text-white font-abril -mb-6 lg:mt-12"
+        data-aos="zoom-in"
+        data-aos-duration="1500"
+        data-aos-easing="ease-out-quad"
+      >
+        MIS
+      </h1>
+      <h1
+        class="text-7xl font-abril text-white mt-7"
+        data-aos="zoom-in-up"
+        data-aos-duration="1500"
+        data-aos-easing="ease-out-quad"
+      >
+        XV AÑOS
+      </h1>
+
+      <h1
+        class="font-abril text-8xl text-white"
+        data-aos="zoom-in"
+        data-aos-duration="1500"
+        data-aos-easing="ease-out-quad"
+      >
+        {quinceanera.nombre}
+      </h1>
+    </div>
+    <div
+      data-aos="fade-left"
+      data-aos-duration="1500"
+      data-aos-easing="ease-out-quad"
+    >
+      <ScrollIcon class="size-16 animate-bounce ml-auto mt-8 stroke-white" />
+    </div>
+  </div>
+
+  <div
+    class="absolute bottom-[-120px] left-1/2 -translate-x-1/2 w-full max-w-[429px] z-negative"
+    data-aos="fade-up"
+    data-aos-duration="1500"
+    data-aos-easing="ease-out-quad"
+  >
+    <img
+      src={imagenes.princesa}
+      alt="Ilustración princesa"
+      class="scale-[1.8]"
+    />
+  </div>
+  <div
+    class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[500px] z-0"
+    data-aos="fade-down"
+    data-aos-duration="1500"
+    data-aos-easing="ease-out-quad"
+  >
+    <img
+      src={imagenes.flores}
+      alt="Flores decorativas"
+      class="w-full h-auto object-contain"
+    />
+  </div>
+</section>

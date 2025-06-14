@@ -1,0 +1,37 @@
+---
+import "@fontsource/parisienne";
+import "@fontsource/abril-fatface";
+import "@fontsource/niconne";
+import "@fontsource/damion";
+import "@fontsource-variable/merriweather";
+const { whatsapp, colorPrimario } = Astro.props;
+---
+
+<section
+  class="max-w-3xl px-4 py-10 flex flex-col items-center text-center overflow-x-hidden bg-cover bg-center bg-no-repeat bg-[url('/quinceanera/hiromi/background2.webp')] mx-auto"
+  data-aos="fade-up"
+>
+  <h2
+    class="text-4xl sm:text-5xl font-abril text-gray-800 mb-4"
+    data-aos="fade-up"
+    data-aos-delay="100"
+  >
+    ¿Nos acompañas?
+  </h2>
+  <p
+    class="text-gray-600 mb-6 max-w-xl font-merriweather font-bold text-shadow/90"
+    data-aos="fade-up"
+    data-aos-delay="200"
+  >
+    Confírmanos tu asistencia para poder recibirte con todo preparado y con
+    mucha alegría.
+  </p>
+  <a
+    href=`https://wa.me/${whatsapp}?text=Hola%2C%20confirmo%20mi%20asistencia%20a%20tus%20XV`
+    target="_blank"
+    rel="noopener noreferrer"
+    class=`bg-[#B46A7A] hover:bg-gray-950 text-white px-6 py-3 rounded-full text-lg font-merriweather transition`
+  >
+    Confirmar por WhatsApp
+  </a>
+</section>

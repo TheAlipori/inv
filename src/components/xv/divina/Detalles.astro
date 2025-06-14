@@ -1,0 +1,203 @@
+---
+import Ornamento1 from "../../../assets/icons/Ornamento1.astro";
+import SalonIcon from "../../../assets/icons/SalonIcon.astro";
+import IglesiaIcon from "../../../assets/icons/IglesiaIcon.astro";
+import VestimentaIcon from "../../../assets/icons/VestimentaIcon.astro";
+import ImportanteIcon from "../../../assets/icons/ImportanteIcon.astro";
+import ClockIcon from "../../../assets/icons/ClockIcon.astro";
+
+import "@fontsource/parisienne";
+import "@fontsource/abril-fatface";
+import "@fontsource/niconne";
+import "@fontsource/damion";
+import "@fontsource-variable/merriweather";
+const { colorPrimario, misa, recepcion } = Astro.props;
+---
+
+<section class="max-w-3xl mx-auto overflow-x-hidden bg-[#F2E5E9]">
+  <h1
+    class="font-damion text-center text-5xl"
+    data-aos="fade-down"
+    data-aos-easing="ease-out-cubic"
+    data-aos-duration="800"
+  >
+    Los detalles
+  </h1>
+
+  <Ornamento1
+    class="fill-[#B46A7A] w-1/2 mx-auto pb-8"
+    data-aos="fade-up"
+    data-aos-delay="300"
+    data-aos-duration="600"
+  />
+
+  <div
+    class="grid grid-cols-1 bg-[url('/quinceanera/hiromi/background.webp')] bg-cover bg-center p-4"
+  >
+    <div class="relative mt-16">
+      <!-- Card 1 - Misa -->
+      <div data-aos="fade-right" data-aos-delay="400" data-aos-offset="200">
+        <div
+          class="relative z-10 text-center border-3 border-[#B46A7A] rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow bg-[#F2E5E9] mx-2 -mt-12"
+        >
+          <div>
+            <IglesiaIcon
+              class="size-16 fill-[#B46A7A] mx-auto mb-4 mt-1"
+              data-aos="zoom-in"
+              data-aos-delay="500"
+            />
+            <h1
+              class="text-4xl font-merriweather font-bold"
+              data-aos="fade-down"
+              data-aos-delay="600"
+            >
+              Misa
+            </h1>
+
+            <!-- Horario con icono -->
+            <div
+              class="flex items-start justify-center gap-2 mt-4"
+              data-aos="fade-right"
+              data-aos-delay="700"
+            >
+              <p class="text-gray-600 font-merriweather font-bold">
+                {misa.lugar}
+              </p>
+            </div>
+
+            <div
+              class="flex items-start justify-center gap-2 mt-4"
+              data-aos="fade-right"
+              data-aos-delay="700"
+            >
+              <ClockIcon class="size-5 fill-[#B46A7A] mt-1" />
+              <p class="font-merriweather text-gray-600">Hora: {misa.hora}</p>
+            </div>
+
+            <!-- Dirección con icono -->
+            <div
+              class="flex items-start justify-center gap-2 mt-2"
+              data-aos="fade-left"
+              data-aos-delay="800"
+            >
+              <ImportanteIcon class="size-5 fill-[#B46A7A] mt-1" />
+              <p class="font-merriweather text-gray-600 text-center">
+                {misa.direccion}
+              </p>
+            </div>
+
+            <a
+              href={misa.maps}
+              target="_blank"
+              class="bg-[#B46A7A] hover:bg-[#B46A7A] text-white font-merriweather px-4 py-2 rounded transition-colors inline-block mt-4"
+              data-aos="zoom-in"
+              data-aos-delay="900"
+            >
+              Ver mapa
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 - Recepcion -->
+      <div
+        class="relative mt-16"
+        data-aos="fade-left"
+        data-aos-delay="500"
+        data-aos-offset="150"
+      >
+        <div
+          class="relative z-10 text-center border-2 border-[#B46A7A] rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow bg-[#F2E5E9] mx-2 -mt-12"
+        >
+          <div>
+            <SalonIcon
+              class="size-16 fill-[#B46A7A] mx-auto mb-4 mt-1"
+              data-aos="zoom-in"
+              data-aos-delay="600"
+            />
+            <h1
+              class="text-4xl font-merriweather"
+              data-aos="fade-down"
+              data-aos-delay="700"
+            >
+              Recepción
+            </h1>
+
+            <div
+              class="flex items-start justify-center gap-2 mt-4"
+              data-aos="fade-right"
+              data-aos-delay="700"
+            >
+              <p
+                class="font-merriweathertext-gray-600 font-merriweather font-bold"
+              >
+                {recepcion.lugar}
+              </p>
+            </div>
+
+            <!-- Horario con icono -->
+            <div
+              class="flex items-start justify-center gap-2 mt-4"
+              data-aos="fade-right"
+              data-aos-delay="800"
+            >
+              <ClockIcon class="size-5 fill-[#B46A7A]" />
+              <p class="font-merriweather text-gray-600">
+                Hora: {recepcion.hora}
+              </p>
+            </div>
+
+            <!-- Dirección con icono -->
+            <div
+              class="flex items-start justify-center gap-2 mt-2"
+              data-aos="fade-left"
+              data-aos-delay="900"
+            >
+              <ImportanteIcon class="size-5 fill-[#B46A7A] mt-1" />
+              <p class="font-merriweather text-gray-600 text-center">
+                {recepcion.direccion}
+              </p>
+            </div>
+
+            <a
+              href={recepcion.maps}
+              target="_blank"
+              class="bg-[#B46A7A] hover:bg-amber-700 text-white font-merriweather px-4 py-2 rounded transition-colors inline-block mt-4"
+              data-aos="zoom-in"
+              data-aos-delay="1000"
+            >
+              Ver mapa
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!---Vestimenta -->
+      <div
+        class="relative mt-16"
+        data-aos="fade-left"
+        data-aos-delay="500"
+        data-aos-offset="150"
+      >
+        <div
+          class="relative z-10 text-center border-2 border-[#B46A7A] rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow bg-[#F2E5E9] mx-2 -mt-12"
+        >
+          <div>
+            <VestimentaIcon
+              class="size-16 fill-[#B46A7A] mx-auto mb-4 mt-1"
+              data-aos="zoom-in"
+              data-aos-delay="600"
+            />
+            <h1
+              class="text-4xl font-merriweather font-bold"
+              data-aos="fade-down"
+              data-aos-delay="700"
+            >
+              Vestimenta formal
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

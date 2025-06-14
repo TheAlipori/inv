@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+
+@theme {
+    --font-parisienne: Parisienne, cursive;
+    --font-abril: Abril Fatface, system-ui;
+    --font-niconne: Niconne, cursive;
+    --font-damion: Damion, cursive;
+    --font-merriweather: Merriweather Variable, serif;
+}

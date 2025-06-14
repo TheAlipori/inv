@@ -1,0 +1,95 @@
+---
+import "@fontsource/parisienne";
+import "@fontsource/abril-fatface";
+import "@fontsource/niconne";
+import "@fontsource/damion";
+import "@fontsource-variable/merriweather";
+import Ornamento2 from "../../../assets/icons/Ornamento2.astro";
+import Ornamento3 from "../../../assets/icons/Ornamento3.astro";
+const { familiares } = Astro.props;
+
+import Ornamento1 from "../../../assets/icons/Ornamento1.astro";
+---
+
+<section
+  class="bg-[#F2E5E9] max-w-3xl mx-auto"
+  data-aos="fade-in"
+  data-aos-duration="800"
+>
+  <div class="text-center pt-12 text-[#5A5A5A]">
+    <h1
+      class="text-[#5A5A5A] font-damion text-5xl"
+      data-aos="zoom-in"
+      data-aos-delay="100"
+    >
+      ¡Estás invitado!
+    </h1>
+
+    <Ornamento1
+      class="fill-[#B46A7A] w-56 mx-auto"
+      data-aos="fade-up"
+      data-aos-delay="200"
+    />
+
+    <h1
+      class="pt-8 font-merriweather font-bold text-lg m-4"
+      data-aos="fade-up"
+      data-aos-delay="300"
+    >
+      Nos encantaría que formaras parte de este momento tan especial para
+      nosotros
+    </h1>
+
+    <h1
+      class="font-merriweather font-bold mb-8"
+      data-aos="fade-up"
+      data-aos-delay="350"
+    >
+      En compañía de mis padres
+    </h1>
+
+    <Ornamento3
+      class="fill-[#B46A7A] w-56 mx-auto"
+      data-aos="fade"
+      data-aos-delay="400"
+    />
+
+    <h1 class="font-damion text-2xl" data-aos="fade-right" data-aos-delay="450">
+      {familiares.madre}
+    </h1>
+
+    <h1 class="font-damion text-2xl" data-aos="fade-left" data-aos-delay="500">
+      {familiares.padre}
+    </h1>
+
+    <Ornamento2
+      class="fill-[#B46A7A] w-56 mx-auto rotate-180"
+      data-aos="flip-up"
+      data-aos-delay="550"
+    />
+
+    <h1
+      class="font-merriweather font-bold mt-8"
+      data-aos="fade-up"
+      data-aos-delay="600"
+    >
+      Y mi padrino
+    </h1>
+
+    <Ornamento3
+      class="fill-[#B46A7A] w-56 mx-auto mt-8"
+      data-aos="fade"
+      data-aos-delay="650"
+    />
+
+    <h1 class="font-damion text-2xl" data-aos="zoom-in" data-aos-delay="700">
+      {familiares.padrino}
+    </h1>
+
+    <Ornamento2
+      class="fill-[#B46A7A] w-56 mx-auto rotate-180"
+      data-aos="flip-down"
+      data-aos-delay="750"
+    />
+  </div>
+</section>

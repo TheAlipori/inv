@@ -1,0 +1,31 @@
+---
+import Ornamento1 from "../../../assets/icons/Ornamento1.astro";
+import SobreIcon from "../../../assets/icons/SobreIcon.astro";
+import "@fontsource/parisienne";
+import "@fontsource/abril-fatface";
+import "@fontsource/niconne";
+import "@fontsource/damion";
+import "@fontsource-variable/merriweather";
+---
+
+<section
+  class="relative py-20 px-6 overflow-hidden bg-[#F2E5E9] max-w-3xl mx-auto"
+>
+  <div class="max-w-3xl mx-auto text-center">
+    <h2 class="text-5xl font-damion" data-aos="fade-up">Mi lista de regalos</h2>
+    <Ornamento1 class="fill-[#B46A7A] w-1/2 mx-auto pb-8" />
+
+    <div class="flex flex-col items-center space-y-8">
+      <!-- Texto descriptivo -->
+      <div class="max-w-xl" data-aos="fade-up" data-aos-delay="200">
+        <p class="text-lg leading-relaxed font-merriweather font-bold">
+          Tu presencia lo es todo para mí, pero si deseas hacerme un obsequio,
+          agradeceré mucho tu participación en la <span class="text-[#B46A7A]"
+            >lluvia de sobres
+          </span>
+        </p>
+        <SobreIcon class="fill-[#B46A7A] size-40 mx-auto" />
+      </div>
+    </div>
+  </div>
+</section>
