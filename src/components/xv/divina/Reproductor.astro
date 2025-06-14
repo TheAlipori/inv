@@ -1,0 +1,25 @@
+---
+import Mp3Icon from "../../../assets/icons/mp3Icon.astro";
+---
+
+<button
+  id="playButton"
+  class="fixed bottom-4 right-4 z-50 bg-[#B46A7A] hover:bg-blue-800 text-white rounded-full p-3 shadow-lg text-xl"
+>
+  <Mp3Icon class="size-8 fill-white" />
+</button>
+
+<audio id="audio" src="/cancion.mp3" preload="auto"></audio>
+
+<script type="module">
+  const playButton = document.getElementById("playButton");
+  const audio = document.getElementById("audio");
+
+  playButton.addEventListener("click", () => {
+    if (audio.paused) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+  });
+</script>

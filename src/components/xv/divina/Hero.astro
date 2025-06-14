@@ -7,7 +7,7 @@ import ScrollIcon from "../../../assets/icons/ScrollIcons.astro";
 ---
 
 <section
-  class="w-screen h-screen relative flex justify-center items-center"
+  class="w-screen h-screen relative flex justify-center items-center overflow-x-hidden"
   data-aos="fade-in"
   data-aos-duration="800"
 >
@@ -31,13 +31,7 @@ import ScrollIcon from "../../../assets/icons/ScrollIcons.astro";
   </div>
 
   <!-- Ícono de scroll -->
-  <div
-    class="absolute bottom-0"
-    data-aos="fade-left"
-    data-aos-delay="300"
-    data-aos-duration="1200"
-    data-aos-easing="ease-out-quad"
-  >
+  <div class="absolute bottom-0">
     <ScrollIcon class="size-16 animate-bounce ml-auto mt-8 stroke-white" />
   </div>
 
