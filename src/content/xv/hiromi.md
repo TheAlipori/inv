@@ -11,9 +11,9 @@ familiares:
   padrina:
 
 fecha:
-  dia: 19
+  dia: "19"
   mes: Julio
-  anio: 2025
+  anio: "2025"
 fecha_evento: "2025-07-19T00:00:00"
 imagenes:
   portada: "/quinceanera/hiromi/galeria7.webp"
