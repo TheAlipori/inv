@@ -35,7 +35,7 @@ recepcion:
   lugar: Salon Casa Real Durango
   direccion: Lomas 131, Privada Lomas del Parque, 34105 Durango, Dgo.
   maps: "https://maps.app.goo.gl/8MX8oP4J61WX6ya79"
-  hora: 22:00
+  hora: 21:30
 
 whatsapp: 526181272097
 ---
