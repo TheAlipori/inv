@@ -44,18 +44,19 @@ const galeria = [
             data-aos="fade-right"
             data-aos-delay={100 * (index + 1)}
           >
-            <div class="relative group overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
+            <div 
+              class="relative group overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 cursor-pointer"
+              onclick={`console.log('Container clicked:', ${index}); openGalleryModal(${index});`}
+            >
               <img 
                 src={imagen.src}
                 alt={imagen.alt}
                 class="w-full h-64 md:h-80 object-cover transition-transform duration-500 group-hover:scale-110"
-                loading="lazy"
-                onclick={`openModal(${index})`}
               />
               <!-- Overlay hover -->
-              <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+              <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300 pointer-events-none"></div>
               <!-- Click indicator -->
-              <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                 <div class="bg-white bg-opacity-90 rounded-full p-3">
                   <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
@@ -94,12 +95,13 @@ const galeria = [
 <!-- Modal for fullscreen view -->
 <div 
   id="gallery-modal" 
-  class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden items-center justify-center p-4"
-  onclick="closeModal()"
+  class="fixed inset-0 z-50 hidden items-center justify-center p-4"
+  style="background-color: rgba(0, 0, 0, 0.5);"
+  onclick="closeGalleryModal()"
 >
   <button 
     class="absolute top-4 right-4 text-white hover:text-gray-300 z-60"
-    onclick="closeModal()"
+    onclick="closeGalleryModal()"
     aria-label="Cerrar modal"
   >
     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -129,75 +131,117 @@ const galeria = [
   #gallery-container {
     scroll-behavior: smooth;
   }
-</style>
-
-<script define:vars={{ galeria }} client:load>
-  let currentImageIndex = 0;
   
-  // Gallery navigation
-  const container = document.getElementById('gallery-container');
-  const prevBtn = document.getElementById('prev-btn');
-  const nextBtn = document.getElementById('next-btn');
-  
-  if (container && prevBtn && nextBtn) {
-    prevBtn.addEventListener('click', () => {
-      const scrollAmount = container.clientWidth * 0.8;
-      container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-    });
-    
-    nextBtn.addEventListener('click', () => {
-      const scrollAmount = container.clientWidth * 0.8;
-      container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    });
-    
-    // Hide/show navigation buttons based on scroll position
-    container.addEventListener('scroll', () => {
-      const { scrollLeft, scrollWidth, clientWidth } = container;
-      prevBtn.style.opacity = scrollLeft <= 10 ? '0.5' : '1';
-      nextBtn.style.opacity = scrollLeft >= scrollWidth - clientWidth - 10 ? '0.5' : '1';
-    });
+  /* Modal animations */
+  #gallery-modal {
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0;
   }
   
-  // Modal functionality
-  window.openModal = (index) => {
+  #gallery-modal.show {
+    opacity: 1;
+  }
+  
+  #gallery-modal img {
+    transition: transform 0.3s ease-in-out;
+    transform: scale(0.9);
+  }
+  
+  #gallery-modal.show img {
+    transform: scale(1);
+  }
+</style>
+
+<script define:vars={{ galeria }}>
+  console.log('Script loaded!', galeria);
+  let currentImageIndex = 0;
+  const galleryImages = galeria;
+  
+  // Global functions that can be called from onclick
+  window.openGalleryModal = function(index) {
+    console.log('Opening modal for image', index);
     currentImageIndex = index;
     const modal = document.getElementById('gallery-modal');
     const modalImage = document.getElementById('modal-image');
     
-    if (modal && modalImage && galeria[index]) {
-      modalImage.src = galeria[index].src;
-      modalImage.alt = galeria[index].alt;
+    if (modal && modalImage && galleryImages[index]) {
+      modalImage.src = galleryImages[index].src;
+      modalImage.alt = galleryImages[index].alt;
       modal.classList.remove('hidden');
       modal.classList.add('flex');
       document.body.style.overflow = 'hidden';
+      
+      // Trigger animation after a small delay to ensure element is visible
+      setTimeout(() => {
+        modal.classList.add('show');
+      }, 10);
+      
+      console.log('Modal opened successfully');
+    } else {
+      console.error('Modal elements not found or image not available', {modal, modalImage, image: galleryImages[index]});
     }
   };
   
-  window.closeModal = () => {
+  window.closeGalleryModal = function() {
+    console.log('Closing modal');
     const modal = document.getElementById('gallery-modal');
     if (modal) {
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
-      document.body.style.overflow = 'auto';
+      modal.classList.remove('show');
+      
+      // Wait for animation to finish before hiding
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = 'auto';
+      }, 300); // Match the CSS transition duration
     }
   };
+  
+  // Initialize gallery navigation when DOM is ready
+  document.addEventListener('DOMContentLoaded', function() {
+    const container = document.getElementById('gallery-container');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    
+    if (container && prevBtn && nextBtn) {
+      prevBtn.addEventListener('click', () => {
+        const scrollAmount = container.clientWidth * 0.8;
+        container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      });
+      
+      nextBtn.addEventListener('click', () => {
+        const scrollAmount = container.clientWidth * 0.8;
+        container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      });
+      
+      // Hide/show navigation buttons based on scroll position
+      container.addEventListener('scroll', () => {
+        const { scrollLeft, scrollWidth, clientWidth } = container;
+        prevBtn.style.opacity = scrollLeft <= 10 ? '0.5' : '1';
+        nextBtn.style.opacity = scrollLeft >= scrollWidth - clientWidth - 10 ? '0.5' : '1';
+      });
+    }
+    
+    // Prevent modal from closing when clicking on the image
+    const modalImage = document.getElementById('modal-image');
+    if (modalImage) {
+      modalImage.addEventListener('click', (e) => {
+        e.stopPropagation();
+      });
+    }
+  });
   
   // Keyboard navigation in modal
   document.addEventListener('keydown', (e) => {
     const modal = document.getElementById('gallery-modal');
     if (modal && !modal.classList.contains('hidden')) {
       if (e.key === 'Escape') {
-        closeModal();
+        closeGalleryModal();
       } else if (e.key === 'ArrowLeft' && currentImageIndex > 0) {
-        openModal(currentImageIndex - 1);
-      } else if (e.key === 'ArrowRight' && currentImageIndex < galeria.length - 1) {
-        openModal(currentImageIndex + 1);
+        openGalleryModal(currentImageIndex - 1);
+      } else if (e.key === 'ArrowRight' && currentImageIndex < galleryImages.length - 1) {
+        openGalleryModal(currentImageIndex + 1);
       }
     }
-  });
-  
-  // Prevent modal from closing when clicking on the image
-  document.getElementById('modal-image')?.addEventListener('click', (e) => {
-    e.stopPropagation();
   });
 </script>
