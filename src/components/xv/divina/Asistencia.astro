@@ -4,7 +4,7 @@ import "@fontsource/abril-fatface";
 import "@fontsource/niconne";
 import "@fontsource/damion";
 import "@fontsource-variable/merriweather";
-const { whatsapp, colorPrimario } = Astro.props;
+const { whatsapp, colorPrimario, colorBackground } = Astro.props;
 ---
 
 <section
@@ -28,7 +28,8 @@ const { whatsapp, colorPrimario } = Astro.props;
     href=`https://wa.me/${whatsapp}?text=Hola%2C%20confirmo%20mi%20asistencia%20a%20tus%20XV`
     target="_blank"
     rel="noopener noreferrer"
-    class=`bg-[#B46A7A] hover:bg-gray-950 text-white px-6 py-3 rounded-full text-lg font-merriweather transition`
+    class="text-white px-6 py-3 rounded-full text-lg font-merriweather transition hover:opacity-80"
+    style={`background-color: ${colorPrimario}`}
   >
     Confirmar por WhatsApp
   </a>

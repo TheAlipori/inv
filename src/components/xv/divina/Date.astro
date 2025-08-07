@@ -5,10 +5,14 @@ import "@fontsource/niconne";
 import "@fontsource/damion";
 import "@fontsource-variable/merriweather";
 import Ornamento1 from "../../../assets/icons/Ornamento1.astro";
-const { fecha_evento, fecha, imagenes } = Astro.props;
+const { fecha_evento, fecha, imagenes, colorPrimario, colorBackground } =
+  Astro.props;
 ---
 
-<section class="max-w-3xl mx-auto overflow-x-hidden bg-[#F2E5E9]">
+<section
+  class="max-w-3xl mx-auto overflow-x-hidden"
+  style={`background-color: ${colorBackground}`}
+>
   <h1
     class="text-center text-5xl font-damion mt-24 text-[#5A5A5A]"
     data-aos="fade-down"
@@ -18,7 +22,8 @@ const { fecha_evento, fecha, imagenes } = Astro.props;
     Aparta la fecha
   </h1>
   <Ornamento1
-    class="fill-[#B46A7A] w-1/2 mx-auto"
+    class="w-1/2 mx-auto"
+    style={`fill: ${colorPrimario}`}
     data-aos="fade-up"
     data-aos-delay="300"
     data-aos-duration="600"
@@ -32,7 +37,8 @@ const { fecha_evento, fecha, imagenes } = Astro.props;
       data-aos-delay="400"
     >
       <span
-        class="text-9xl leading-none font-bold text-[#B46A7A] transition-transform group-hover:scale-110"
+        class="text-9xl leading-none font-bold transition-transform group-hover:scale-110"
+        style={`color: ${colorPrimario}`}
       >
         {fecha.dia}
       </span>
@@ -64,60 +70,257 @@ const { fecha_evento, fecha, imagenes } = Astro.props;
     data-aos-delay="800"
   />
 
-  <h1
-    class="text-center text-5xl font-damion mt-24 text-[#5A5A5A]"
-    data-aos="fade-up"
-    data-aos-delay="800"
-    data-aos-offset="200"
-  >
-    Solo faltan
-  </h1>
-  <Ornamento1
-    class="fill-[#B46A7A] w-1/2 mx-auto"
-    data-aos="fade-up"
-    data-aos-delay="300"
-    data-aos-duration="600"
-  />
-  <div class="py-12 text-center" data-aos="fade-in" data-aos-duration="1000">
+  <div class="relative py-16 px-4">
+    <div class="absolute inset-0 opacity-10">
+      <div class="floating-hearts"></div>
+    </div>
+
+    <h1
+      class="text-center text-5xl font-damion mb-6 text-[#5A5A5A] relative z-10"
+      data-aos="fade-up"
+      data-aos-delay="800"
+      data-aos-offset="200"
+    >
+      Solo faltan
+    </h1>
+    <Ornamento1
+      class="w-1/2 mx-auto mb-12 relative z-10"
+      style={`fill: ${colorPrimario}`}
+      data-aos="fade-up"
+      data-aos-delay="300"
+      data-aos-duration="600"
+    />
+
+    <!-- Mensaje especial cuando el evento es hoy o ya pasó -->
+    <div id="mensaje-especial" class="hidden mb-8 relative z-10">
+      <div
+        class="backdrop-blur-sm bg-white/20 rounded-2xl p-8 shadow-xl border border-white/30"
+      >
+        <h2
+          class="text-6xl font-abril mb-4 animate-pulse-slow"
+          style={`color: ${colorPrimario}`}
+          id="titulo-especial"
+        >
+        </h2>
+        <p
+          class="text-2xl font-merriweather text-[#5A5A5A]"
+          id="texto-especial"
+        >
+        </p>
+      </div>
+    </div>
+
+    <!-- Contador mejorado -->
     <div
-      class="flex flex-col items-center gap-8 lg:flex-row lg:flex-wrap lg:justify-center font-abril text-[#5A5A5A]"
+      id="contador-normal"
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 max-w-4xl mx-auto relative z-10"
+      data-aos="fade-in"
+      data-aos-duration="1000"
     >
       <!-- Días -->
-      <div class="p-6" data-aos="flip-left" data-aos-delay="300">
-        <div class="text-7xl font-bold mb-2 animate-count" id="dias">0</div>
-        <div class="text-xl uppercase tracking-wide">Días</div>
+      <div class="countdown-card" data-aos="flip-left" data-aos-delay="300">
+        <div class="countdown-inner">
+          <div class="countdown-number gradient-text" id="dias">0</div>
+          <div class="countdown-label">Días</div>
+          <div class="countdown-glow"></div>
+        </div>
       </div>
 
       <!-- Horas -->
-      <div class="p-6" data-aos="flip-up" data-aos-delay="350">
-        <div class="text-7xl font-bold mb-2 animate-count" id="horas">0</div>
-        <div class="text-xl uppercase tracking-wide">Horas</div>
+      <div class="countdown-card" data-aos="flip-up" data-aos-delay="350">
+        <div class="countdown-inner">
+          <div class="countdown-number" id="horas">0</div>
+          <div class="countdown-label">Horas</div>
+          <div class="countdown-glow"></div>
+        </div>
       </div>
 
       <!-- Minutos -->
-      <div class="p-6" data-aos="flip-down" data-aos-delay="400">
-        <div class="text-7xl font-bold mb-2 animate-count" id="minutos">0</div>
-        <div class="text-xl uppercase tracking-wide">Minutos</div>
+      <div class="countdown-card" data-aos="flip-down" data-aos-delay="400">
+        <div class="countdown-inner">
+          <div class="countdown-number" id="minutos">0</div>
+          <div class="countdown-label">Minutos</div>
+          <div class="countdown-glow"></div>
+        </div>
       </div>
 
       <!-- Segundos -->
-      <div class="p-6" data-aos="flip-right" data-aos-delay="450">
-        <div
-          class=`text-7xl font-bold mb-2  animate-count text-[#B46A7A]`
-          id="segundos"
-        >
-          0
-        </div>
-        <div class="text-xl uppercase tracking-wide text-[#B46A7A]">
-          Segundos
+      <div
+        class="countdown-card seconds-card"
+        data-aos="flip-right"
+        data-aos-delay="450"
+      >
+        <div class="countdown-inner">
+          <div
+            class="countdown-number pulse-number"
+            style={`color: ${colorPrimario}`}
+            id="segundos"
+          >
+            0
+          </div>
+          <div class="countdown-label" style={`color: ${colorPrimario}`}>
+            Segundos
+          </div>
+          <div
+            class="countdown-glow special-glow"
+            style={`background: ${colorPrimario}33`}
+          >
+          </div>
         </div>
       </div>
     </div>
   </div>
 
   <style>
+    /* Floating hearts background */
+    .floating-hearts {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .floating-hearts::before,
+    .floating-hearts::after {
+      content: "♥";
+      position: absolute;
+      font-size: 2rem;
+      color: #b47377;
+      animation: float 6s ease-in-out infinite;
+      opacity: 0.3;
+    }
+
+    .floating-hearts::before {
+      top: 20%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    .floating-hearts::after {
+      top: 60%;
+      right: 15%;
+      animation-delay: 3s;
+    }
+
+    @keyframes float {
+      0%,
+      100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-20px) rotate(10deg);
+      }
+    }
+
+    /* Countdown cards */
+    .countdown-card {
+      position: relative;
+      background: linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.9),
+        rgba(255, 255, 255, 0.7)
+      );
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 1.5rem;
+      box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.1),
+        0 4px 16px rgba(0, 0, 0, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.4s ease;
+      overflow: hidden;
+    }
+
+    .countdown-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow:
+        0 16px 48px rgba(0, 0, 0, 0.15),
+        0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    .countdown-inner {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    .countdown-number {
+      font-size: 3.5rem;
+      font-weight: 800;
+      font-family: "Abril Fatface", serif;
+      color: #5a5a5a;
+      margin-bottom: 0.5rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .countdown-label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #6b7280;
+      font-family: "Merriweather Variable", serif;
+    }
+
+    .countdown-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 120%;
+      height: 120%;
+      background: radial-gradient(
+        circle,
+        rgba(180, 115, 119, 0.1) 0%,
+        transparent 70%
+      );
+      border-radius: 50%;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .countdown-card:hover .countdown-glow {
+      opacity: 1;
+    }
+
+    .seconds-card:hover .countdown-glow {
+      opacity: 0 !important;
+    }
+
+    .special-glow {
+      background: radial-gradient(
+        circle,
+        rgba(180, 115, 119, 0.15) 0%,
+        transparent 70%
+      );
+      opacity: 0;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #b47377, #8b5a6b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .pulse-number {
+      animation: pulse-scale 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse-scale {
+      0%,
+      100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
     .animate-count {
-      animation: countPop 0.5s ease-out;
+      animation: countPop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
 
     @keyframes countPop {
@@ -125,7 +328,7 @@ const { fecha_evento, fecha, imagenes } = Astro.props;
         transform: scale(1);
       }
       50% {
-        transform: scale(1.1);
+        transform: scale(1.2);
       }
       100% {
         transform: scale(1);
@@ -133,32 +336,68 @@ const { fecha_evento, fecha, imagenes } = Astro.props;
     }
 
     .animate-pulse-slow {
-      animation: pulse 2s ease-in-out infinite;
+      animation: pulse-slow 3s ease-in-out infinite;
     }
 
-    @keyframes pulse {
+    @keyframes pulse-slow {
       0%,
       100% {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
       }
       50% {
         opacity: 0.8;
-        transform: translateY(-5px);
+        transform: translateY(-5px) scale(1.02);
       }
     }
 
-    .animate-bounce-horizontal {
-      animation: bounceH 1.5s ease-in-out infinite;
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .countdown-card {
+        padding: 1rem;
+      }
+
+      .countdown-number {
+        font-size: 2.5rem;
+      }
+
+      .countdown-label {
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+      }
     }
 
-    @keyframes bounceH {
-      0%,
+    /* Additional sparkle effects */
+    .countdown-card::before {
+      content: "";
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(180, 115, 119, 0.3),
+        transparent
+      );
+      border-radius: 20px;
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .countdown-card:hover::before {
+      opacity: 1;
+      animation: shimmer 2s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+      0% {
+        background-position: -200% 0;
+      }
       100% {
-        transform: translateX(0);
-      }
-      50% {
-        transform: translateX(5px);
+        background-position: 200% 0;
       }
     }
   </style>
@@ -170,11 +409,39 @@ const { fecha_evento, fecha, imagenes } = Astro.props;
     const now = new Date().getTime();
     const distance = targetDate - now;
 
-    if (distance < 0) {
-      document.getElementById("countdown").innerHTML =
-        "<div class='text-xl font-bold'>¡El evento ha comenzado! 🎉</div>";
+    // Calcular si es el mismo día
+    const targetDateObj = new Date(fecha_evento);
+    const nowDateObj = new Date();
+    const esHoy = targetDateObj.toDateString() === nowDateObj.toDateString();
+
+    const contadorNormal = document.getElementById("contador-normal");
+    const mensajeEspecial = document.getElementById("mensaje-especial");
+    const tituloEspecial = document.getElementById("titulo-especial");
+    const textoEspecial = document.getElementById("texto-especial");
+
+    // Si ya pasó más de 24 horas
+    if (distance < -24 * 60 * 60 * 1000) {
+      contadorNormal.style.display = "none";
+      mensajeEspecial.classList.remove("hidden");
+      tituloEspecial.innerHTML = "¡Gracias por acompañarme!";
+      textoEspecial.innerHTML =
+        "Fue una noche mágica e inolvidable gracias a ti";
       return;
     }
+
+    // Si es hoy (mismo día) o ya empezó pero hace menos de 24h
+    if (esHoy || (distance < 0 && distance > -24 * 60 * 60 * 1000)) {
+      contadorNormal.style.display = "none";
+      mensajeEspecial.classList.remove("hidden");
+      tituloEspecial.innerHTML = "¡La fiesta es hoy! 🎉";
+      textoEspecial.innerHTML =
+        "¡Nos vemos en la celebración más especial de mi vida!";
+      return;
+    }
+
+    // Mostrar contador normal
+    contadorNormal.style.display = "grid";
+    mensajeEspecial.classList.add("hidden");
 
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor(
@@ -183,16 +450,50 @@ const { fecha_evento, fecha, imagenes } = Astro.props;
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    document.getElementById("dias").innerText = days;
-    document.getElementById("horas").innerText = hours
-      .toString()
-      .padStart(2, "0");
-    document.getElementById("minutos").innerText = minutes
-      .toString()
-      .padStart(2, "0");
-    document.getElementById("segundos").innerText = seconds
-      .toString()
-      .padStart(2, "0");
+    // Add animation to numbers when they change
+    const updateWithAnimation = (elementId, newValue, currentValue) => {
+      const element = document.getElementById(elementId);
+      if (element && newValue !== currentValue) {
+        element.classList.add("animate-count");
+        setTimeout(() => element.classList.remove("animate-count"), 600);
+      }
+      element.innerText = newValue;
+    };
+
+    // Store previous values for animation comparison
+    if (typeof updateCountdown.previousValues === "undefined") {
+      updateCountdown.previousValues = {
+        days: -1,
+        hours: -1,
+        minutes: -1,
+        seconds: -1,
+      };
+    }
+
+    updateWithAnimation("dias", days, updateCountdown.previousValues.days);
+    updateWithAnimation(
+      "horas",
+      hours.toString().padStart(2, "0"),
+      updateCountdown.previousValues.hours
+    );
+    updateWithAnimation(
+      "minutos",
+      minutes.toString().padStart(2, "0"),
+      updateCountdown.previousValues.minutes
+    );
+    updateWithAnimation(
+      "segundos",
+      seconds.toString().padStart(2, "0"),
+      updateCountdown.previousValues.seconds
+    );
+
+    // Update stored values
+    updateCountdown.previousValues = {
+      days: days,
+      hours: hours.toString().padStart(2, "0"),
+      minutes: minutes.toString().padStart(2, "0"),
+      seconds: seconds.toString().padStart(2, "0"),
+    };
   }
 
   // Actualizar cada segundo

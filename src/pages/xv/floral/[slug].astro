@@ -1,0 +1,39 @@
+---
+import { getCollection, getEntry } from "astro:content";
+import Hero from "../../../components/xv/floral/Hero.astro";
+import "../../../styles/global.css";
+import Layout from "../../../layouts/Layout.astro";
+import Welcome from "../../../components/xv/floral/Welcome.astro";
+// 1. Esta función se llama durante el build
+export async function getStaticPaths() {
+  const entries = await getCollection("xv");
+
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+  }));
+}
+
+// 2. Obtener los datos del YAML según el slug
+const { slug } = Astro.params;
+const entry = await getEntry("xv", slug);
+
+if (!entry) {
+  throw new Error(`No se encontró contenido para el slug: ${slug}`);
+}
+
+const { quinceanera, color_primario, imagenes, familiares } = entry.data;
+---
+
+<!-- 3. Renderizar -->
+<Layout>
+  <Hero
+    quinceanera={quinceanera}
+    colorPrimario={color_primario}
+    imagenes={imagenes}
+  />
+  <Welcome
+    quinceanera={quinceanera}
+    colorPrimario={color_primario}
+    familiares={familiares}
+  />
+</Layout>

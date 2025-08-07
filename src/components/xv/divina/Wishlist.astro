@@ -6,25 +6,34 @@ import "@fontsource/abril-fatface";
 import "@fontsource/niconne";
 import "@fontsource/damion";
 import "@fontsource-variable/merriweather";
+
+const { colorPrimario, colorBackground } = Astro.props;
 ---
 
 <section
-  class="relative py-20 px-6 overflow-x-hidden bg-[#F2E5E9] max-w-3xl mx-auto"
+  class="relative py-20 px-6 overflow-x-hidden max-w-3xl mx-auto"
+  style={`background-color: ${colorBackground}`}
 >
   <div class="max-w-3xl mx-auto text-center">
     <h2 class="text-5xl font-damion" data-aos="fade-up">Mi lista de regalos</h2>
-    <Ornamento1 class="fill-[#B46A7A] w-1/2 mx-auto pb-8" />
+    <Ornamento1 
+      class="w-1/2 mx-auto pb-8" 
+      style={`fill: ${colorPrimario}`} 
+    />
 
     <div class="flex flex-col items-center space-y-8">
       <!-- Texto descriptivo -->
       <div class="max-w-xl" data-aos="fade-up" data-aos-delay="200">
         <p class="text-lg leading-relaxed font-merriweather font-bold">
           Tu presencia lo es todo para mí, pero si deseas hacerme un obsequio,
-          agradeceré mucho tu participación en la <span class="text-[#B46A7A]"
+          agradeceré mucho tu participación en la <span style={`color: ${colorPrimario}`}
             >lluvia de sobres
           </span>
         </p>
-        <SobreIcon class="fill-[#B46A7A] size-40 mx-auto" />
+        <SobreIcon 
+          class="size-40 mx-auto" 
+          style={`fill: ${colorPrimario}`} 
+        />
       </div>
     </div>
   </div>

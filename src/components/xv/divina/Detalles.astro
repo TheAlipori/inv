@@ -11,193 +11,264 @@ import "@fontsource/abril-fatface";
 import "@fontsource/niconne";
 import "@fontsource/damion";
 import "@fontsource-variable/merriweather";
-const { colorPrimario, misa, recepcion } = Astro.props;
+const { colorPrimario, colorBackground, misa, recepcion, imagenes } =
+  Astro.props;
 ---
 
-<section class="max-w-3xl mx-auto overflow-x-hidden bg-[#F2E5E9]">
-  <h1
-    class="font-damion text-center text-5xl"
-    data-aos="fade-down"
-    data-aos-easing="ease-out-cubic"
-    data-aos-duration="800"
-  >
-    Los detalles
-  </h1>
+<section class="py-16 px-4" style={`background-color: ${colorBackground}`}>
+  <div class="max-w-4xl mx-auto">
+    <!-- Header -->
+    <header class="text-center mb-16">
+      <h1
+        class="font-damion text-5xl md:text-6xl mb-6 text-[#5A5A5A]"
+        data-aos="fade-down"
+        data-aos-duration="800"
+      >
+        Los detalles
+      </h1>
 
-  <Ornamento1
-    class="fill-[#B46A7A] w-1/2 mx-auto pb-8"
-    data-aos="fade-up"
-    data-aos-delay="300"
-    data-aos-duration="600"
-  />
+      <Ornamento1
+        class="w-1/2 mx-auto mb-6"
+        style={`fill: ${colorPrimario}`}
+        data-aos="fade-up"
+        data-aos-delay="200"
+      />
 
-  <div
-    class="grid grid-cols-1 bg-[url('/quinceanera/hiromi/background.webp')] bg-cover bg-center p-4"
-  >
-    <div class="relative mt-16">
-      <!-- Card 1 - Misa -->
-      <div data-aos="fade-right" data-aos-delay="400" data-aos-offset="200">
-        <div
-          class="relative z-10 text-center border-3 border-[#B46A7A] rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow bg-[#F2E5E9] mx-2 -mt-12"
-        >
-          <div>
-            <IglesiaIcon
-              class="size-16 fill-[#B46A7A] mx-auto mb-4 mt-1"
-              data-aos="zoom-in"
-              data-aos-delay="500"
-            />
-            <h1
-              class="text-4xl font-merriweather font-bold"
-              data-aos="fade-down"
-              data-aos-delay="600"
-            >
-              Misa
-            </h1>
+      <p class="text-lg text-gray-600 font-merriweather max-w-2xl mx-auto">
+        Toda la información importante para que puedas acompañarnos en este día
+        tan especial
+      </p>
+    </header>
 
-            <!-- Horario con icono -->
+    <!-- Cards Grid - Responsive -->
+    <div class="grid gap-8 md:gap-12">
+      <!-- Misa Card -->
+      <article
+        class="relative bg-white rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
+        data-aos="fade-up"
+        data-aos-delay="300"
+      >
+        <!-- Header with icon -->
+        <div class="bg-gradient-to-r from-opacity-10 to-transparent p-8 pb-6">
+          <div class="flex items-center gap-4 mb-4">
             <div
-              class="flex items-start justify-center gap-2 mt-4"
-              data-aos="fade-right"
-              data-aos-delay="700"
+              class="p-4 rounded-2xl"
+              style={`background-color: ${colorPrimario}15`}
             >
-              <p class="text-gray-600 font-merriweather font-bold">
-                {misa.lugar}
-              </p>
+              <IglesiaIcon class="w-8 h-8" style={`fill: ${colorPrimario}`} />
+            </div>
+            <div>
+              <h2 class="text-3xl font-abril text-gray-800">Misa</h2>
+              <p class="text-gray-600 font-merriweather">Ceremonia religiosa</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="px-8 pb-8">
+          <!-- Lugar -->
+          <div class="mb-4">
+            <h3 class="text-xl font-bold text-gray-800 mb-2">{misa.lugar}</h3>
+          </div>
+
+          <!-- Detalles -->
+          <div class="space-y-3 mb-6">
+            <!-- Hora -->
+            <div class="flex items-center gap-3">
+              <ClockIcon
+                class="w-5 h-5 flex-shrink-0"
+                style={`fill: ${colorPrimario}`}
+              />
+              <span class="font-merriweather text-gray-700">
+                <strong>Hora:</strong>
+                {misa.hora}
+              </span>
             </div>
 
-            <div
-              class="flex items-start justify-center gap-2 mt-4"
-              data-aos="fade-right"
-              data-aos-delay="700"
-            >
-              <ClockIcon class="size-5 fill-[#B46A7A] mt-1" />
-              <p class="font-merriweather text-gray-600">Hora: {misa.hora}</p>
-            </div>
-
-            <!-- Dirección con icono -->
-            <div
-              class="flex items-start justify-center gap-2 mt-2"
-              data-aos="fade-left"
-              data-aos-delay="800"
-            >
-              <ImportanteIcon class="size-5 fill-[#B46A7A] mt-1" />
-              <p class="font-merriweather text-gray-600 text-center">
+            <!-- Dirección -->
+            <div class="flex items-start gap-3">
+              <ImportanteIcon
+                class="w-5 h-5 mt-0.5 flex-shrink-0"
+                style={`fill: ${colorPrimario}`}
+              />
+              <span class="font-merriweather text-gray-700">
+                <strong>Dirección:</strong>
                 {misa.direccion}
+              </span>
+            </div>
+          </div>
+
+          <!-- Action button -->
+          <a
+            href={misa.maps}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 text-white font-merriweather px-6 py-3 rounded-xl transition-all duration-300 hover:shadow-lg hover:scale-105 focus:outline-none focus:ring-4 focus:ring-opacity-30"
+            style={`background-color: ${colorPrimario}; focus-ring-color: ${colorPrimario}`}
+            aria-label="Ver ubicación de la misa en Google Maps"
+          >
+            <span>Ver ubicación</span>
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+              ></path>
+            </svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Recepción Card -->
+      <article
+        class="relative bg-white rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
+        data-aos="fade-up"
+        data-aos-delay="400"
+      >
+        <!-- Header with icon -->
+        <div class="bg-gradient-to-r from-opacity-10 to-transparent p-8 pb-6">
+          <div class="flex items-center gap-4 mb-4">
+            <div
+              class="p-4 rounded-2xl"
+              style={`background-color: ${colorPrimario}15`}
+            >
+              <SalonIcon class="w-8 h-8" style={`fill: ${colorPrimario}`} />
+            </div>
+            <div>
+              <h2 class="text-3xl font-abril text-gray-800">Recepción</h2>
+              <p class="text-gray-600 font-merriweather">
+                Fiesta y celebración
               </p>
             </div>
-
-            <a
-              href={misa.maps}
-              target="_blank"
-              class="bg-[#B46A7A] hover:bg-[#B46A7A] text-white font-merriweather px-4 py-2 rounded transition-colors inline-block mt-4"
-              data-aos="zoom-in"
-              data-aos-delay="900"
-            >
-              Ver mapa
-            </a>
           </div>
         </div>
-      </div>
 
-      <!-- Card 2 - Recepcion -->
-      <div
-        class="relative mt-16"
-        data-aos="fade-left"
-        data-aos-delay="500"
-        data-aos-offset="150"
-      >
-        <div
-          class="relative z-10 text-center border-2 border-[#B46A7A] rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow bg-[#F2E5E9] mx-2 -mt-12"
-        >
-          <div>
-            <SalonIcon
-              class="size-16 fill-[#B46A7A] mx-auto mb-4 mt-1"
-              data-aos="zoom-in"
-              data-aos-delay="600"
-            />
-            <h1
-              class="text-4xl font-merriweather"
-              data-aos="fade-down"
-              data-aos-delay="700"
-            >
-              Recepción
-            </h1>
+        <!-- Content -->
+        <div class="px-8 pb-8">
+          <!-- Lugar -->
+          <div class="mb-4">
+            <h3 class="text-xl font-bold text-gray-800 mb-2">
+              {recepcion.lugar}
+            </h3>
+          </div>
 
-            <div
-              class="flex items-start justify-center gap-2 mt-4"
-              data-aos="fade-right"
-              data-aos-delay="700"
-            >
-              <p
-                class="font-merriweathertext-gray-600 font-merriweather font-bold"
-              >
-                {recepcion.lugar}
-              </p>
+          <!-- Detalles -->
+          <div class="space-y-3 mb-6">
+            <!-- Hora -->
+            <div class="flex items-center gap-3">
+              <ClockIcon
+                class="w-5 h-5 flex-shrink-0"
+                style={`fill: ${colorPrimario}`}
+              />
+              <span class="font-merriweather text-gray-700">
+                <strong>Hora:</strong>
+                {recepcion.hora}
+              </span>
             </div>
 
-            <!-- Horario con icono -->
-            <div
-              class="flex items-start justify-center gap-2 mt-4"
-              data-aos="fade-right"
-              data-aos-delay="800"
-            >
-              <ClockIcon class="size-5 fill-[#B46A7A]" />
-              <p class="font-merriweather text-gray-600">
-                Hora: {recepcion.hora}
-              </p>
-            </div>
-
-            <!-- Dirección con icono -->
-            <div
-              class="flex items-start justify-center gap-2 mt-2"
-              data-aos="fade-left"
-              data-aos-delay="900"
-            >
-              <ImportanteIcon class="size-5 fill-[#B46A7A] mt-1" />
-              <p class="font-merriweather text-gray-600 text-center">
+            <!-- Dirección -->
+            <div class="flex items-start gap-3">
+              <ImportanteIcon
+                class="w-5 h-5 mt-0.5 flex-shrink-0"
+                style={`fill: ${colorPrimario}`}
+              />
+              <span class="font-merriweather text-gray-700">
+                <strong>Dirección:</strong>
                 {recepcion.direccion}
+              </span>
+            </div>
+          </div>
+
+          <!-- Action button -->
+          <a
+            href={recepcion.maps}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 text-white font-merriweather px-6 py-3 rounded-xl transition-all duration-300 hover:shadow-lg hover:scale-105 focus:outline-none focus:ring-4 focus:ring-opacity-30"
+            style={`background-color: ${colorPrimario}; focus-ring-color: ${colorPrimario}`}
+            aria-label="Ver ubicación de la recepción en Google Maps"
+          >
+            <span>Ver ubicación</span>
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+              ></path>
+            </svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Vestimenta Card -->
+      <article
+        class="relative bg-white rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
+        data-aos="fade-up"
+        data-aos-delay="500"
+      >
+        <!-- Header with icon -->
+        <div class="bg-gradient-to-r from-opacity-10 to-transparent p-8 pb-6">
+          <div class="flex items-center gap-4 mb-4">
+            <div
+              class="p-4 rounded-2xl"
+              style={`background-color: ${colorPrimario}15`}
+            >
+              <VestimentaIcon
+                class="w-8 h-8"
+                style={`fill: ${colorPrimario}`}
+              />
+            </div>
+            <div>
+              <h2 class="text-3xl font-abril text-gray-800">Dress Code</h2>
+              <p class="text-gray-600 font-merriweather">
+                Código de vestimenta
               </p>
             </div>
-
-            <a
-              href={recepcion.maps}
-              target="_blank"
-              class="bg-[#B46A7A] hover:bg-amber-700 text-white font-merriweather px-4 py-2 rounded transition-colors inline-block mt-4"
-              data-aos="zoom-in"
-              data-aos-delay="1000"
-            >
-              Ver mapa
-            </a>
           </div>
         </div>
-      </div>
 
-      <!---Vestimenta -->
-      <div
-        class="relative mt-16"
-        data-aos="fade-left"
-        data-aos-delay="500"
-        data-aos-offset="150"
-      >
-        <div
-          class="relative z-10 text-center border-2 border-[#B46A7A] rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow bg-[#F2E5E9] mx-2 -mt-12"
-        >
-          <div>
-            <VestimentaIcon
-              class="size-16 fill-[#B46A7A] mx-auto mb-4 mt-1"
-              data-aos="zoom-in"
-              data-aos-delay="600"
-            />
-            <h1
-              class="text-4xl font-merriweather font-bold"
-              data-aos="fade-down"
-              data-aos-delay="700"
+        <!-- Content -->
+        <div class="px-8 pb-8">
+          <div
+            class="bg-gradient-to-r p-6 rounded-2xl"
+            style={`background: linear-gradient(135deg, ${colorPrimario}10, ${colorPrimario}05)`}
+          >
+            <h3
+              class="text-2xl font-bold mb-3"
+              style={`color: ${colorPrimario}`}
             >
-              Vestimenta formal
-            </h1>
+              Vestimenta Formal
+            </h3>
+            <p class="text-gray-700 font-merriweather leading-relaxed">
+              Te pedimos que nos acompañes con vestimenta formal para hacer de
+              esta noche una celebración elegante y memorable.
+            </p>
           </div>
         </div>
-      </div>
+      </article>
     </div>
+
+    <!-- Decorative background -->
+    {
+      imagenes.flowers && (
+        <div
+          class="absolute top-0 right-0 w-64 h-64 opacity-5 pointer-events-none hidden lg:block"
+          style={`background-image: url(${imagenes.flowers}); background-size: contain; background-repeat: no-repeat; background-position: center;`}
+          aria-hidden="true"
+        />
+      )
+    }
   </div>
 </section>

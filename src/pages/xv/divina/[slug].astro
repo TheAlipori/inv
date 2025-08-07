@@ -1,5 +1,5 @@
 ---
-import { getCollection, getEntryBySlug } from "astro:content";
+import { getCollection, getEntry } from "astro:content";
 import Hero from "../../../components/xv/divina/Hero.astro";
 import "../../../styles/global.css";
 import Layout from "../../../layouts/Layout.astro";
@@ -15,26 +15,27 @@ export async function getStaticPaths() {
   const entries = await getCollection("xv");
 
   return entries.map((entry) => ({
-    params: { slug: entry.slug },
+    params: { slug: entry.id },
   }));
 }
 
-// 2. Obtener los datos del Markdown según el slug
+// 2. Obtener los datos del YAML según el slug
 const { slug } = Astro.params;
-const entry = await getEntryBySlug("xv", slug);
+const entry = await getEntry("xv", slug);
 
 if (!entry) {
   throw new Error(`No se encontró contenido para el slug: ${slug}`);
 }
 
 const {
+  titulo,
+  descripcion,
   quinceanera,
   imagenes,
-  colorPrimario,
-  mensaje_principal,
+  color_primario,
+  color_secundario,
   familiares,
   fecha,
-  fecha_evento,
   misa,
   recepcion,
   whatsapp,
@@ -42,19 +43,45 @@ const {
 ---
 
 <!-- 3. Renderizar -->
-<Layout class="">
-  <Reproductor />
+<Layout titulo={titulo} descripcion={descripcion} slug={slug}>
+  <Reproductor colorPrimario={color_primario} />
 
   <Hero
     imagenes={imagenes}
     quinceanera={quinceanera}
-    colorPrimario={colorPrimario}
+    colorPrimario={color_primario}
     fecha={fecha}
   />
-  <Welcome familiares={familiares} />
-  <Date fecha={fecha} fecha_evento={fecha_evento} imagenes={imagenes} />
-  <Detalles misa={misa} recepcion={recepcion} />
-  <Galeria imagenes={imagenes} />
-  <Wishlist />
-  <Asistencia whatsapp={whatsapp} />
+  <Welcome
+    familiares={familiares}
+    colorPrimario={color_primario}
+    colorBackground={color_secundario}
+  />
+  <Date
+    fecha={fecha}
+    fecha_evento={fecha.fecha_iso}
+    imagenes={imagenes}
+    colorPrimario={color_primario}
+    colorBackground={color_secundario}
+  />
+  <Detalles 
+    misa={misa} 
+    recepcion={recepcion} 
+    colorPrimario={color_primario}
+    colorBackground={color_secundario}
+    imagenes={imagenes}
+  />
+  <Galeria 
+    imagenes={imagenes} 
+    colorPrimario={color_primario}
+  />
+  <Wishlist 
+    colorPrimario={color_primario}
+    colorBackground={color_secundario}
+  />
+  <Asistencia 
+    whatsapp={whatsapp} 
+    colorPrimario={color_primario}
+    colorBackground={color_secundario}
+  />
 </Layout>

@@ -1,0 +1,54 @@
+# Información del evento
+tipo_evento: "xv"
+tema: "divina"
+color_primario: "#B47377" # Pink-500
+color_secundario: "#fdf2f8" # Pink-50
+
+# Datos básicos
+titulo: "Los XV de Hiromi"
+descripcion: "Estás cordialmente invitado a los XV de Hiromi"
+
+# Información de la quinceañera
+quinceanera:
+  nombre: "Hiromi García López"
+
+# Información familiar
+familiares:
+  padre: "Roberto García Mendoza"
+  madre: "Carmen López Delgado"
+  padrino: "Miguel Rodríguez Torres"
+  madrina: "Isabel Hernández Vega"
+
+# Fecha del evento
+fecha:
+  dia: "7"
+  mes: "Octubre"
+  anio: "2025"
+  fecha_iso: "2025-10-07T00:00:00"
+
+# Imágenes
+imagenes:
+  portada: "/quinceanera/hiromi/galeria7.webp"
+  icon: "/quinceanera/hiromi/icon.webp"
+  flowers: "/quinceanera/hiromi/flowers.webp"
+  galeria1: "/quinceanera/hiromi/galeria2.webp"
+  galeria2: "/quinceanera/hiromi/galeria3.webp"
+  galeria3: "/quinceanera/hiromi/galeria4.webp"
+  galeria4: "/quinceanera/hiromi/galeria5.webp"
+  galeria5: "/quinceanera/hiromi/galeria6.webp"
+
+# Información de eventos
+misa:
+  lugar: "Templo de San Agustín"
+  direccion: "Av. 20 de Noviembre 1000, Zona Centro, 34000 Durango, Dgo."
+  maps: "https://maps.app.goo.gl/HSHSj56F5FYrc9DB8"
+  hora: "20:00"
+
+recepcion:
+  lugar: "Salon Casa Real Durango"
+  direccion: "Lomas 131, Privada Lomas del Parque, 34105 Durango, Dgo."
+  maps: "https://maps.app.goo.gl/8MX8oP4J61WX6ya79"
+  hora: "21:30"
+
+# Contacto
+whatsapp: "526181272097"

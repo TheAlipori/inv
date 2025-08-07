@@ -1,34 +1,203 @@
 ---
-const { imagenes } = Astro.props;
+import "@fontsource/abril-fatface";
+import "@fontsource/damion";
+import "@fontsource-variable/merriweather";
+const { imagenes, colorPrimario } = Astro.props;
+
+// Array de imágenes de la galería
+const galeria = [
+  { src: imagenes.galeria1, alt: "Recuerdo especial 1" },
+  { src: imagenes.galeria2, alt: "Recuerdo especial 2" },
+  { src: imagenes.galeria3, alt: "Recuerdo especial 3" },
+  { src: imagenes.galeria4, alt: "Recuerdo especial 4" },
+  { src: imagenes.galeria5, alt: "Recuerdo especial 5" },
+].filter(img => img.src); // Solo incluir imágenes que existen
 ---
 
-<section class="max-w-3xl mx-auto overflow-x-hidden">
-  <img
-    src={imagenes.galeria2}
-    alt="Fecha del evento"
-    class="mx-auto"
-    data-aos="fade-up"
-    data-aos-delay="800"
-  />
-  <img
-    src={imagenes.galeria3}
-    alt="Fecha del evento"
-    class="mx-auto"
-    data-aos="fade-up"
-    data-aos-delay="800"
-  />
-  <img
-    src={imagenes.galeria4}
-    alt="Fecha del evento"
-    class="mx-auto"
-    data-aos="fade-up"
-    data-aos-delay="800"
-  />
-  <img
-    src={imagenes.galeria5}
-    alt="Fecha del evento"
-    class="mx-auto"
-    data-aos="fade-up"
-    data-aos-delay="800"
-  />
+<section class="py-16" data-aos="fade-up">
+  <div class="max-w-6xl mx-auto px-4">
+    <!-- Header -->
+    <header class="text-center mb-12">
+      <h2 
+        class="text-5xl md:text-6xl font-damion mb-4"
+        style={`color: ${colorPrimario || '#B47377'}`}
+      >
+        Recuerdos
+      </h2>
+      <p class="text-gray-600 font-merriweather text-lg max-w-2xl mx-auto">
+        Algunos momentos especiales que quiero compartir contigo
+      </p>
+    </header>
+
+    <!-- Gallery Container -->
+    <div class="relative">
+      <!-- Gallery Scroll Container -->
+      <div 
+        id="gallery-container"
+        class="flex gap-4 overflow-x-auto scrollbar-hide pb-4"
+        style="scroll-snap-type: x mandatory; overscroll-behavior-x: contain;"
+      >
+        {galeria.map((imagen, index) => (
+          <div 
+            class="flex-shrink-0 w-64 md:w-80 cursor-pointer transform transition-all duration-300 hover:scale-105"
+            style="scroll-snap-align: center;"
+            data-aos="fade-right"
+            data-aos-delay={100 * (index + 1)}
+          >
+            <div class="relative group overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
+              <img 
+                src={imagen.src}
+                alt={imagen.alt}
+                class="w-full h-64 md:h-80 object-cover transition-transform duration-500 group-hover:scale-110"
+                loading="lazy"
+                onclick={`openModal(${index})`}
+              />
+              <!-- Overlay hover -->
+              <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+              <!-- Click indicator -->
+              <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div class="bg-white bg-opacity-90 rounded-full p-3">
+                  <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Navigation Arrows -->
+      <button 
+        id="prev-btn"
+        class="absolute left-2 top-1/2 -translate-y-1/2 bg-white bg-opacity-90 hover:bg-opacity-100 rounded-full p-3 shadow-lg transition-all duration-300 z-10"
+        aria-label="Imagen anterior"
+      >
+        <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+      </button>
+      
+      <button 
+        id="next-btn"
+        class="absolute right-2 top-1/2 -translate-y-1/2 bg-white bg-opacity-90 hover:bg-opacity-100 rounded-full p-3 shadow-lg transition-all duration-300 z-10"
+        aria-label="Siguiente imagen"
+      >
+        <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
 </section>
+
+<!-- Modal for fullscreen view -->
+<div 
+  id="gallery-modal" 
+  class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden items-center justify-center p-4"
+  onclick="closeModal()"
+>
+  <button 
+    class="absolute top-4 right-4 text-white hover:text-gray-300 z-60"
+    onclick="closeModal()"
+    aria-label="Cerrar modal"
+  >
+    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+    </svg>
+  </button>
+  
+  <img 
+    id="modal-image"
+    class="max-w-full max-h-full object-contain"
+    alt=""
+  />
+</div>
+
+<style>
+  /* Hide scrollbar while maintaining scroll functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Smooth scrolling */
+  #gallery-container {
+    scroll-behavior: smooth;
+  }
+</style>
+
+<script define:vars={{ galeria }} client:load>
+  let currentImageIndex = 0;
+  
+  // Gallery navigation
+  const container = document.getElementById('gallery-container');
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+  
+  if (container && prevBtn && nextBtn) {
+    prevBtn.addEventListener('click', () => {
+      const scrollAmount = container.clientWidth * 0.8;
+      container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    });
+    
+    nextBtn.addEventListener('click', () => {
+      const scrollAmount = container.clientWidth * 0.8;
+      container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    });
+    
+    // Hide/show navigation buttons based on scroll position
+    container.addEventListener('scroll', () => {
+      const { scrollLeft, scrollWidth, clientWidth } = container;
+      prevBtn.style.opacity = scrollLeft <= 10 ? '0.5' : '1';
+      nextBtn.style.opacity = scrollLeft >= scrollWidth - clientWidth - 10 ? '0.5' : '1';
+    });
+  }
+  
+  // Modal functionality
+  window.openModal = (index) => {
+    currentImageIndex = index;
+    const modal = document.getElementById('gallery-modal');
+    const modalImage = document.getElementById('modal-image');
+    
+    if (modal && modalImage && galeria[index]) {
+      modalImage.src = galeria[index].src;
+      modalImage.alt = galeria[index].alt;
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+  };
+  
+  window.closeModal = () => {
+    const modal = document.getElementById('gallery-modal');
+    if (modal) {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = 'auto';
+    }
+  };
+  
+  // Keyboard navigation in modal
+  document.addEventListener('keydown', (e) => {
+    const modal = document.getElementById('gallery-modal');
+    if (modal && !modal.classList.contains('hidden')) {
+      if (e.key === 'Escape') {
+        closeModal();
+      } else if (e.key === 'ArrowLeft' && currentImageIndex > 0) {
+        openModal(currentImageIndex - 1);
+      } else if (e.key === 'ArrowRight' && currentImageIndex < galeria.length - 1) {
+        openModal(currentImageIndex + 1);
+      }
+    }
+  });
+  
+  // Prevent modal from closing when clicking on the image
+  document.getElementById('modal-image')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+  });
+</script>
