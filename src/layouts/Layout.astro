@@ -1,6 +1,25 @@
 ---
 import "../styles/global.css";
-const { titulo, descripcion, slug } = Astro.props;
+const { 
+  titulo, 
+  descripcion, 
+  slug,
+  quinceanera,
+  imagenes,
+  fecha,
+  siteUrl = Astro.site || 'https://localhost:4321'
+} = Astro.props;
+
+// Construir la URL completa de la página
+const pageUrl = new URL(`/xv/divina/${slug}`, siteUrl).href;
+
+// Imagen para Open Graph - usar la imagen de portada o icon
+const ogImage = imagenes?.portada || imagenes?.icon;
+const ogImageUrl = ogImage ? new URL(ogImage, siteUrl).href : '';
+
+// Fecha formateada para descripción
+const fechaTexto = fecha ? `${fecha.dia} de ${fecha.mes} de ${fecha.anio}` : '';
+const descripcionCompleta = descripcion || `Te invitamos a celebrar los XV años de ${quinceanera?.nombre || titulo}${fechaTexto ? ` el ${fechaTexto}` : ''}`;
 ---
 
 <!doctype html>
@@ -10,7 +29,35 @@ const { titulo, descripcion, slug } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    
+    <!-- Meta tags básicas -->
     <title>Invitacion de {titulo}</title>
+    <meta name="description" content={descripcionCompleta} />
+    
+    <!-- Open Graph para redes sociales -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={`Invitación de ${titulo}`} />
+    <meta property="og:description" content={descripcionCompleta} />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:site_name" content="Invitaciones XV Años" />
+    {ogImageUrl && (
+      <>
+        <meta property="og:image" content={ogImageUrl} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content={`Foto de ${quinceanera?.nombre || titulo}`} />
+      </>
+    )}
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`Invitación de ${titulo}`} />
+    <meta name="twitter:description" content={descripcionCompleta} />
+    {ogImageUrl && <meta name="twitter:image" content={ogImageUrl} />}
+    
+    <!-- WhatsApp específicas -->
+    <meta property="og:locale" content="es_MX" />
+    {fecha && <meta property="article:published_time" content={fecha.fecha_iso} />}
   </head>
   <body>
     <slot />
