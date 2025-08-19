@@ -18,10 +18,10 @@ quinceanera:
 
 # Información familiar
 familiares:
-  padre: "Jose Rolando Tevas Flores"
+  padre: "Jose Rolando Tovar Flores"
   madre: "Fatima del Rosario H. Luz Torres"
-  padrino: "Mario Edgar Lavin"
-  madrina: "Maria Concepcion Tevas Flores"
+  padrino: "Mario Edgar Moran Levin"
+  madrina: "Maria Concepcion  Tovar Flores"
 
 # Fecha del evento
 fecha:
@@ -32,14 +32,14 @@ fecha:
 
 # Imágenes (usando las de Hiromi temporalmente)
 imagenes:
-  portada: "/quinceanera/naomi/6.jpg"
+  portada: "/quinceanera/naomi/fairy.jpg"
   icon: "/quinceanera/naomi/icon.webp"
   flowers: "/quinceanera/naomi/flowers.webp"
   galeria1: "/quinceanera/naomi/galeria2.webp"
-  galeria2: "/quinceanera/naomi/4.jpg"
-  galeria3: "/quinceanera/naomi/4.jpg"
-  galeria4: "/quinceanera/naomi/4.jpg"
-  galeria5: "/quinceanera/naomi/4.jpg"
+  galeria2: "/quinceanera/naomi/fairy2.png"
+  galeria3: "/quinceanera/naomi/fairy2.png"
+  galeria4: "/quinceanera/naomi/fairy2.png"
+  galeria5: "/quinceanera/naomi/fairy2.png"
 
 # Información de eventos
 misa:
@@ -49,10 +49,10 @@ misa:
   hora: "18:00"
 
 recepcion:
-  lugar: "Salon Sofia Casa Real"
+  lugar: "Salon Casa Real"
   direccion: "Lomas 131 Privada Lomas del Parque"
   maps: ""
-  hora: "21:30"
+  hora: "21:00"
 
 # Contacto
 whatsapp: "526188238717"
