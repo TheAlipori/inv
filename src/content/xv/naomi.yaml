@@ -45,13 +45,13 @@ imagenes:
 misa:
   lugar: "Nuevo Santuario de Nuestra Señora de Guadalupe"
   direccion: "Nuevo Santuario de Nuestra Señora de Guadalupe"
-  maps: ""
+  maps: "https://maps.app.goo.gl/rgHK8W1K7aaVFueE9"
   hora: "18:00"
 
 recepcion:
   lugar: "Salon Casa Real"
   direccion: "Lomas 131 Privada Lomas del Parque"
-  maps: ""
+  maps: "https://maps.app.goo.gl/zHt6ZhX3JB6rbCFz7?g_st=aw"
   hora: "21:00"
 
 # Contacto
