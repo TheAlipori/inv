@@ -1,0 +1,58 @@
+# Información del evento
+tipo_evento: "xv"
+tema: "divina"
+color_primario: "#E4B3AC" # Color para nombres de padres y quinceañera
+color_secundario: "#CBBF96" # Color de fondo
+colorBackground: "#FFFCE9"
+colorAdornos: "#877F64" # Color de adornos
+colorTexto: "#5A5A5A" # Color de textos generales
+mostrarGaleria: false # Ocultar galería hasta tener fotos reales
+
+# Datos básicos
+titulo: "Los XV de Naomi"
+descripcion: "Estás cordialmente invitado a los XV de Naomi"
+
+# Información de la quinceañera
+quinceanera:
+  nombre: "Naomi"
+
+# Información familiar
+familiares:
+  padre: "Jose Rolando Tevas Flores"
+  madre: "Fatima del Rosario H. Luz Torres"
+  padrino: "Mario Edgar Lavin"
+  madrina: "Maria Concepcion Tevas Flores"
+
+# Fecha del evento
+fecha:
+  dia: "29"
+  mes: "Agosto"
+  anio: "2025"
+  fecha_iso: "2025-08-29T00:00:00"
+
+# Imágenes (usando las de Hiromi temporalmente)
+imagenes:
+  portada: "/quinceanera/naomi/6.jpg"
+  icon: "/quinceanera/naomi/icon.webp"
+  flowers: "/quinceanera/naomi/flowers.webp"
+  galeria1: "/quinceanera/naomi/galeria2.webp"
+  galeria2: "/quinceanera/naomi/4.jpg"
+  galeria3: "/quinceanera/naomi/4.jpg"
+  galeria4: "/quinceanera/naomi/4.jpg"
+  galeria5: "/quinceanera/naomi/4.jpg"
+
+# Información de eventos
+misa:
+  lugar: "Nuevo Santuario de Nuestra Señora de Guadalupe"
+  direccion: "Nuevo Santuario de Nuestra Señora de Guadalupe"
+  maps: ""
+  hora: "18:00"
+
+recepcion:
+  lugar: "Salon Sofia Casa Real"
+  direccion: "Lomas 131 Privada Lomas del Parque"
+  maps: ""
+  hora: "21:30"
+
+# Contacto
+whatsapp: "526188238717"
