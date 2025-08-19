@@ -5,8 +5,15 @@ import "@fontsource/niconne";
 import "@fontsource/damion";
 import "@fontsource-variable/merriweather";
 import Ornamento1 from "../../../assets/icons/Ornamento1.astro";
-const { fecha_evento, fecha, imagenes, colorPrimario, colorBackground } =
-  Astro.props;
+const {
+  fecha_evento,
+  fecha,
+  imagenes,
+  colorPrimario,
+  colorBackground,
+  colorTexto,
+  colorAdornos,
+} = Astro.props;
 ---
 
 <section
@@ -14,7 +21,8 @@ const { fecha_evento, fecha, imagenes, colorPrimario, colorBackground } =
   style={`background-color: ${colorBackground}`}
 >
   <h1
-    class="text-center text-5xl font-damion mt-24 text-[#5A5A5A]"
+    class="text-center text-5xl font-damion mt-24"
+    style={`color: ${colorTexto || "#5A5A5A"}`}
     data-aos="fade-down"
     data-aos-easing="ease-in-out"
     data-aos-duration="800"
@@ -23,7 +31,7 @@ const { fecha_evento, fecha, imagenes, colorPrimario, colorBackground } =
   </h1>
   <Ornamento1
     class="w-1/2 mx-auto"
-    style={`fill: ${colorPrimario}`}
+    style={`fill: ${colorAdornos}`}
     data-aos="fade-up"
     data-aos-delay="300"
     data-aos-duration="600"
@@ -38,7 +46,7 @@ const { fecha_evento, fecha, imagenes, colorPrimario, colorBackground } =
     >
       <span
         class="text-9xl leading-none font-bold transition-transform group-hover:scale-110"
-        style={`color: ${colorPrimario}`}
+        style={`color: ${colorAdornos || colorPrimario}`}
       >
         {fecha.dia}
       </span>
@@ -47,7 +55,8 @@ const { fecha_evento, fecha, imagenes, colorPrimario, colorBackground } =
     <!-- Fila 1, columna derecha: Mes -->
     <div class="flex items-center" data-aos="fade-right" data-aos-delay="600">
       <span
-        class="text-5xl text-[#5A5A5A] transition-transform group-hover:scale-105"
+        class="text-5xl transition-transform group-hover:scale-105"
+        style={`color: ${colorTexto || "#5A5A5A"}`}
       >
         {fecha.mes}
       </span>
@@ -56,7 +65,8 @@ const { fecha_evento, fecha, imagenes, colorPrimario, colorBackground } =
     <!-- Fila 2, columna derecha: Año -->
     <div class="flex items-center" data-aos="fade-left" data-aos-delay="600">
       <span
-        class="text-4xl font-bold text-[#5A5A5A] transition-transform group-hover:scale-110"
+        class="text-4xl font-bold transition-transform group-hover:scale-110"
+        style={`color: ${colorTexto || "#5A5A5A"}`}
       >
         {fecha.anio}
       </span>
@@ -76,7 +86,8 @@ const { fecha_evento, fecha, imagenes, colorPrimario, colorBackground } =
     </div>
 
     <h1
-      class="text-center text-5xl font-damion mb-6 text-[#5A5A5A] relative z-10"
+      class="text-center text-5xl font-damion mb-6 relative z-10"
+      style={`color: ${colorTexto || "#5A5A5A"}`}
       data-aos="fade-up"
       data-aos-delay="800"
       data-aos-offset="200"
@@ -103,7 +114,8 @@ const { fecha_evento, fecha, imagenes, colorPrimario, colorBackground } =
         >
         </h2>
         <p
-          class="text-2xl font-merriweather text-[#5A5A5A]"
+          class="text-2xl font-merriweather"
+          style={`color: ${colorTexto || "#5A5A5A"}`}
           id="texto-especial"
         >
         </p>

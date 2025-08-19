@@ -2,7 +2,7 @@
 import "@fontsource/abril-fatface";
 import "@fontsource/damion";
 import "@fontsource-variable/merriweather";
-const { imagenes, colorPrimario } = Astro.props;
+const { imagenes, colorPrimario, colorBackground } = Astro.props;
 
 // Array de imágenes de la galería
 const galeria = [
@@ -14,7 +14,7 @@ const galeria = [
 ].filter(img => img.src); // Solo incluir imágenes que existen
 ---
 
-<section class="py-16" data-aos="fade-up">
+<section class="py-16" style={`background-color: ${colorBackground}`} data-aos="fade-up">
   <div class="max-w-6xl mx-auto px-4">
     <!-- Header -->
     <header class="text-center mb-12">

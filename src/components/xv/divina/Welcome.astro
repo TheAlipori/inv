@@ -6,7 +6,8 @@ import "@fontsource/damion";
 import "@fontsource-variable/merriweather";
 import Ornamento2 from "../../../assets/icons/Ornamento2.astro";
 import Ornamento3 from "../../../assets/icons/Ornamento3.astro";
-const { familiares, colorPrimario, colorBackground } = Astro.props;
+const { familiares, colorPrimario, colorBackground, colorAdornos, colorTexto } =
+  Astro.props;
 
 import Ornamento1 from "../../../assets/icons/Ornamento1.astro";
 ---
@@ -17,9 +18,10 @@ import Ornamento1 from "../../../assets/icons/Ornamento1.astro";
   data-aos="fade-in"
   data-aos-duration="800"
 >
-  <div class="text-center pt-12 text-[#5A5A5A]">
+  <div class="text-center pt-12" style={`color: ${colorTexto || "#5A5A5A"}`}>
     <h1
-      class="text-[#5A5A5A] font-damion text-5xl"
+      class="font-damion text-5xl"
+      style={`color: ${colorTexto || "#5A5A5A"}`}
       data-aos="zoom-in"
       data-aos-delay="100"
     >
@@ -27,7 +29,7 @@ import Ornamento1 from "../../../assets/icons/Ornamento1.astro";
     </h1>
 
     <Ornamento1
-      style={`fill: ${colorPrimario}`}
+      style={`fill: ${colorAdornos}`}
       class="w-56 mx-auto"
       data-aos="fade-up"
       data-aos-delay="200"
@@ -47,68 +49,112 @@ import Ornamento1 from "../../../assets/icons/Ornamento1.astro";
       data-aos="fade-up"
       data-aos-delay="350"
     >
-      En compañía de {familiares.madre && familiares.padre ? "mis padres" : familiares.madre ? "mi madre" : familiares.padre ? "mi padre" : "mi familia"}
+      En compañía de {
+        familiares.madre && familiares.padre
+          ? "mis padres"
+          : familiares.madre
+            ? "mi madre"
+            : familiares.padre
+              ? "mi padre"
+              : "mi familia"
+      }
     </h1>
 
     <Ornamento3
-      style={`fill: ${colorPrimario}`}
+      style={`fill: ${colorAdornos}`}
       class="w-56 mx-auto"
       data-aos="fade"
       data-aos-delay="400"
     />
 
-    {familiares.madre && (
-      <h1 class="font-damion text-2xl" data-aos="fade-right" data-aos-delay="450">
-        {familiares.madre}
-      </h1>
-    )}
+    {
+      familiares.madre && (
+        <h1
+          class="font-damion text-2xl"
+          data-aos="fade-right"
+          data-aos-delay="450"
+        >
+          {familiares.madre}
+        </h1>
+      )
+    }
 
-    {familiares.padre && (
-      <h1 class="font-damion text-2xl" data-aos="fade-left" data-aos-delay="500">
-        {familiares.padre}
-      </h1>
-    )}
+    {
+      familiares.padre && (
+        <h1
+          class="font-damion text-2xl"
+          data-aos="fade-left"
+          data-aos-delay="500"
+        >
+          {familiares.padre}
+        </h1>
+      )
+    }
 
     <Ornamento2
-      style={`fill: ${colorPrimario}`}
+      style={`fill: ${colorAdornos}`}
       class="w-56 mx-auto rotate-180"
       data-aos="flip-up"
       data-aos-delay="550"
     />
 
-    {(familiares.padrino || familiares.madrina) && (
-      <h1
-        class="font-merriweather font-bold mt-8"
-        data-aos="fade-up"
-        data-aos-delay="600"
-      >
-        Y {familiares.padrino && familiares.madrina ? "mis padrinos" : familiares.padrino ? "mi padrino" : familiares.madrina ? "mi madrina" : ""}
-      </h1>
-    )}
+    {
+      (familiares.padrino || familiares.madrina) && (
+        <h1
+          class="font-merriweather font-bold mt-8"
+          data-aos="fade-up"
+          data-aos-delay="600"
+        >
+          Y{" "}
+          {familiares.padrino && familiares.madrina
+            ? "mis padrinos"
+            : familiares.padrino
+              ? "mi padrino"
+              : familiares.madrina
+                ? "mi madrina"
+                : ""}
+        </h1>
+      )
+    }
 
-    {(familiares.padrino || familiares.madrina) && (
-      <Ornamento3
-        style={`fill: ${colorPrimario}`}
-        class="w-56 mx-auto mt-8"
-        data-aos="fade"
-        data-aos-delay="650"
-      />
-    )}
+    {
+      (familiares.padrino || familiares.madrina) && (
+        <Ornamento3
+          style={`fill: ${colorAdornos}`}
+          class="w-56 mx-auto mt-8"
+          data-aos="fade"
+          data-aos-delay="650"
+        />
+      )
+    }
 
-    {familiares.padrino && (
-      <h1 class="font-damion text-2xl" data-aos="zoom-in" data-aos-delay="700">
-        {familiares.padrino}
-      </h1>
-    )}
+    {
+      familiares.padrino && (
+        <h1
+          class="font-damion text-2xl"
+          data-aos="zoom-in"
+          data-aos-delay="700"
+        >
+          {familiares.padrino}
+        </h1>
+      )
+    }
 
-    {familiares.madrina && (
-      <h1 class="font-damion text-2xl" data-aos="zoom-in" data-aos-delay="750">
-        {familiares.madrina}
-      </h1>
-    )}
+    {
+      familiares.madrina && (
+        <h1
+          class="font-damion text-2xl"
+          data-aos="zoom-in"
+          data-aos-delay="750"
+        >
+          {familiares.madrina}
+        </h1>
+      )
+    }
 
     <Ornamento2
-      class="fill-[#B46A7A] w-56 mx-auto rotate-180"
+      style={`fill: ${colorAdornos}`}
+      class="w-56 mx-auto rotate-180"
       data-aos="flip-down"
       data-aos-delay="750"
     />

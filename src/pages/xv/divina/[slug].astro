@@ -34,6 +34,10 @@ const {
   imagenes,
   color_primario,
   color_secundario,
+  colorBackground,
+  colorAdornos,
+  colorTexto,
+  mostrarGaleria,
   familiares,
   fecha,
   misa,
@@ -57,38 +61,47 @@ const {
     imagenes={imagenes}
     quinceanera={quinceanera}
     colorPrimario={color_primario}
+    colorBackground={colorBackground || color_secundario}
     fecha={fecha}
   />
   <Welcome
     familiares={familiares}
     colorPrimario={color_primario}
-    colorBackground={color_secundario}
+    colorBackground={colorBackground || color_secundario}
+    colorAdornos={colorAdornos}
+    colorTexto={colorTexto}
   />
   <Date
     fecha={fecha}
     fecha_evento={fecha.fecha_iso}
     imagenes={imagenes}
     colorPrimario={color_primario}
-    colorBackground={color_secundario}
+    colorBackground={colorBackground || color_secundario}
+    colorTexto={colorTexto}
+    colorAdornos={colorAdornos}
   />
   <Detalles 
     misa={misa} 
     recepcion={recepcion} 
     colorPrimario={color_primario}
-    colorBackground={color_secundario}
+    colorBackground={colorBackground || color_secundario}
     imagenes={imagenes}
+    colorTexto={colorTexto}
   />
-  <Galeria 
-    imagenes={imagenes} 
-    colorPrimario={color_primario}
-  />
+  {mostrarGaleria !== false && (
+    <Galeria 
+      imagenes={imagenes} 
+      colorPrimario={color_primario}
+      colorBackground={colorBackground || color_secundario}
+    />
+  )}
   <Wishlist 
     colorPrimario={color_primario}
-    colorBackground={color_secundario}
+    colorBackground={colorBackground || color_secundario}
   />
   <Asistencia 
     whatsapp={whatsapp} 
     colorPrimario={color_primario}
-    colorBackground={color_secundario}
+    colorBackground={colorBackground || color_secundario}
   />
 </Layout>

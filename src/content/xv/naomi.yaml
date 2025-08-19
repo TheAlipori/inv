@@ -2,8 +2,8 @@
 tipo_evento: "xv"
 tema: "divina"
 color_primario: "#E4B3AC" # Color para nombres de padres y quinceañera
-color_secundario: "#CBBF96" # Color de fondo
-colorBackground: "#FFFCE9"
+color_secundario: "#FFFCE9" # Color de fondo (fallback)
+colorBackground: "#FFFCE9" # Color de fondo principal
 colorAdornos: "#877F64" # Color de adornos
 colorTexto: "#5A5A5A" # Color de textos generales
 mostrarGaleria: false # Ocultar galería hasta tener fotos reales

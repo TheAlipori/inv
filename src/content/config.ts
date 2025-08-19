@@ -8,6 +8,10 @@ const xvCollection = defineCollection({
     tema: z.string(),
     color_primario: z.string(),
     color_secundario: z.string(),
+    colorBackground: z.string().optional(),
+    colorAdornos: z.string().optional(),
+    colorTexto: z.string().optional(),
+    mostrarGaleria: z.boolean().optional(),
     titulo: z.string(),
     descripcion: z.string(),
 

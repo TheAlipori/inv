@@ -1,5 +1,5 @@
 ---
-const { imagenes, quinceanera, fecha } = Astro.props;
+const { imagenes, quinceanera, fecha, colorBackground } = Astro.props;
 import "@fontsource/parisienne";
 import "@fontsource/abril-fatface";
 import "@fontsource/niconne";
@@ -8,6 +8,7 @@ import ScrollIcon from "../../../assets/icons/ScrollIcons.astro";
 
 <section
   class="w-screen h-screen relative flex justify-center items-center overflow-x-hidden"
+  style={`background-color: ${colorBackground}`}
   data-aos="fade-in"
   data-aos-duration="800"
 >
