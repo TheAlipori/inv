@@ -43,8 +43,8 @@ imagenes:
 # Información de eventos
 misa:
   lugar: "Templo Los Ángeles"
-  direccion: "TBD" # Pendiente dirección
-  maps: "TBD" # Pendiente link de maps
+  direccion: "C. Aquiles Serdan 1380, Los Ángeles, 34076 Durango, Dgo." # Pendiente dirección
+  maps: "https://maps.app.goo.gl/ThhcqVZ31svDp66Q7" # Pendiente link de maps
   hora: "20:00"
 
 recepcion:
@@ -54,7 +54,7 @@ recepcion:
   hora: "21:30"
 
 # Contacto
-whatsapp: "TBD" # Pendiente confirmar número
+whatsapp: "526181633645" # Pendiente confirmar número
 
 # Música
 musica: "526181633645" # Pendiente confirmar
