@@ -1,0 +1,303 @@
+---
+// Navbar component for landing page
+---
+
+<nav
+  class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 transition-all duration-300"
+  id="navbar"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <!-- Logo -->
+      <div class="flex-shrink-0">
+        <a
+          href="/"
+          class="text-2xl font-bold text-pink-600 hover:text-pink-700 transition-colors duration-200"
+        >
+          InviDigital
+        </a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:block">
+        <div class="ml-10 flex items-baseline space-x-8">
+          <a
+            href="#inicio"
+            class="nav-link text-gray-700 hover:text-pink-600 px-3 py-2 text-sm font-medium transition-colors duration-200"
+          >
+            Inicio
+          </a>
+          <a
+            href="#galerias"
+            class="nav-link text-gray-700 hover:text-pink-600 px-3 py-2 text-sm font-medium transition-colors duration-200"
+          >
+            Invitaciones
+          </a>
+          <a
+            href="#comprar"
+            class="nav-link text-gray-700 hover:text-pink-600 px-3 py-2 text-sm font-medium transition-colors duration-200"
+          >
+            Comprar
+          </a>
+          <a
+            href="#nosotros"
+            class="nav-link text-gray-700 hover:text-pink-600 px-3 py-2 text-sm font-medium transition-colors duration-200"
+          >
+            Nosotros
+          </a>
+          <a
+            href="#contacto"
+            class="nav-link text-gray-700 hover:text-pink-600 px-3 py-2 text-sm font-medium transition-colors duration-200"
+          >
+            Contacto
+          </a>
+        </div>
+      </div>
+
+      <!-- Mobile menu button -->
+      <div class="md:hidden">
+        <button
+          id="mobile-menu-button"
+          class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-pink-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-pink-500 transition-colors duration-200"
+        >
+          <span class="sr-only">Abrir men� principal</span>
+          <!-- Hamburger icon -->
+          <svg
+            id="menu-icon"
+            class="block h-6 w-6 transition-transform duration-200"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+          <!-- Close icon -->
+          <svg
+            id="close-icon"
+            class="hidden h-6 w-6 transition-transform duration-200"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Navigation Menu -->
+  <div
+    id="mobile-menu"
+    class="md:hidden opacity-0 max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-white border-t border-gray-200"
+  >
+    <div class="px-2 pt-2 pb-3 space-y-1">
+      <a
+        href="#inicio"
+        class="mobile-nav-link block px-3 py-2 text-base font-medium text-gray-700 hover:text-pink-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
+      >
+        Inicio
+      </a>
+      <a
+        href="#galerias"
+        class="mobile-nav-link block px-3 py-2 text-base font-medium text-gray-700 hover:text-pink-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
+      >
+        Galer�as
+      </a>
+      <a
+        href="#comprar"
+        class="mobile-nav-link block px-3 py-2 text-base font-medium text-gray-700 hover:text-pink-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
+      >
+        Comprar
+      </a>
+      <a
+        href="#nosotros"
+        class="mobile-nav-link block px-3 py-2 text-base font-medium text-gray-700 hover:text-pink-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
+      >
+        Nosotros
+      </a>
+      <a
+        href="#contacto"
+        class="mobile-nav-link block px-3 py-2 text-base font-medium text-gray-700 hover:text-pink-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
+      >
+        Contacto
+      </a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  // Mobile menu toggle functionality
+  document.addEventListener("DOMContentLoaded", function () {
+    const mobileMenuButton = document.getElementById("mobile-menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const menuIcon = document.getElementById("menu-icon");
+    const closeIcon = document.getElementById("close-icon");
+    const navbar = document.getElementById("navbar");
+
+    let isMenuOpen = false;
+
+    // Toggle mobile menu
+    mobileMenuButton?.addEventListener("click", function () {
+      isMenuOpen = !isMenuOpen;
+
+      if (isMenuOpen) {
+        // Open menu
+        mobileMenu.classList.remove("opacity-0", "max-h-0");
+        mobileMenu.classList.add("opacity-100", "max-h-96");
+        menuIcon.classList.add("hidden");
+        closeIcon.classList.remove("hidden");
+      } else {
+        // Close menu
+        mobileMenu.classList.add("opacity-0", "max-h-0");
+        mobileMenu.classList.remove("opacity-100", "max-h-96");
+        menuIcon.classList.remove("hidden");
+        closeIcon.classList.add("hidden");
+      }
+    });
+
+    // Close mobile menu when clicking on a link
+    const mobileNavLinks = document.querySelectorAll(".mobile-nav-link");
+    mobileNavLinks.forEach((link) => {
+      link.addEventListener("click", function () {
+        isMenuOpen = false;
+        mobileMenu.classList.add("opacity-0", "max-h-0");
+        mobileMenu.classList.remove("opacity-100", "max-h-96");
+        menuIcon.classList.remove("hidden");
+        closeIcon.classList.add("hidden");
+      });
+    });
+
+    // Smooth scrolling for anchor links
+    const navLinks = document.querySelectorAll(".nav-link, .mobile-nav-link");
+    navLinks.forEach((link) => {
+      link.addEventListener("click", function (e) {
+        const href = this.getAttribute("href");
+        if (href.startsWith("#")) {
+          e.preventDefault();
+          const targetId = href.substring(1);
+          const targetElement = document.getElementById(targetId);
+          if (targetElement) {
+            const offsetTop = targetElement.offsetTop - 80; // Account for fixed navbar
+            window.scrollTo({
+              top: offsetTop,
+              behavior: "smooth",
+            });
+          }
+        }
+      });
+    });
+
+    // Navbar scroll effect
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener("scroll", function () {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > 10) {
+        navbar.classList.add("shadow-lg");
+        navbar.classList.remove("bg-white/90");
+        navbar.classList.add("bg-white/95");
+      } else {
+        navbar.classList.remove("shadow-lg");
+        navbar.classList.remove("bg-white/95");
+        navbar.classList.add("bg-white/90");
+      }
+
+      // Hide/show navbar on scroll
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        navbar.style.transform = "translateY(-100%)";
+      } else {
+        navbar.style.transform = "translateY(0)";
+      }
+
+      lastScrollY = currentScrollY;
+    });
+
+    // Active link highlighting
+    const sections = document.querySelectorAll("[id]");
+    const navLinksList = document.querySelectorAll(".nav-link");
+
+    window.addEventListener("scroll", function () {
+      let current = "";
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop - 100;
+        if (window.scrollY >= sectionTop) {
+          current = section.getAttribute("id");
+        }
+      });
+
+      navLinksList.forEach((link) => {
+        link.classList.remove("text-pink-600", "font-semibold");
+        link.classList.add("text-gray-700");
+        if (link.getAttribute("href") === `#${current}`) {
+          link.classList.remove("text-gray-700");
+          link.classList.add("text-pink-600", "font-semibold");
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  /* Custom scrollbar for smooth experience */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Navbar transition effects */
+  #navbar {
+    transition:
+      transform 0.3s ease-in-out,
+      background-color 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  /* Mobile menu animation */
+  #mobile-menu {
+    transition:
+      opacity 0.3s ease-in-out,
+      max-height 0.3s ease-in-out;
+  }
+
+  /* Link hover effects */
+  .nav-link {
+    position: relative;
+  }
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #ec4899;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  /* Mobile link animations */
+  .mobile-nav-link {
+    transform: translateX(0);
+    transition: all 0.2s ease;
+  }
+
+  .mobile-nav-link:hover {
+    transform: translateX(4px);
+  }
+</style>

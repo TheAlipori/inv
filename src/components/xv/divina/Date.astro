@@ -37,33 +37,41 @@ const {
     data-aos-duration="600"
   />
 
-  <div class="grid grid-cols-2 mt-14 font-merriweather">
-    <!-- Columna izquierda: Día (ocupa 2 filas) -->
+  <div class="grid grid-cols-5 gap-2 mt-14 font-merriweather max-w-lg mx-auto">
+    <!-- Columna izquierda: Día (ocupa 2 filas y 2 columnas) -->
     <div
-      class="row-span-2 flex items-center justify-end pr-2 group"
+      class="col-span-2 row-span-2 flex items-center justify-center group"
       data-aos="zoom-in"
       data-aos-delay="400"
     >
       <span
-        class="text-9xl leading-none font-bold transition-transform group-hover:scale-110"
+        class="text-8xl md:text-9xl leading-none font-bold transition-transform group-hover:scale-110"
         style={`color: ${colorAdornos || colorPrimario}`}
       >
         {fecha.dia}
       </span>
     </div>
 
-    <!-- Fila 1, columna derecha: Mes -->
-    <div class="flex items-center" data-aos="fade-right" data-aos-delay="600">
+    <!-- Fila 1, columna derecha: Mes (ocupa 3 columnas) -->
+    <div
+      class="col-span-3 flex items-center justify-start pl-4"
+      data-aos="fade-right"
+      data-aos-delay="600"
+    >
       <span
-        class="text-5xl transition-transform group-hover:scale-105"
+        class="text-3xl md:text-4xl lg:text-5xl leading-tight transition-transform group-hover:scale-105 whitespace-nowrap overflow-hidden text-ellipsis"
         style={`color: ${colorTexto || "#5A5A5A"}`}
       >
         {fecha.mes}
       </span>
     </div>
 
-    <!-- Fila 2, columna derecha: Año -->
-    <div class="flex items-center" data-aos="fade-left" data-aos-delay="600">
+    <!-- Fila 2, columna derecha: Año (ocupa 3 columnas) -->
+    <div
+      class="col-span-3 flex items-center justify-start pl-4"
+      data-aos="fade-left"
+      data-aos-delay="600"
+    >
       <span
         class="text-4xl font-bold transition-transform group-hover:scale-110"
         style={`color: ${colorTexto || "#5A5A5A"}`}

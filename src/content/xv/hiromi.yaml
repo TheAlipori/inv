@@ -28,7 +28,7 @@ fecha:
 
 # Imágenes
 imagenes:
-  portada: "/quinceanera/hiromi/galeria7.webp"
+  portada: "https://res.cloudinary.com/dvksmll4t/image/upload/v1755805613/portada.webp"
   icon: "/quinceanera/hiromi/icon.webp"
   flowers: "/quinceanera/hiromi/flowers.webp"
   galeria1: "/quinceanera/hiromi/galeria2.webp"

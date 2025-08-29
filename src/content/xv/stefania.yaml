@@ -1,0 +1,63 @@
+# Información del evento
+tipo_evento: "xv"
+tema: "divina"
+color_primario: "#B47377" # Pink-500
+color_secundario: "#fdf2f8" # Pink-50
+colorBackground: "#FEF0EA" # Color de fondo principal
+colorAdornos: "#B47377" # Color de adornos
+colorTexto: "#5A5A5A" # Color de textos generales
+
+# Datos básicos
+titulo: "Los XV de Stefanía"
+descripcion: "Estás cordialmente invitado a los XV de Stefanía"
+
+# Información de la quinceañera
+quinceanera:
+  nombre: "Stefanía Navarro Contreras"
+
+# Información familiar
+familiares:
+  padre: "José Ángel Navarro Correa"
+  madre: "Brenda Priscila Contreras Reyes"
+  padrino: "" # Pendiente confirmar
+  madrina: "María Olivia Reyes Garcia" # Pendiente confirmar
+
+# Fecha del evento
+fecha:
+  dia: "20"
+  mes: "Septiembre"
+  anio: "2025"
+  fecha_iso: "2025-09-20T00:00:00"
+
+# Imágenes
+imagenes:
+  portada: "https://res.cloudinary.com/dvksmll4t/image/upload/v1756179452/stefania_portada.jpg"
+  icon: "/quinceanera/stefania/icon.webp"
+  flowers: "/quinceanera/stefania/flowers.webp"
+  galeria1: "https://res.cloudinary.com/dvksmll4t/image/upload/v1756179451/WhatsApp_Image_2025-08-23_at_20.19.43_k3m6bs.jpg"
+  galeria2: "https://res.cloudinary.com/dvksmll4t/image/upload/v1756179450/WhatsApp_Image_2025-08-23_at_20.12.00_a5bnf8.jpg"
+  galeria3: "https://res.cloudinary.com/dvksmll4t/image/upload/v1756179451/stefania_galeria1.jpg"
+  galeria4: "https://res.cloudinary.com/dvksmll4t/image/upload/v1756179450/WhatsApp_Image_2025-08-23_at_20.11.36_gpzur0.jpg"
+  galeria5: "https://res.cloudinary.com/dvksmll4t/image/upload/v1756179451/stefania_galeria2.jpg"
+
+# Información de eventos
+misa:
+  lugar: "Templo Los Ángeles"
+  direccion: "TBD" # Pendiente dirección
+  maps: "TBD" # Pendiente link de maps
+  hora: "20:00"
+
+recepcion:
+  lugar: "Casa Toledo Salon y Jardín"
+  direccion: "Al Pueblito, 34340 El Refugio, Dgo." # Pendiente dirección
+  maps: "https://maps.app.goo.gl/pV9vKVfGL3kc2xv56" # Pendiente link de maps
+  hora: "21:30"
+
+# Contacto
+whatsapp: "TBD" # Pendiente confirmar número
+
+# Música
+musica: "526181633645" # Pendiente confirmar
+
+# Regalo sugerido
+regalo: "lluvia de sobres"
