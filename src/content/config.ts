@@ -46,6 +46,8 @@ const xvCollection = defineCollection({
       galeria3: z.string(),
       galeria4: z.string(),
       galeria5: z.string(),
+      galeria6: z.string().optional(),
+      galeria7: z.string().optional(),
     }),
 
     // Eventos
