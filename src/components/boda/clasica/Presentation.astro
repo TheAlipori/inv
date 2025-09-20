@@ -1,0 +1,109 @@
+---
+interface Props {
+  imagenes: {
+    portada: string;
+  };
+  fecha: {
+    dia: string;
+    mes: string;
+    anio: string;
+  };
+}
+import "@fontsource/parisienne";
+import "@fontsource/abril-fatface";
+import "@fontsource/niconne";
+import "@fontsource/whisper";
+
+const { imagenes, fecha } = Astro.props;
+---
+
+<style>
+  .date-box::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: -2px;
+    width: 20%;
+    height: 2px;
+    background-color: white;
+  }
+
+  .date-box::before {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    width: 20%;
+    height: 2px;
+    background-color: white;
+  }
+
+  /* Circulitos al final de las líneas */
+  .circle-left {
+    position: absolute;
+    bottom: -4px;
+    left: 20%;
+    width: 6px;
+    height: 6px;
+    background-color: white;
+    border-radius: 50%;
+    margin-left: -3px;
+  }
+
+  .circle-right {
+    position: absolute;
+    bottom: -4px;
+    right: 20%;
+    width: 6px;
+    height: 6px;
+    background-color: white;
+    border-radius: 50%;
+    margin-right: -3px;
+  }
+</style>
+
+<section class="relative w-full overflow-hidden" style="height: 80vh;">
+  <img
+    src={imagenes.portada}
+    alt="Foto de la pareja"
+    class="absolute inset-0 w-full h-full object-cover"
+    data-aos="zoom-in"
+    data-aos-duration="1200"
+  />
+
+  <!-- Overlay muy sutil solo en la parte superior para el texto -->
+  <div
+    class="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black/30 to-transparent"
+  >
+  </div>
+
+  <!-- Texto superior -->
+  <div class="absolute top-8 left-0 right-0 text-center text-white z-10">
+    <h1
+      class="text-6xl md:text-5xl font-light tracking-widest mb-2 font-Whisper"
+      data-aos="fade-down"
+      data-aos-duration="1000"
+      data-aos-delay="300"
+    >
+      Save the Date
+    </h1>
+    <p
+      class="text-xl md:text-2xl font-abril mb-1 border-white border-t-2 border-l-2 border-r-2 px-4 py-2 inline-block relative date-box"
+      data-aos="fade-up"
+      data-aos-duration="1000"
+      data-aos-delay="600"
+    >
+      {fecha.dia} - 12 - {fecha.anio}
+      <span class="circle-left"></span>
+      <span class="circle-right"></span>
+    </p>
+    <p 
+      class="text-lg md:text-xl font-abril"
+      data-aos="fade-up"
+      data-aos-duration="1000"
+      data-aos-delay="900"
+    >
+      VICTORIA DE DURANGO, DGO.
+    </p>
+  </div>
+</section>

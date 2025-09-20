@@ -1,0 +1,292 @@
+---
+interface Props {
+  ceremonia: {
+    lugar: string;
+    direccion: string;
+    maps: string;
+    hora: string;
+  };
+  recepcion: {
+    lugar: string;
+    direccion: string;
+    maps: string;
+    hora: string;
+  };
+}
+
+import Ornamento1 from "../../../assets/icons/Ornamento1.astro";
+import IglesiaIcon from "../../../assets/icons/IglesiaIcon.astro";
+import SalonIcon from "../../../assets/icons/SalonIcon.astro";
+import VestimentaIcon from "../../../assets/icons/VestimentaIcon.astro";
+import ImportanteIcon from "../../../assets/icons/ImportanteIcon.astro";
+import ClockIcon from "../../../assets/icons/ClockIcon.astro";
+
+import "@fontsource/abril-fatface";
+import "@fontsource/whisper";
+import "@fontsource/libre-baskerville";
+
+const { ceremonia, recepcion } = Astro.props;
+---
+
+<section class="py-16 px-4 bg-white">
+  <div class="max-w-4xl mx-auto">
+    <!-- Header -->
+    <header class="text-center mb-16">
+      <h1
+        class="font-Whisper text-6xl text-gray-800 mb-6"
+        data-aos="fade-down"
+        data-aos-duration="800"
+      >
+        Los detalles
+      </h1>
+
+      <div class="flex justify-center -mt-20 mb-12">
+        <Ornamento1
+          class="fill-amber-400 size-32"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        />
+      </div>
+
+      <p class="text-lg text-gray-600 font-Libre max-w-2xl mx-auto">
+        Toda la información importante para que puedas acompañarnos en este día
+        tan especial
+      </p>
+    </header>
+
+    <!-- Cards Grid - Responsive -->
+    <div class="grid gap-8 md:gap-12">
+      <!-- Ceremonia Card -->
+      <article
+        class="relative bg-white rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100"
+        data-aos="fade-up"
+        data-aos-delay="300"
+      >
+        <!-- Header with icon -->
+        <div class="bg-gradient-to-r p-8 pb-6">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="p-4 rounded-2xl bg-amber-100">
+              <IglesiaIcon class="w-8 h-8 fill-amber-500" />
+            </div>
+            <div>
+              <h2 class="text-3xl font-Libre font-bold text-gray-800">
+                Ceremonia
+              </h2>
+              <p class="text-gray-600 font-Libre">Ceremonia religiosa</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="px-8 pb-8">
+          <!-- Lugar -->
+          <div class="mb-4">
+            <h3 class="text-xl font-bold text-gray-800 font-Libre mb-2">
+              {ceremonia.lugar}
+            </h3>
+          </div>
+
+          <!-- Detalles -->
+          <div class="space-y-3 mb-6">
+            <!-- Hora -->
+            <div class="flex items-center gap-3">
+              <ClockIcon class="w-5 h-5 flex-shrink-0 fill-amber-500" />
+              <span class="font-Libre text-gray-700">
+                <strong>Hora:</strong>
+                {ceremonia.hora}
+              </span>
+            </div>
+
+            <!-- Dirección -->
+            <div class="flex items-start gap-3">
+              <ImportanteIcon
+                class="w-5 h-5 mt-0.5 flex-shrink-0 fill-amber-500"
+              />
+              <span class="font-Libre text-gray-700">
+                <strong>Dirección:</strong>
+                {ceremonia.direccion}
+              </span>
+            </div>
+          </div>
+
+          <!-- Action button -->
+          <a
+            href={ceremonia.maps}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 text-white font-Libre px-6 py-3 rounded-xl bg-amber-400 hover:bg-amber-500 transition-all duration-300 hover:shadow-lg hover:scale-105 focus:outline-none focus:ring-4 focus:ring-amber-300"
+            aria-label="Ver ubicación de la ceremonia en Google Maps"
+          >
+            <span>Ver ubicación</span>
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+              ></path>
+            </svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Recepción Card -->
+      <article
+        class="relative bg-white rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100"
+        data-aos="fade-up"
+        data-aos-delay="400"
+      >
+        <!-- Header with icon -->
+        <div class="bg-gradient-to-r p-8 pb-6">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="p-4 rounded-2xl bg-amber-100">
+              <SalonIcon class="w-8 h-8 fill-amber-500" />
+            </div>
+            <div>
+              <h2 class="text-3xl font-Libre font-bold text-gray-800">
+                Recepción
+              </h2>
+              <p class="text-gray-600 font-Libre">Fiesta y celebración</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="px-8 pb-8">
+          <!-- Lugar -->
+          <div class="mb-4">
+            <h3 class="text-xl font-bold text-gray-800 font-Libre mb-2">
+              {recepcion.lugar}
+            </h3>
+          </div>
+
+          <!-- Detalles -->
+          <div class="space-y-3 mb-6">
+            <!-- Hora -->
+            <div class="flex items-center gap-3">
+              <ClockIcon class="w-5 h-5 flex-shrink-0 fill-amber-500" />
+              <span class="font-Libre text-gray-700">
+                <strong>Hora:</strong>
+                {recepcion.hora}
+              </span>
+            </div>
+
+            <!-- Dirección -->
+            <div class="flex items-start gap-3">
+              <ImportanteIcon
+                class="w-5 h-5 mt-0.5 flex-shrink-0 fill-amber-500"
+              />
+              <span class="font-Libre text-gray-700">
+                <strong>Dirección:</strong>
+                {recepcion.direccion}
+              </span>
+            </div>
+          </div>
+
+          <!-- Action button -->
+          <a
+            href={recepcion.maps}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 text-white font-Libre px-6 py-3 rounded-xl bg-amber-400 hover:bg-amber-500 transition-all duration-300 hover:shadow-lg hover:scale-105 focus:outline-none focus:ring-4 focus:ring-amber-300"
+            aria-label="Ver ubicación de la recepción en Google Maps"
+          >
+            <span>Ver ubicación</span>
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+              ></path>
+            </svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Dress Code Card -->
+      <article
+        class="relative bg-white rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100"
+        data-aos="fade-up"
+        data-aos-delay="500"
+      >
+        <!-- Header with icon -->
+        <div class="bg-gradient-to-r p-8 pb-6">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="p-4 rounded-2xl bg-amber-100">
+              <VestimentaIcon class="w-8 h-8 fill-amber-500" />
+            </div>
+            <div>
+              <h2 class="text-3xl font-Libre font-bold text-gray-800">
+                Dress Code
+              </h2>
+              <p class="text-gray-600 font-Libre">Código de vestimenta</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="px-8 pb-8">
+          <div class="bg-gradient-to-r p-6 rounded-2xl">
+            <h3 class="text-2xl font-bold mb-3 text-amber-600 font-Libre">
+              Vestimenta Formal
+            </h3>
+            <p class="text-gray-700 font-Libre leading-relaxed">
+              Te pedimos que nos acompañes con vestimenta formal para hacer de
+              esta celebración una boda elegante y memorable.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- No Niños Card -->
+      <article
+        class="relative bg-white rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100"
+        data-aos="fade-up"
+        data-aos-delay="600"
+      >
+        <!-- Header with icon -->
+        <div class="bg-gradient-to-r p-8 pb-6">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="p-4 rounded-2xl bg-amber-100">
+              <svg class="w-8 h-8 fill-amber-500" viewBox="0 0 24 24">
+                <path
+                  d="M12,2A3,3 0 0,1 15,5A3,3 0 0,1 12,8A3,3 0 0,1 9,5A3,3 0 0,1 12,2M21,9V7H15L13.5,7.5C13.1,4.8 11.2,2.73 8.74,2.26C6.32,1.8 4.26,3.14 4.26,3.14L4.93,4.66C4.93,4.66 6.45,3.62 8.5,4C9.61,4.25 10.5,5.24 10.5,6.5H9C7.89,6.5 7,7.39 7,8.5V16A2,2 0 0,0 9,18H12.5C13.89,18 15,16.89 15,15.5V10.5H21V9Z"
+                ></path>
+              </svg>
+            </div>
+            <div>
+              <h2 class="text-3xl font-Libre font-bold text-gray-800">
+                Importante
+              </h2>
+              <p class="text-gray-600 font-Libre">Consideración especial</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="px-8 pb-8">
+          <div class="bg-gradient-to-r p-6 rounded-2xl">
+            <h3 class="text-2xl font-bold mb-3 text-amber-600 font-Libre">
+              Solo Adultos, no niños
+            </h3>
+            <p class="text-gray-700 font-Libre leading-relaxed">
+              Por el tipo de celebración que hemos planeado, hemos decidido que
+              sea un evento solo para adultos. Agradecemos su comprensión.
+            </p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>

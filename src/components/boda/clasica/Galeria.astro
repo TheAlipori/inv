@@ -1,0 +1,56 @@
+---
+interface Props {
+  imagenes: {
+    galeria1: string;
+    galeria2: string;
+    galeria3: string;
+    galeria4: string;
+    galeria5: string;
+    galeria6?: string;
+    galeria7?: string;
+  };
+  colorPrimario: string;
+  colorBackground?: string;
+  colorSecundario: string;
+}
+
+const { imagenes, colorPrimario, colorBackground, colorSecundario } = Astro.props;
+
+const galeriaArray = [
+  imagenes.galeria1,
+  imagenes.galeria2,
+  imagenes.galeria3,
+  imagenes.galeria4,
+  imagenes.galeria5,
+  imagenes.galeria6,
+  imagenes.galeria7,
+].filter(Boolean);
+---
+
+<section class="py-20 px-6" style={`background-color: ${colorBackground || colorSecundario}`}>
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-4xl font-serif text-center mb-16" style={`color: ${colorPrimario}`} data-aos="fade-up">
+      Galería
+    </h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+      {galeriaArray.map((imagen, index) => (
+        <div 
+          class="relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group cursor-pointer"
+          data-aos="zoom-in" 
+          data-aos-delay={index * 100}
+        >
+          <img 
+            src={imagen} 
+            alt={`Foto ${index + 1}`} 
+            class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110" 
+          />
+          <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+            <svg class="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+            </svg>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

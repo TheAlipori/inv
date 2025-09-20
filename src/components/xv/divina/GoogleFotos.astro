@@ -1,0 +1,35 @@
+---
+import "@fontsource/parisienne";
+import "@fontsource/abril-fatface";
+import "@fontsource/niconne";
+import "@fontsource/damion";
+import "@fontsource-variable/merriweather";
+const { google_fotos, colorPrimario, colorBackground } = Astro.props;
+---
+
+<section
+  class="max-w-3xl px-4 py-10 flex flex-col items-center text-center overflow-x-hidden bg-cover bg-center bg-no-repeat bg-[url('/quinceanera/hiromi/background2.webp')] mx-auto"
+  data-aos="fade-up"
+>
+  <h2
+    class="text-4xl sm:text-5xl font-abril text-gray-800 mb-4"
+    data-aos="fade-up"
+    data-aos-delay="100"
+  >
+    Comparte tus fotos
+  </h2>
+  <p
+    class="text-gray-600 mb-6 max-w-xl font-merriweather font-bold text-shadow/90"
+  >
+    Ayúdanos a capturar todos los momentos especiales. Sube tus fotos de la celebración a nuestro álbum compartido de Google Photos.
+  </p>
+  <a
+    href={google_fotos}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="text-white px-6 py-3 rounded-full text-lg font-merriweather transition hover:opacity-80"
+    style={`background-color: ${colorPrimario}`}
+  >
+    Subir fotos a Google Photos
+  </a>
+</section>

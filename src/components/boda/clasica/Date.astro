@@ -1,0 +1,276 @@
+---
+interface Props {
+  fecha: {
+    dia: string;
+    mes: string;
+    anio: string;
+    fecha_iso: string;
+  };
+  imagenes: {
+    galeria1: string;
+  };
+}
+import "@fontsource/abril-fatface";
+import "@fontsource/whisper";
+import "@fontsource/libre-baskerville";
+import Ornamento1 from "../../../assets/icons/Ornamento1.astro";
+
+const { fecha, imagenes } = Astro.props;
+---
+
+<section class="py-16 bg-white overflow-x-hidden">
+  <div class="container mx-auto px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <!-- Título -->
+      <h2
+        class="text-6xl font-Whisper text-gray-800 mb-8"
+        data-aos="fade-down"
+        data-aos-duration="1000"
+      >
+        Aparta la fecha
+      </h2>
+
+      <!-- Ornamento -->
+      <div class="flex justify-center -mt-20 mb-12">
+        <Ornamento1
+          class="fill-amber-400 size-32"
+          data-aos="fade-up"
+          data-aos-delay="300"
+          data-aos-duration="600"
+        />
+      </div>
+
+      <!-- Fecha grande -->
+      <div class="grid grid-cols-5 gap-2 mb-16 font-Libre max-w-lg mx-auto">
+        <!-- Día (ocupa 2 columnas y 2 filas) -->
+        <div
+          class="col-span-2 row-span-2 flex items-center justify-center"
+          data-aos="zoom-in"
+          data-aos-delay="400"
+        >
+          <span
+            class="text-8xl md:text-9xl leading-none font-black text-amber-400"
+          >
+            {fecha.dia}
+          </span>
+        </div>
+
+        <!-- Mes -->
+        <div
+          class="col-span-3 flex items-center justify-start pl-4"
+          data-aos="fade-right"
+          data-aos-delay="600"
+        >
+          <span
+            class="text-3xl md:text-4xl lg:text-5xl leading-tight text-gray-800"
+          >
+            {fecha.mes}
+          </span>
+        </div>
+
+        <!-- Año -->
+        <div
+          class="col-span-3 flex items-center justify-start pl-4"
+          data-aos="fade-left"
+          data-aos-delay="600"
+        >
+          <span class="text-6xl font-bold text-gray-800">
+            {fecha.anio}
+          </span>
+        </div>
+      </div>
+
+      <!-- Contador simple en una línea -->
+      <div class="mb-12">
+        <h3
+          class="text-4xl font-Whisper text-gray-800 mb-8"
+          data-aos="fade-up"
+          data-aos-delay="800"
+        >
+          Tiempo restante
+        </h3>
+
+        <div
+          class="flex justify-center items-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8 text-center overflow-x-auto px-4"
+          data-aos="fade-up"
+          data-aos-delay="1000"
+        >
+          <!-- Días -->
+          <div class="countdown-item min-w-0 flex-shrink-0">
+            <div
+              class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 font-Libre"
+              id="dias"
+            >
+              0
+            </div>
+            <div
+              class="text-xs sm:text-sm uppercase tracking-wider text-gray-600 font-Libre"
+            >
+              Días
+            </div>
+          </div>
+
+          <!-- Separador -->
+          <div
+            class="text-xl sm:text-2xl md:text-3xl text-amber-400 font-bold flex-shrink-0"
+          >
+            :
+          </div>
+
+          <!-- Horas -->
+          <div class="countdown-item min-w-0 flex-shrink-0">
+            <div
+              class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 font-Libre"
+              id="horas"
+            >
+              0
+            </div>
+            <div
+              class="text-xs sm:text-sm uppercase tracking-wider text-gray-600 font-Libre"
+            >
+              Horas
+            </div>
+          </div>
+
+          <!-- Separador -->
+          <div
+            class="text-xl sm:text-2xl md:text-3xl text-amber-400 font-bold flex-shrink-0"
+          >
+            :
+          </div>
+
+          <!-- Minutos -->
+          <div class="countdown-item min-w-0 flex-shrink-0">
+            <div
+              class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 font-Libre"
+              id="minutos"
+            >
+              0
+            </div>
+            <div
+              class="text-xs sm:text-sm uppercase tracking-wider text-gray-600 font-Libre"
+            >
+              Minutos
+            </div>
+          </div>
+
+          <!-- Separador -->
+          <div
+            class="text-xl sm:text-2xl md:text-3xl text-amber-400 font-bold flex-shrink-0"
+          >
+            :
+          </div>
+
+          <!-- Segundos -->
+          <div class="countdown-item min-w-0 flex-shrink-0">
+            <div
+              class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-amber-400 font-Libre"
+              id="segundos"
+            >
+              0
+            </div>
+            <div
+              class="text-xs sm:text-sm uppercase tracking-wider text-amber-400 font-Libre"
+            >
+              Segundos
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mensaje especial (oculto inicialmente) -->
+      <div id="mensaje-especial" class="hidden">
+        <div
+          class="bg-amber-50 rounded-2xl p-8 shadow-lg border border-amber-200"
+        >
+          <h2
+            class="text-4xl font-Whisper text-amber-500 mb-4"
+            id="titulo-especial"
+          >
+          </h2>
+          <p class="text-lg font-Libre text-gray-700" id="texto-especial"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fotografía de tamaño completo -->
+  <div class="w-full mt-16">
+    <img
+      src={imagenes.galeria1}
+      alt="Fotografía de la pareja"
+      class="w-full h-96 md:h-[500px] lg:h-[600px] object-cover"
+      data-aos="fade-up"
+      data-aos-duration="1000"
+      data-aos-delay="1200"
+    />
+  </div>
+</section>
+
+<script define:vars={{ fecha_iso: fecha.fecha_iso }} client:load>
+  function updateCountdown() {
+    const targetDate = new Date(fecha_iso).getTime();
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+
+    const targetDateObj = new Date(fecha_iso);
+    const nowDateObj = new Date();
+    const esHoy = targetDateObj.toDateString() === nowDateObj.toDateString();
+
+    const contadorNormal = document.querySelector(
+      ".flex.justify-center.items-center.space-x-8"
+    );
+    const mensajeEspecial = document.getElementById("mensaje-especial");
+    const tituloEspecial = document.getElementById("titulo-especial");
+    const textoEspecial = document.getElementById("texto-especial");
+
+    // Si ya pasó más de 24 horas
+    if (distance < -24 * 60 * 60 * 1000) {
+      if (contadorNormal) contadorNormal.style.display = "none";
+      mensajeEspecial.classList.remove("hidden");
+      tituloEspecial.innerHTML = "¡Gracias por acompañarnos!";
+      textoEspecial.innerHTML =
+        "Fue una celebración mágica e inolvidable gracias a ti";
+      return;
+    }
+
+    // Si es hoy o ya empezó pero hace menos de 24h
+    if (esHoy || (distance < 0 && distance > -24 * 60 * 60 * 1000)) {
+      if (contadorNormal) contadorNormal.style.display = "none";
+      mensajeEspecial.classList.remove("hidden");
+      tituloEspecial.innerHTML = "¡La boda es hoy! 💒";
+      textoEspecial.innerHTML =
+        "¡Nos vemos en la celebración más especial de nuestras vidas!";
+      return;
+    }
+
+    // Mostrar contador normal
+    if (contadorNormal) contadorNormal.style.display = "flex";
+    mensajeEspecial.classList.add("hidden");
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(
+      (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    const diasElement = document.getElementById("dias");
+    const horasElement = document.getElementById("horas");
+    const minutosElement = document.getElementById("minutos");
+    const segundosElement = document.getElementById("segundos");
+
+    if (diasElement) diasElement.innerText = days;
+    if (horasElement)
+      horasElement.innerText = hours.toString().padStart(2, "0");
+    if (minutosElement)
+      minutosElement.innerText = minutes.toString().padStart(2, "0");
+    if (segundosElement)
+      segundosElement.innerText = seconds.toString().padStart(2, "0");
+  }
+
+  // Actualizar cada segundo
+  setInterval(updateCountdown, 1000);
+  // Ejecutar inmediatamente al cargar
+  updateCountdown();
+</script>

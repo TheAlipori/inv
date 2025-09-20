@@ -1,0 +1,59 @@
+# Información del evento
+tipo_evento: "boda"
+tema: "clasica"
+color_primario: "#D4AF37" # Dorado
+color_secundario: "#F5F5DC" # Beige
+color_terciario: "#FFFFFF" # Blanco
+
+# Datos básicos
+titulo: "La Boda de Verónica & Noé"
+descripcion: "Estás cordialmente invitado a nuestra boda"
+
+# Información de la pareja
+novios:
+  novia: "Verónica Margarita Bonilla Ramos"
+  novio: "Noé de Jesús Pantoja Ramírez"
+
+# Información familiar
+padrinos:
+  padrino: "Miguel Pascual Vallejo Ortiz"
+  madrina: "Verónica Meza Murillo"
+
+# Fecha del evento
+fecha:
+  dia: "26"
+  mes: "Diciembre"
+  anio: "2025"
+  fecha_iso: "2025-12-26T00:00:00"
+
+# Imágenes
+imagenes:
+  portada: "https://res.cloudinary.com/dvksmll4t/image/upload/v1757249438/WhatsApp_Image_2025-09-02_at_6.05.51_PM_2_mdsrn4.jpg"
+  icon: "/boda/veronica-noe/icon.webp"
+  flowers: "/boda/veronica-noe/flowers.webp"
+  galeria1: "https://res.cloudinary.com/dvksmll4t/image/upload/v1757249438/WhatsApp_Image_2025-09-02_at_6.05.51_PM_qjpuyb.jpg"
+  galeria2: "https://res.cloudinary.com/dvksmll4t/image/upload/v1757249439/WhatsApp_Image_2025-09-02_at_6.05.51_PM_1_vkalqo.jpg"
+  galeria3: "https://res.cloudinary.com/dvksmll4t/image/upload/v1757249438/WhatsApp_Image_2025-09-02_at_6.05.51_PM_3_r8zgth.jpg"
+  galeria4: "/boda/veronica-noe/galeria4.webp"
+  galeria5: "/boda/veronica-noe/galeria5.webp"
+
+# Información de eventos
+ceremonia:
+  lugar: "Rancho Francisco Villa Nuevo"
+  direccion: "Rancho Francisco Villa Nuevo"
+  maps: "https://goo.gl/maps/wDVohepcrQvABbvA7"
+  hora: "16:30"
+
+recepcion:
+  lugar: "Rancho Francisco Villa Nuevo"
+  direccion: "Rancho Francisco Villa Nuevo"
+  maps: "https://goo.gl/maps/wDVohepcrQvABbvA7"
+  hora: "18:00"
+
+# Música
+musica:
+  cancion: "Falling in Love"
+  artista: "Elvis Presley"
+
+# Contacto
+whatsapp: "526182184762"
