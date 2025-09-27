@@ -66,7 +66,7 @@ const { imagenes, fecha } = Astro.props;
   <img
     src={imagenes.portada}
     alt="Foto de la pareja"
-    class="absolute inset-0 w-full h-full object-cover"
+    class="absolute inset-0 w-full max-w-4xl mx-auto h-full object-cover"
     data-aos="zoom-in"
     data-aos-duration="1200"
   />
@@ -97,13 +97,13 @@ const { imagenes, fecha } = Astro.props;
       <span class="circle-left"></span>
       <span class="circle-right"></span>
     </p>
-    <p 
-      class="text-lg md:text-xl font-abril"
+    <p
+      class="text-2xl md:text-xl font-Whisper"
       data-aos="fade-up"
       data-aos-duration="1000"
       data-aos-delay="900"
     >
-      VICTORIA DE DURANGO, DGO.
+      Victoria de Durango, Dgo.
     </p>
   </div>
 </section>

@@ -8,6 +8,8 @@ interface Props {
   };
   imagenes: {
     galeria1: string;
+    galeria2: string;
+    galeria3: string;
   };
 }
 import "@fontsource/abril-fatface";
@@ -194,15 +196,31 @@ const { fecha, imagenes } = Astro.props;
     </div>
   </div>
 
-  <!-- Fotografía de tamaño completo -->
-  <div class="w-full mt-16">
+  <!-- Fotografías en vertical -->
+  <div class="w-full mt-16 max-w-4xl mx-auto">
     <img
       src={imagenes.galeria1}
       alt="Fotografía de la pareja"
-      class="w-full h-96 md:h-[500px] lg:h-[600px] object-cover"
+      class="w-full h-auto object-cover"
       data-aos="fade-up"
       data-aos-duration="1000"
       data-aos-delay="1200"
+    />
+    <img
+      src={imagenes.galeria2}
+      alt="Fotografía de la pareja"
+      class="w-full h-auto object-cover"
+      data-aos="fade-up"
+      data-aos-duration="1000"
+      data-aos-delay="1400"
+    />
+    <img
+      src={imagenes.galeria3}
+      alt="Fotografía de la pareja"
+      class="w-full h-auto object-cover"
+      data-aos="fade-up"
+      data-aos-duration="1000"
+      data-aos-delay="1600"
     />
   </div>
 </section>
