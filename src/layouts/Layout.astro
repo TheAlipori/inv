@@ -1,17 +1,22 @@
 ---
 import "../styles/global.css";
-const { 
-  titulo, 
-  descripcion, 
+const {
+  titulo,
+  descripcion,
   slug,
   quinceanera,
+  novios,
   imagenes,
   fecha,
   siteUrl = Astro.site || 'https://localhost:4321'
 } = Astro.props;
 
+// Detectar si es boda o XV años basado en las props
+const esBoda = !!novios;
+const rutaBase = esBoda ? '/boda/clasica' : '/xv/divina';
+
 // Construir la URL completa de la página
-const pageUrl = new URL(`/xv/divina/${slug}`, siteUrl).href;
+const pageUrl = new URL(`${rutaBase}/${slug}`, siteUrl).href;
 
 // Imagen para Open Graph - usar la imagen de portada o icon
 const ogImage = imagenes?.portada || imagenes?.icon;
@@ -19,7 +24,9 @@ const ogImageUrl = ogImage ? new URL(ogImage, siteUrl).href : '';
 
 // Fecha formateada para descripción
 const fechaTexto = fecha ? `${fecha.dia} de ${fecha.mes} de ${fecha.anio}` : '';
-const descripcionCompleta = descripcion || `Te invitamos a celebrar los XV años de ${quinceanera?.nombre || titulo}${fechaTexto ? ` el ${fechaTexto}` : ''}`;
+const descripcionCompleta = descripcion || (esBoda
+  ? `Te invitamos a celebrar la boda de ${novios?.novia?.nombre || ''} y ${novios?.novio?.nombre || ''}${fechaTexto ? ` el ${fechaTexto}` : ''}`
+  : `Te invitamos a celebrar los XV años de ${quinceanera?.nombre || titulo}${fechaTexto ? ` el ${fechaTexto}` : ''}`);
 ---
 
 <!doctype html>
@@ -33,19 +40,19 @@ const descripcionCompleta = descripcion || `Te invitamos a celebrar los XV años
     <!-- Meta tags básicas -->
     <title>Invitacion de {titulo}</title>
     <meta name="description" content={descripcionCompleta} />
-    
+
     <!-- Open Graph para redes sociales -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content={`Invitación de ${titulo}`} />
     <meta property="og:description" content={descripcionCompleta} />
     <meta property="og:url" content={pageUrl} />
-    <meta property="og:site_name" content="Invitaciones XV Años" />
+    <meta property="og:site_name" content={esBoda ? "Invitaciones de Boda" : "Invitaciones XV Años"} />
     {ogImageUrl && (
       <>
         <meta property="og:image" content={ogImageUrl} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content={`Foto de ${quinceanera?.nombre || titulo}`} />
+        <meta property="og:image:alt" content={esBoda ? `Foto de ${novios?.novia?.nombre || ''} y ${novios?.novio?.nombre || ''}` : `Foto de ${quinceanera?.nombre || titulo}`} />
       </>
     )}
     
