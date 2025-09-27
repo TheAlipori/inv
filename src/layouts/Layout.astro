@@ -27,7 +27,7 @@ const ogImageUrl = ogImage
 // Fecha formateada para descripción
 const fechaTexto = fecha ? `${fecha.dia} de ${fecha.mes} de ${fecha.anio}` : '';
 const descripcionCompleta = descripcion || (esBoda
-  ? `Te invitamos a celebrar la boda de ${novios?.novia?.nombre || ''} y ${novios?.novio?.nombre || ''}${fechaTexto ? ` el ${fechaTexto}` : ''}`
+  ? `Te invitamos a celebrar la boda de ${novios?.novia || ''} y ${novios?.novio || ''}${fechaTexto ? ` el ${fechaTexto}` : ''}`
   : `Te invitamos a celebrar los XV años de ${quinceanera?.nombre || titulo}${fechaTexto ? ` el ${fechaTexto}` : ''}`);
 ---
 
@@ -54,7 +54,7 @@ const descripcionCompleta = descripcion || (esBoda
         <meta property="og:image" content={ogImageUrl} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content={esBoda ? `Foto de ${novios?.novia?.nombre || ''} y ${novios?.novio?.nombre || ''}` : `Foto de ${quinceanera?.nombre || titulo}`} />
+        <meta property="og:image:alt" content={esBoda ? `Foto de ${novios?.novia || ''} y ${novios?.novio || ''}` : `Foto de ${quinceanera?.nombre || titulo}`} />
       </>
     )}
     
