@@ -20,7 +20,9 @@ const pageUrl = new URL(`${rutaBase}/${slug}`, siteUrl).href;
 
 // Imagen para Open Graph - usar la imagen de portada o icon
 const ogImage = imagenes?.portada || imagenes?.icon;
-const ogImageUrl = ogImage ? new URL(ogImage, siteUrl).href : '';
+const ogImageUrl = ogImage
+  ? (ogImage.startsWith('http') ? ogImage : new URL(ogImage, siteUrl).href)
+  : '';
 
 // Fecha formateada para descripción
 const fechaTexto = fecha ? `${fecha.dia} de ${fecha.mes} de ${fecha.anio}` : '';
