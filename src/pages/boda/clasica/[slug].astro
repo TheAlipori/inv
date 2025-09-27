@@ -1,0 +1,82 @@
+---
+import { getCollection, getEntry } from "astro:content";
+import "../../../styles/global.css";
+import Layout from "../../../layouts/Layout.astro";
+import Presentation from "../../../components/boda/clasica/Presentation.astro";
+import Welcome from "../../../components/boda/clasica/Welcome.astro";
+import Date from "../../../components/boda/clasica/Date.astro";
+import Detalles from "../../../components/boda/clasica/Detalles.astro";
+import Asistencia from "../../../components/boda/clasica/Asistencia.astro";
+
+// 1. Esta función se llama durante el build
+export async function getStaticPaths() {
+  const entries = await getCollection("boda");
+
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+  }));
+}
+
+// 2. Obtener los datos del YAML según el slug
+const { slug } = Astro.params;
+const entry = await getEntry("boda", slug);
+
+if (!entry) {
+  throw new Error(`No se encontró contenido para el slug: ${slug}`);
+}
+
+const {
+  titulo,
+  descripcion,
+  novios,
+  padrinos,
+  imagenes,
+  color_primario,
+  color_secundario,
+  colorBackground,
+  fecha,
+  ceremonia,
+  recepcion,
+  whatsapp,
+} = entry.data;
+---
+
+<!-- 3. Renderizar -->
+<Layout 
+  titulo={titulo} 
+  descripcion={descripcion} 
+  slug={slug}
+  novios={novios}
+  imagenes={imagenes}
+  fecha={fecha}
+>
+  <Presentation
+    imagenes={imagenes}
+    fecha={fecha}
+  />
+  
+  <Welcome
+    fecha={fecha}
+    novios={novios}
+    padrinos={padrinos}
+  />
+
+  <Date
+    fecha={fecha}
+    imagenes={imagenes}
+  />
+
+  <Detalles
+    ceremonia={ceremonia}
+    recepcion={recepcion}
+  />
+  
+  <Asistencia 
+    whatsapp={whatsapp} 
+    colorPrimario={color_primario}
+    colorBackground={colorBackground}
+    colorSecundario={color_secundario}
+    novios={novios}
+    fecha={fecha}
+  />
+</Layout>
