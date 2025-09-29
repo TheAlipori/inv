@@ -36,7 +36,7 @@ import "@fontsource/libre-baskerville";
 const { ceremonia, recepcion, colorPrimario, imagenes } = Astro.props;
 ---
 
-<section class="py-16 px-4 bg-white">
+<section class="py-16 px-4 bg-white overflow-x-hidden">
   <div class="max-w-4xl mx-auto">
     <!-- Header -->
     <header class="text-center mb-16">
@@ -64,7 +64,10 @@ const { ceremonia, recepcion, colorPrimario, imagenes } = Astro.props;
     </header>
 
     <!-- Cards Grid - Responsive -->
-    <div class="grid gap-8 md:gap-12 p-8 rounded-3xl bg-cover bg-center bg-no-repeat" style="background-image: url('/imagen.webp');">
+    <div
+      class="grid gap-8 md:gap-12 p-8 rounded-3xl bg-cover bg-center bg-no-repeat"
+      style="background-image: url('/imagen.webp');"
+    >
       <!-- Ceremonia Card -->
       <article
         class="relative bg-gradient-to-br from-white via-gray-50 to-white rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 backdrop-blur-sm"
@@ -74,7 +77,11 @@ const { ceremonia, recepcion, colorPrimario, imagenes } = Astro.props;
         <!-- Header with icon -->
         <div class="p-8 pb-6 relative">
           <!-- Fondo decorativo sutil -->
-          <div class="absolute inset-0 opacity-5" style={`background: linear-gradient(135deg, ${colorPrimario}10, transparent 50%, ${colorPrimario}05)`}></div>
+          <div
+            class="absolute inset-0 opacity-5"
+            style={`background: linear-gradient(135deg, ${colorPrimario}10, transparent 50%, ${colorPrimario}05)`}
+          >
+          </div>
           <div class="flex items-center gap-4 mb-4 relative z-10">
             <div
               class="p-4 rounded-2xl"
@@ -163,7 +170,11 @@ const { ceremonia, recepcion, colorPrimario, imagenes } = Astro.props;
         <!-- Header with icon -->
         <div class="p-8 pb-6 relative">
           <!-- Fondo decorativo sutil -->
-          <div class="absolute inset-0 opacity-5" style={`background: linear-gradient(135deg, ${colorPrimario}10, transparent 50%, ${colorPrimario}05)`}></div>
+          <div
+            class="absolute inset-0 opacity-5"
+            style={`background: linear-gradient(135deg, ${colorPrimario}10, transparent 50%, ${colorPrimario}05)`}
+          >
+          </div>
           <div class="flex items-center gap-4 mb-4 relative z-10">
             <div
               class="p-4 rounded-2xl"
@@ -252,7 +263,11 @@ const { ceremonia, recepcion, colorPrimario, imagenes } = Astro.props;
         <!-- Header with icon -->
         <div class="p-8 pb-6 relative">
           <!-- Fondo decorativo sutil -->
-          <div class="absolute inset-0 opacity-5" style={`background: linear-gradient(135deg, ${colorPrimario}10, transparent 50%, ${colorPrimario}05)`}></div>
+          <div
+            class="absolute inset-0 opacity-5"
+            style={`background: linear-gradient(135deg, ${colorPrimario}10, transparent 50%, ${colorPrimario}05)`}
+          >
+          </div>
           <div class="flex items-center gap-4 mb-4 relative z-10">
             <div class="p-4 rounded-2xl bg-amber-100">
               <VestimentaIcon class="w-8 h-8 fill-amber-500" />
@@ -292,7 +307,11 @@ const { ceremonia, recepcion, colorPrimario, imagenes } = Astro.props;
         <!-- Header with icon -->
         <div class="p-8 pb-6 relative">
           <!-- Fondo decorativo sutil -->
-          <div class="absolute inset-0 opacity-5" style={`background: linear-gradient(135deg, ${colorPrimario}10, transparent 50%, ${colorPrimario}05)`}></div>
+          <div
+            class="absolute inset-0 opacity-5"
+            style={`background: linear-gradient(135deg, ${colorPrimario}10, transparent 50%, ${colorPrimario}05)`}
+          >
+          </div>
           <div class="flex items-center gap-4 mb-4 relative z-10">
             <div
               class="p-4 rounded-2xl"

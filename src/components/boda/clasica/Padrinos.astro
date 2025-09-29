@@ -10,34 +10,79 @@ interface Props {
   colorTexto?: string;
 }
 
-const { padrinos, colorPrimario, colorBackground, colorSecundario, colorTexto } = Astro.props;
+const {
+  padrinos,
+  colorPrimario,
+  colorBackground,
+  colorSecundario,
+  colorTexto,
+} = Astro.props;
 ---
 
-<section class="py-20 px-6" style={`background-color: ${colorBackground || colorSecundario}`}>
-  <div class="max-w-4xl mx-auto text-center" data-aos="fade-up" data-aos-duration="1000">
+<section
+  class="py-20 px-6 overflow-x-hidden"
+  style={`background-color: ${colorBackground || colorSecundario}`}
+>
+  <div
+    class="max-w-4xl mx-auto text-center"
+    data-aos="fade-up"
+    data-aos-duration="1000"
+  >
     <h2 class="text-4xl font-serif mb-12" style={`color: ${colorPrimario}`}>
       Nuestros Padrinos
     </h2>
     <div class="grid md:grid-cols-2 gap-12">
       <div data-aos="fade-right" data-aos-delay="300">
-        <div class="w-20 h-20 mx-auto mb-6 rounded-full flex items-center justify-center" 
-          style={`background-color: ${colorPrimario}; opacity: 0.1`}>
-          <svg class="w-10 h-10" style={`color: ${colorPrimario}`} fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+        <div
+          class="w-20 h-20 mx-auto mb-6 rounded-full flex items-center justify-center"
+          style={`background-color: ${colorPrimario}; opacity: 0.1`}
+        >
+          <svg
+            class="w-10 h-10"
+            style={`color: ${colorPrimario}`}
+            fill="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+            ></path>
           </svg>
         </div>
-        <h3 class="text-2xl font-serif mb-2" style={`color: ${colorTexto || '#333'}`}>Padrino</h3>
-        <p class="text-xl font-light" style={`color: ${colorTexto || '#666'}`}>{padrinos.padrino}</p>
+        <h3
+          class="text-2xl font-serif mb-2"
+          style={`color: ${colorTexto || "#333"}`}
+        >
+          Padrino
+        </h3>
+        <p class="text-xl font-light" style={`color: ${colorTexto || "#666"}`}>
+          {padrinos.padrino}
+        </p>
       </div>
       <div data-aos="fade-left" data-aos-delay="300">
-        <div class="w-20 h-20 mx-auto mb-6 rounded-full flex items-center justify-center" 
-          style={`background-color: ${colorPrimario}; opacity: 0.1`}>
-          <svg class="w-10 h-10" style={`color: ${colorPrimario}`} fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+        <div
+          class="w-20 h-20 mx-auto mb-6 rounded-full flex items-center justify-center"
+          style={`background-color: ${colorPrimario}; opacity: 0.1`}
+        >
+          <svg
+            class="w-10 h-10"
+            style={`color: ${colorPrimario}`}
+            fill="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+            ></path>
           </svg>
         </div>
-        <h3 class="text-2xl font-serif mb-2" style={`color: ${colorTexto || '#333'}`}>Madrina</h3>
-        <p class="text-xl font-light" style={`color: ${colorTexto || '#666'}`}>{padrinos.madrina}</p>
+        <h3
+          class="text-2xl font-serif mb-2"
+          style={`color: ${colorTexto || "#333"}`}
+        >
+          Madrina
+        </h3>
+        <p class="text-xl font-light" style={`color: ${colorTexto || "#666"}`}>
+          {padrinos.madrina}
+        </p>
       </div>
     </div>
   </div>
