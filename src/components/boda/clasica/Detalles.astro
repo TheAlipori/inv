@@ -12,6 +12,13 @@ interface Props {
     maps: string;
     hora: string;
   };
+  colorPrimario: string;
+  imagenes: {
+    fondo?: string;
+    galeria1?: string;
+    galeria2?: string;
+    galeria3?: string;
+  };
 }
 
 import Ornamento1 from "../../../assets/icons/Ornamento1.astro";
@@ -20,12 +27,13 @@ import SalonIcon from "../../../assets/icons/SalonIcon.astro";
 import VestimentaIcon from "../../../assets/icons/VestimentaIcon.astro";
 import ImportanteIcon from "../../../assets/icons/ImportanteIcon.astro";
 import ClockIcon from "../../../assets/icons/ClockIcon.astro";
+import ImportantIcon from "../../../assets/icons/ImportantIcon.astro";
 
 import "@fontsource/abril-fatface";
 import "@fontsource/whisper";
 import "@fontsource/libre-baskerville";
 
-const { ceremonia, recepcion } = Astro.props;
+const { ceremonia, recepcion, colorPrimario, imagenes } = Astro.props;
 ---
 
 <section class="py-16 px-4 bg-white">
@@ -42,7 +50,8 @@ const { ceremonia, recepcion } = Astro.props;
 
       <div class="flex justify-center -mt-20 mb-12">
         <Ornamento1
-          class="fill-amber-400 size-32"
+          class="size-32"
+          style={`fill: ${colorPrimario}`}
           data-aos="fade-up"
           data-aos-delay="200"
         />
@@ -55,18 +64,23 @@ const { ceremonia, recepcion } = Astro.props;
     </header>
 
     <!-- Cards Grid - Responsive -->
-    <div class="grid gap-8 md:gap-12">
+    <div class="grid gap-8 md:gap-12 p-8 rounded-3xl bg-cover bg-center bg-no-repeat" style="background-image: url('/imagen.webp');">
       <!-- Ceremonia Card -->
       <article
-        class="relative bg-white rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100"
+        class="relative bg-gradient-to-br from-white via-gray-50 to-white rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 backdrop-blur-sm"
         data-aos="fade-up"
         data-aos-delay="300"
       >
         <!-- Header with icon -->
-        <div class="bg-gradient-to-r p-8 pb-6">
-          <div class="flex items-center gap-4 mb-4">
-            <div class="p-4 rounded-2xl bg-amber-100">
-              <IglesiaIcon class="w-8 h-8 fill-amber-500" />
+        <div class="p-8 pb-6 relative">
+          <!-- Fondo decorativo sutil -->
+          <div class="absolute inset-0 opacity-5" style={`background: linear-gradient(135deg, ${colorPrimario}10, transparent 50%, ${colorPrimario}05)`}></div>
+          <div class="flex items-center gap-4 mb-4 relative z-10">
+            <div
+              class="p-4 rounded-2xl"
+              style={`background-color: ${colorPrimario}20`}
+            >
+              <IglesiaIcon class="w-8 h-8" style={`fill: ${colorPrimario}`} />
             </div>
             <div>
               <h2 class="text-3xl font-Libre font-bold text-gray-800">
@@ -90,7 +104,10 @@ const { ceremonia, recepcion } = Astro.props;
           <div class="space-y-3 mb-6">
             <!-- Hora -->
             <div class="flex items-center gap-3">
-              <ClockIcon class="w-5 h-5 flex-shrink-0 fill-amber-500" />
+              <ClockIcon
+                class="w-5 h-5 flex-shrink-0"
+                style={`fill: ${colorPrimario}`}
+              />
               <span class="font-Libre text-gray-700">
                 <strong>Hora:</strong>
                 {ceremonia.hora}
@@ -100,7 +117,8 @@ const { ceremonia, recepcion } = Astro.props;
             <!-- Dirección -->
             <div class="flex items-start gap-3">
               <ImportanteIcon
-                class="w-5 h-5 mt-0.5 flex-shrink-0 fill-amber-500"
+                class="w-5 h-5 mt-0.5 flex-shrink-0"
+                style={`fill: ${colorPrimario}`}
               />
               <span class="font-Libre text-gray-700">
                 <strong>Dirección:</strong>
@@ -114,7 +132,8 @@ const { ceremonia, recepcion } = Astro.props;
             href={ceremonia.maps}
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 text-white font-Libre px-6 py-3 rounded-xl bg-amber-400 hover:bg-amber-500 transition-all duration-300 hover:shadow-lg hover:scale-105 focus:outline-none focus:ring-4 focus:ring-amber-300"
+            class="inline-flex items-center gap-2 text-white font-Libre px-6 py-3 rounded-xl transition-all duration-300 hover:shadow-lg hover:scale-105 focus:outline-none focus:ring-4"
+            style={`background-color: ${colorPrimario}; focus:ring-color: ${colorPrimario}50`}
             aria-label="Ver ubicación de la ceremonia en Google Maps"
           >
             <span>Ver ubicación</span>
@@ -137,15 +156,20 @@ const { ceremonia, recepcion } = Astro.props;
 
       <!-- Recepción Card -->
       <article
-        class="relative bg-white rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100"
+        class="relative bg-gradient-to-br from-white via-gray-50 to-white rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 backdrop-blur-sm"
         data-aos="fade-up"
         data-aos-delay="400"
       >
         <!-- Header with icon -->
-        <div class="bg-gradient-to-r p-8 pb-6">
-          <div class="flex items-center gap-4 mb-4">
-            <div class="p-4 rounded-2xl bg-amber-100">
-              <SalonIcon class="w-8 h-8 fill-amber-500" />
+        <div class="p-8 pb-6 relative">
+          <!-- Fondo decorativo sutil -->
+          <div class="absolute inset-0 opacity-5" style={`background: linear-gradient(135deg, ${colorPrimario}10, transparent 50%, ${colorPrimario}05)`}></div>
+          <div class="flex items-center gap-4 mb-4 relative z-10">
+            <div
+              class="p-4 rounded-2xl"
+              style={`background-color: ${colorPrimario}20`}
+            >
+              <SalonIcon class="w-8 h-8" style={`fill: ${colorPrimario}`} />
             </div>
             <div>
               <h2 class="text-3xl font-Libre font-bold text-gray-800">
@@ -169,7 +193,10 @@ const { ceremonia, recepcion } = Astro.props;
           <div class="space-y-3 mb-6">
             <!-- Hora -->
             <div class="flex items-center gap-3">
-              <ClockIcon class="w-5 h-5 flex-shrink-0 fill-amber-500" />
+              <ClockIcon
+                class="w-5 h-5 flex-shrink-0"
+                style={`fill: ${colorPrimario}`}
+              />
               <span class="font-Libre text-gray-700">
                 <strong>Hora:</strong>
                 {recepcion.hora}
@@ -179,7 +206,8 @@ const { ceremonia, recepcion } = Astro.props;
             <!-- Dirección -->
             <div class="flex items-start gap-3">
               <ImportanteIcon
-                class="w-5 h-5 mt-0.5 flex-shrink-0 fill-amber-500"
+                class="w-5 h-5 mt-0.5 flex-shrink-0"
+                style={`fill: ${colorPrimario}`}
               />
               <span class="font-Libre text-gray-700">
                 <strong>Dirección:</strong>
@@ -193,7 +221,8 @@ const { ceremonia, recepcion } = Astro.props;
             href={recepcion.maps}
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 text-white font-Libre px-6 py-3 rounded-xl bg-amber-400 hover:bg-amber-500 transition-all duration-300 hover:shadow-lg hover:scale-105 focus:outline-none focus:ring-4 focus:ring-amber-300"
+            class="inline-flex items-center gap-2 text-white font-Libre px-6 py-3 rounded-xl transition-all duration-300 hover:shadow-lg hover:scale-105 focus:outline-none focus:ring-4"
+            style={`background-color: ${colorPrimario}; focus:ring-color: ${colorPrimario}50`}
             aria-label="Ver ubicación de la recepción en Google Maps"
           >
             <span>Ver ubicación</span>
@@ -216,13 +245,15 @@ const { ceremonia, recepcion } = Astro.props;
 
       <!-- Dress Code Card -->
       <article
-        class="relative bg-white rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100"
+        class="relative bg-gradient-to-br from-white via-gray-50 to-white rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 backdrop-blur-sm"
         data-aos="fade-up"
         data-aos-delay="500"
       >
         <!-- Header with icon -->
-        <div class="bg-gradient-to-r p-8 pb-6">
-          <div class="flex items-center gap-4 mb-4">
+        <div class="p-8 pb-6 relative">
+          <!-- Fondo decorativo sutil -->
+          <div class="absolute inset-0 opacity-5" style={`background: linear-gradient(135deg, ${colorPrimario}10, transparent 50%, ${colorPrimario}05)`}></div>
+          <div class="flex items-center gap-4 mb-4 relative z-10">
             <div class="p-4 rounded-2xl bg-amber-100">
               <VestimentaIcon class="w-8 h-8 fill-amber-500" />
             </div>
@@ -238,7 +269,10 @@ const { ceremonia, recepcion } = Astro.props;
         <!-- Content -->
         <div class="px-8 pb-8">
           <div class="bg-gradient-to-r p-6 rounded-2xl">
-            <h3 class="text-2xl font-bold mb-3 text-amber-600 font-Libre">
+            <h3
+              class="text-2xl font-bold mb-3 font-Libre"
+              style={`color: ${colorPrimario}`}
+            >
               Vestimenta Formal
             </h3>
             <p class="text-gray-700 font-Libre leading-relaxed">
@@ -251,19 +285,20 @@ const { ceremonia, recepcion } = Astro.props;
 
       <!-- No Niños Card -->
       <article
-        class="relative bg-white rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100"
+        class="relative bg-gradient-to-br from-white via-gray-50 to-white rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 backdrop-blur-sm"
         data-aos="fade-up"
         data-aos-delay="600"
       >
         <!-- Header with icon -->
-        <div class="bg-gradient-to-r p-8 pb-6">
-          <div class="flex items-center gap-4 mb-4">
-            <div class="p-4 rounded-2xl bg-amber-100">
-              <svg class="w-8 h-8 fill-amber-500" viewBox="0 0 24 24">
-                <path
-                  d="M12,2A3,3 0 0,1 15,5A3,3 0 0,1 12,8A3,3 0 0,1 9,5A3,3 0 0,1 12,2M21,9V7H15L13.5,7.5C13.1,4.8 11.2,2.73 8.74,2.26C6.32,1.8 4.26,3.14 4.26,3.14L4.93,4.66C4.93,4.66 6.45,3.62 8.5,4C9.61,4.25 10.5,5.24 10.5,6.5H9C7.89,6.5 7,7.39 7,8.5V16A2,2 0 0,0 9,18H12.5C13.89,18 15,16.89 15,15.5V10.5H21V9Z"
-                ></path>
-              </svg>
+        <div class="p-8 pb-6 relative">
+          <!-- Fondo decorativo sutil -->
+          <div class="absolute inset-0 opacity-5" style={`background: linear-gradient(135deg, ${colorPrimario}10, transparent 50%, ${colorPrimario}05)`}></div>
+          <div class="flex items-center gap-4 mb-4 relative z-10">
+            <div
+              class="p-4 rounded-2xl"
+              style={`background-color: ${colorPrimario}20`}
+            >
+              <ImportantIcon class="w-8 h-8" style={`fill: ${colorPrimario}`} />
             </div>
             <div>
               <h2 class="text-3xl font-Libre font-bold text-gray-800">
@@ -277,7 +312,10 @@ const { ceremonia, recepcion } = Astro.props;
         <!-- Content -->
         <div class="px-8 pb-8">
           <div class="bg-gradient-to-r p-6 rounded-2xl">
-            <h3 class="text-2xl font-bold mb-3 text-amber-600 font-Libre">
+            <h3
+              class="text-2xl font-bold mb-3 font-Libre"
+              style={`color: ${colorPrimario}`}
+            >
               Solo Adultos, no niños
             </h3>
             <p class="text-gray-700 font-Libre leading-relaxed">

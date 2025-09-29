@@ -45,9 +45,9 @@ ceremonia:
   hora: "16:30"
 
 recepcion:
-  lugar: "Rancho Francisco Villa Nuevo"
-  direccion: "Rancho Francisco Villa Nuevo"
-  maps: "https://goo.gl/maps/wDVohepcrQvABbvA7"
+  lugar: "La Palapa"
+  direccion: "Cam. a La Palapa, Campestre, 34194 Durango, Dgo."
+  maps: "https://maps.app.goo.gl/8rc35XDj3c2cVBTJ7"
   hora: "18:00"
 
 # Música
