@@ -1,0 +1,55 @@
+---
+import "@fontsource/great-vibes";
+import "@fontsource/josefin-sans";
+import Ornamento1 from "../../../assets/icons/Ornamento1.astro";
+const { colorPrimario } = Astro.props;
+---
+
+<section class="h-full flex flex-col items-center justify-center px-10 text-center gap-8">
+
+  <!-- Adorno superior -->
+  <div data-aos="fade-down" data-aos-duration="1000">
+    <Ornamento1 style={`fill: ${colorPrimario};`} class="w-40 opacity-80" />
+  </div>
+
+  <!-- Frase -->
+  <blockquote
+    class="text-3xl leading-relaxed"
+    style={`font-family: 'Great Vibes', cursive; color: ${colorPrimario};`}
+    data-aos="zoom-in"
+    data-aos-duration="1400"
+    data-aos-delay="200"
+  >
+    He aprendido que estar con quienes quiero es suficiente para ser feliz.
+  </blockquote>
+
+  <!-- Separador central -->
+  <div
+    class="flex items-center gap-2"
+    data-aos="fade-up"
+    data-aos-duration="800"
+    data-aos-delay="400"
+  >
+    <div class="w-8 h-px" style={`background-color: ${colorPrimario};`}></div>
+    <div class="w-2 h-2 rounded-full" style={`background-color: ${colorPrimario};`}></div>
+    <div class="w-8 h-px" style={`background-color: ${colorPrimario};`}></div>
+  </div>
+
+  <!-- Segunda parte -->
+  <p
+    class="text-sm tracking-wider leading-loose uppercase"
+    style={`font-family: 'Josefin Sans', sans-serif; color: ${colorPrimario};`}
+    data-aos="fade-up"
+    data-aos-duration="1000"
+    data-aos-delay="600"
+  >
+    Por eso deseo que me acompañes en uno de los momentos más importantes de mi vida,<br/>
+    algo que solo se vive una vez.
+  </p>
+
+  <!-- Adorno inferior (volteado) -->
+  <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="800">
+    <Ornamento1 style={`fill: ${colorPrimario};`} class="w-40 opacity-80 rotate-180" />
+  </div>
+
+</section>

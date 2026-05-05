@@ -38,17 +38,17 @@ const xvCollection = defineCollection({
 
     // Imágenes
     imagenes: z.object({
-      portada: z.string(),
-      icon: z.string(),
-      flowers: z.string(),
-      galeria1: z.string(),
-      galeria2: z.string(),
-      galeria3: z.string(),
-      galeria4: z.string(),
-      galeria5: z.string(),
+      portada: z.string().optional(),
+      icon: z.string().optional(),
+      flowers: z.string().optional(),
+      galeria1: z.string().optional(),
+      galeria2: z.string().optional(),
+      galeria3: z.string().optional(),
+      galeria4: z.string().optional(),
+      galeria5: z.string().optional(),
       galeria6: z.string().optional(),
       galeria7: z.string().optional(),
-    }),
+    }).optional(),
 
     // Eventos
     misa: z.object({
@@ -70,6 +70,12 @@ const xvCollection = defineCollection({
     
     // Google Photos
     google_fotos: z.string().optional(),
+
+    // Música
+    musica: z.string().optional(),
+
+    // Regalo
+    regalo: z.string().optional(),
   }),
 });
 

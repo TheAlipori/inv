@@ -1,0 +1,55 @@
+# Información del evento
+tipo_evento: "xv"
+tema: "justgreenfloral"
+color_primario: "#4a7c59" # Verde principal
+color_secundario: "#f0f7f0" # Verde muy claro
+colorBackground: "#f5faf5"
+colorAdornos: "#4a7c59"
+colorTexto: "#3a3a3a"
+
+# Datos básicos
+titulo: "Los XV de Flor"
+descripcion: "Estás cordialmente invitado a los XV de Flor"
+
+# Información de la quinceañera
+quinceanera:
+  nombre: "Flor"
+
+# Información familiar
+familiares:
+  padre: "Emilio De Jesús García"
+  madre: "Flor Edith Aldaco"
+  padrino: ""
+  madrina: ""
+
+# Fecha del evento
+fecha:
+  dia: "30"
+  mes: "Mayo"
+  anio: "2026"
+  fecha_iso: "2026-05-30T20:00:00"
+
+# Información de eventos
+misa:
+  lugar: ""
+  direccion: ""
+  maps: ""
+  hora: ""
+
+recepcion:
+  lugar: "Quinta La Fernanda"
+  direccion: "General Ignacio Zaragoza, Col. Ignacio Zaragoza, 34167 Durango, Dgo."
+  maps: "https://maps.app.goo.gl/c4WwsMHq7dukp7wz5"
+  hora: "8:00 pm"
+
+# Música
+musica: "/justgreenfloral/cancion.mp3"
+
+# Contacto
+whatsapp: ""
+
+# Google Photos
+google_fotos: ""
+
+# Regalo sugerido
+regalo: "lluvia de sobres"

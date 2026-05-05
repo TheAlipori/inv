@@ -1,0 +1,64 @@
+---
+import "@fontsource/josefin-sans";
+import "@fontsource/great-vibes";
+import VestimentaIcon from "../../../assets/icons/VestimentaIcon.astro";
+import Ornamento1 from "../../../assets/icons/Ornamento1.astro";
+
+const { colorPrimario } = Astro.props;
+---
+
+<section class="h-full flex flex-col items-center justify-center px-8 gap-6 text-center">
+
+  <!-- Título -->
+  <p
+    class="text-sm tracking-widest uppercase"
+    style={`font-family: 'Josefin Sans', sans-serif; color: ${colorPrimario}; opacity: 0.7;`}
+    data-aos="fade-down"
+    data-aos-duration="800"
+  >
+    Dress Code
+  </p>
+
+  <!-- Icono -->
+  <div data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="100">
+    <VestimentaIcon style={`fill: ${colorPrimario};`} class="w-20 h-20 opacity-90" />
+  </div>
+
+  <!-- Formal -->
+  <h2
+    class="text-6xl"
+    style={`font-family: 'Great Vibes', cursive; color: ${colorPrimario};`}
+    data-aos="fade-up"
+    data-aos-duration="1000"
+    data-aos-delay="200"
+  >
+    Formal
+  </h2>
+
+  <!-- Ornamento -->
+  <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+    <Ornamento1 style={`fill: ${colorPrimario};`} class="w-28 opacity-60" />
+  </div>
+
+  <!-- Nota del verde -->
+  <div
+    class="max-w-xs flex flex-col gap-2"
+    data-aos="fade-up"
+    data-aos-duration="1000"
+    data-aos-delay="400"
+  >
+    <p
+      class="text-sm leading-relaxed font-bold tracking-wider"
+      style={`font-family: 'Josefin Sans', sans-serif; color: ${colorPrimario};`}
+    >
+      Por favor evita el color verde,
+    </p>
+    <p
+      class="text-sm font-bold tracking-wider"
+      style={`font-family: 'Josefin Sans', sans-serif; color: ${colorPrimario};`}
+    >
+      ese color es exclusivo de la quinceañera.
+    </p>
+  </div>
+
+</section>

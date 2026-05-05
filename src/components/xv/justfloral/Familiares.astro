@@ -1,0 +1,90 @@
+---
+import "@fontsource/josefin-sans";
+import "@fontsource/great-vibes";
+import Ornamento2 from "../../../assets/icons/Ornamento2.astro";
+import Ornamento3 from "../../../assets/icons/Ornamento3.astro";
+
+const { familiares, colorPrimario } = Astro.props;
+const { padre, madre, padrino, madrina } = familiares;
+---
+
+<section class="h-full flex flex-col items-center justify-center px-8 gap-5 text-center">
+
+  <!-- Título -->
+  <p
+    class="text-sm tracking-widest uppercase"
+    style={`font-family: 'Josefin Sans', sans-serif; color: ${colorPrimario}; opacity: 0.7;`}
+    data-aos="fade-down"
+    data-aos-duration="800"
+  >
+    Con el amor de
+  </p>
+
+  <!-- Ornamento central -->
+  <div data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="100">
+    <Ornamento3 style={`fill: ${colorPrimario};`} class="w-20 opacity-80" />
+  </div>
+
+  <!-- Padres -->
+  <div class="flex flex-col gap-1">
+    {padre && (
+      <div class="flex flex-col">
+        <span
+          class="text-xs tracking-widest uppercase opacity-60"
+          style={`font-family: 'Josefin Sans', sans-serif; color: ${colorPrimario};`}
+        >Papá</span>
+        <span
+          class="text-3xl"
+          style={`font-family: 'Great Vibes', cursive; color: ${colorPrimario};`}
+        >{padre}</span>
+      </div>
+    )}
+    {madre && (
+      <div class="flex flex-col mt-1">
+        <span
+          class="text-xs tracking-widest uppercase opacity-60"
+          style={`font-family: 'Josefin Sans', sans-serif; color: ${colorPrimario};`}
+        >Mamá</span>
+        <span
+          class="text-3xl"
+          style={`font-family: 'Great Vibes', cursive; color: ${colorPrimario};`}
+        >{madre}</span>
+      </div>
+    )}
+  </div>
+
+  <!-- Divisor Ornamento2 -->
+  {(padrino || madrina) && (
+    <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="300" class="w-full">
+      <Ornamento2 style={`fill: ${colorPrimario};`} class="w-full opacity-40" />
+    </div>
+  )}
+
+  <!-- Padrinos -->
+  {(padrino || madrina) && (
+    <div
+      class="flex flex-col gap-1"
+      data-aos="fade-up"
+      data-aos-duration="1000"
+      data-aos-delay="400"
+    >
+      <p
+        class="text-xs tracking-widest uppercase opacity-60 mb-1"
+        style={`font-family: 'Josefin Sans', sans-serif; color: ${colorPrimario};`}
+      >Padrinos</p>
+      {padrino && (
+        <span
+          class="text-3xl"
+          style={`font-family: 'Great Vibes', cursive; color: ${colorPrimario};`}
+        >{padrino}</span>
+      )}
+      {madrina && (
+        <span
+          class="text-3xl"
+          style={`font-family: 'Great Vibes', cursive; color: ${colorPrimario};`}
+        >{madrina}</span>
+      )}
+    </div>
+  )}
+
+</section>

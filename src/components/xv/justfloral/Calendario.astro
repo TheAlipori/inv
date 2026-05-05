@@ -1,0 +1,100 @@
+---
+import "@fontsource/josefin-sans";
+import "@fontsource/great-vibes";
+import Ornamento1 from "../../../assets/icons/Ornamento1.astro";
+
+const { fecha, colorPrimario } = Astro.props;
+
+const eventDate = new Date(fecha.fecha_iso);
+const year = eventDate.getFullYear();
+const month = eventDate.getMonth();
+const eventDay = eventDate.getDate();
+
+// Primer día de la semana del mes (0=Dom, ajustamos a Lun=0)
+const firstDayRaw = new Date(year, month, 1).getDay();
+const firstDay = firstDayRaw === 0 ? 6 : firstDayRaw - 1; // Lunes primero
+
+const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+const diasSemana = ["Lu", "Ma", "Mi", "Ju", "Vi", "Sa", "Do"];
+
+// Construir array de celdas (null = espacio vacío)
+const cells: (number | null)[] = [
+  ...Array(firstDay).fill(null),
+  ...Array.from({ length: daysInMonth }, (_, i) => i + 1),
+];
+---
+
+<section class="h-full flex flex-col items-center justify-center px-6 gap-5 text-center">
+
+  <!-- Título -->
+  <div data-aos="fade-down" data-aos-duration="800">
+    <h2
+      class="text-4xl"
+      style={`font-family: 'Great Vibes', cursive; color: ${colorPrimario};`}
+    >
+      {fecha.mes} {fecha.anio}
+    </h2>
+  </div>
+
+  <!-- Ornamento -->
+  <div data-aos="zoom-in" data-aos-duration="800" data-aos-delay="100">
+    <Ornamento1 style={`fill: ${colorPrimario};`} class="w-28 opacity-70" />
+  </div>
+
+  <!-- Calendario -->
+  <div
+    class="w-full max-w-xs"
+    data-aos="fade-up"
+    data-aos-duration="1000"
+    data-aos-delay="200"
+  >
+    <!-- Días de la semana -->
+    <div class="grid grid-cols-7 mb-2">
+      {diasSemana.map((d) => (
+        <div
+          class="text-center text-xs font-bold uppercase tracking-wider py-1"
+          style={`font-family: 'Josefin Sans', sans-serif; color: ${colorPrimario}; opacity: 0.6;`}
+        >
+          {d}
+        </div>
+      ))}
+    </div>
+
+    <!-- Días del mes -->
+    <div class="grid grid-cols-7 gap-y-1">
+      {cells.map((day) => (
+        <div class="flex items-center justify-center aspect-square">
+          {day === null ? null : day === eventDay ? (
+            <!-- Día del evento: círculo destacado -->
+            <div
+              class="w-9 h-9 rounded-full flex items-center justify-center text-white text-sm font-bold shadow-md"
+              style={`background-color: ${colorPrimario}; font-family: 'Josefin Sans', sans-serif;`}
+            >
+              {day}
+            </div>
+          ) : (
+            <span
+              class="text-sm"
+              style={`font-family: 'Josefin Sans', sans-serif; color: ${colorPrimario}; opacity: 0.7;`}
+            >
+              {day}
+            </span>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Nota del día -->
+  <p
+    class="text-xs tracking-widest uppercase"
+    style={`font-family: 'Josefin Sans', sans-serif; color: ${colorPrimario}; opacity: 0.7;`}
+    data-aos="fade-up"
+    data-aos-duration="800"
+    data-aos-delay="400"
+  >
+    {fecha.dia} de {fecha.mes} · 8:00 pm
+  </p>
+
+</section>
