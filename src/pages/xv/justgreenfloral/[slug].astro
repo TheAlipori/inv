@@ -10,6 +10,7 @@ import Calendario from "../../../components/xv/justfloral/Calendario.astro";
 import Ubicacion from "../../../components/xv/justfloral/Ubicacion.astro";
 import DressCode from "../../../components/xv/justfloral/DressCode.astro";
 import Familiares from "../../../components/xv/justfloral/Familiares.astro";
+import LluviadeSobres from "../../../components/xv/justfloral/LluviadeSobres.astro";
 import Confirmacion from "../../../components/xv/justfloral/Confirmacion.astro";
 
 // 1. Generar rutas estáticas solo para entradas con tema justgreenfloral
@@ -42,7 +43,7 @@ const {
   regalo,
 } = entry.data;
 
-const TOTAL_SECCIONES = 9;
+const TOTAL_SECCIONES = 10;
 ---
 
 <!-- 3. Renderizar -->
@@ -92,6 +93,10 @@ const TOTAL_SECCIONES = 9;
     </section>
 
     <section id="section-8" class="h-screen" style="scroll-snap-align: start;">
+      <LluviadeSobres colorPrimario={color_primario} regalo={regalo} />
+    </section>
+
+    <section id="section-9" class="h-screen" style="scroll-snap-align: start;">
       <Confirmacion quinceanera={quinceanera} whatsapp={whatsapp} colorPrimario={color_primario} />
     </section>
   </div>

@@ -1,0 +1,43 @@
+---
+import "@fontsource/josefin-sans";
+import "@fontsource/great-vibes";
+import SobreIcon from "../../../assets/icons/SobreIcon.astro";
+import Ornamento1 from "../../../assets/icons/Ornamento1.astro";
+
+const { colorPrimario, regalo } = Astro.props;
+---
+
+<section class="h-full flex flex-col items-center justify-center px-8 gap-6 text-center">
+
+  <!-- Título -->
+  <p
+    class="text-sm tracking-widest uppercase"
+    style={`font-family: 'Josefin Sans', sans-serif; color: ${colorPrimario}; opacity: 0.7;`}
+    data-aos="fade-down"
+    data-aos-duration="800"
+  >
+    Regalo sugerido
+  </p>
+
+  <!-- Icono -->
+  <div data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="100">
+    <SobreIcon style={`fill: ${colorPrimario};`} class="w-24 h-24 opacity-90" />
+  </div>
+
+  <!-- Texto principal -->
+  <h2
+    class="text-5xl leading-snug"
+    style={`font-family: 'Great Vibes', cursive; color: ${colorPrimario};`}
+    data-aos="fade-up"
+    data-aos-duration="1000"
+    data-aos-delay="200"
+  >
+    {regalo}
+  </h2>
+
+  <!-- Ornamento -->
+  <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+    <Ornamento1 style={`fill: ${colorPrimario};`} class="w-28 opacity-60" />
+  </div>
+
+</section>

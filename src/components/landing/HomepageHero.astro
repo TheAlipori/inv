@@ -1,246 +1,442 @@
 ---
 import "@fontsource/abril-fatface";
+import "@fontsource/great-vibes";
+import "@fontsource/josefin-sans";
 import Navbar from "./Navbar.astro";
 ---
 
 <Navbar />
-<section
-  id="inicio"
-  class="min-h-screen bg-gradient-to-br from-pink-50 to-purple-100 py-20"
->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Hero Header -->
-    <div class="text-center mb-16">
-      <h1 class="font-abril text-5xl md:text-7xl text-gray-800 mb-6">
-        Invitaciones Digitales Únicas
-      </h1>
-      <p
-        class="font-merriweather text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto"
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section id="inicio" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+  <!-- Background gradient -->
+  <div class="absolute inset-0 bg-gradient-to-br from-[#1a0814] via-[#2d1228] to-[#0d0b24]"></div>
+
+  <!-- Glow blobs -->
+  <div class="absolute top-24 left-8 w-72 h-72 bg-rose-600/15 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="absolute bottom-24 right-8 w-96 h-96 bg-purple-600/15 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-pink-500/8 rounded-full blur-3xl pointer-events-none"></div>
+
+  <!-- Decorative stars -->
+  <span class="absolute top-28 left-[15%] text-rose-300/30 text-5xl select-none">✦</span>
+  <span class="absolute top-48 right-[12%] text-purple-300/20 text-3xl select-none">✦</span>
+  <span class="absolute bottom-36 left-[20%] text-pink-300/20 text-2xl select-none">✦</span>
+  <span class="absolute bottom-28 right-[18%] text-rose-300/25 text-4xl select-none">✦</span>
+
+  <!-- Main content -->
+  <div class="relative z-10 text-center px-4 max-w-5xl mx-auto">
+    <p class="font-great-vibes text-rose-300 text-5xl md:text-6xl mb-4 hero-fade-1">
+      Momentos que duran para siempre
+    </p>
+
+    <h1 class="font-abril text-5xl md:text-7xl lg:text-8xl text-white mb-6 leading-tight hero-fade-2">
+      Invitaciones
+      <span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-pink-400 to-purple-400">
+        Digitales
+      </span>
+    </h1>
+
+    <p class="font-josefin text-gray-300/80 text-sm md:text-base tracking-[0.25em] uppercase mb-12 max-w-2xl mx-auto hero-fade-3">
+      Diseños únicos para quinceañeras, bodas y celebraciones especiales
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center hero-fade-4">
+      <a
+        href="#galerias"
+        class="bg-gradient-to-r from-rose-500 to-pink-600 text-white px-9 py-4 rounded-full text-base font-bold tracking-wide hover:from-rose-600 hover:to-pink-700 hover:scale-105 transition-all duration-300 shadow-lg shadow-rose-500/30"
       >
-        Crea momentos inolvidables con diseños personalizados para tus eventos
-        más especiales
+        Ver diseños
+      </a>
+      <a
+        href="#comprar"
+        class="border border-white/25 text-white px-9 py-4 rounded-full text-base font-bold tracking-wide hover:bg-white/10 transition-all duration-300 backdrop-blur-sm"
+      >
+        Ver planes
+      </a>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40 hero-fade-4">
+    <span class="font-josefin text-[10px] tracking-[0.3em] uppercase">Descubre más</span>
+    <div class="w-px h-10 bg-gradient-to-b from-white/40 to-transparent scroll-line"></div>
+  </div>
+</section>
+
+<!-- ═══════════════ TEMAS ═══════════════ -->
+<section id="galerias" class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <p class="font-great-vibes text-rose-400 text-4xl mb-2">Colección</p>
+      <h2 class="font-abril text-4xl md:text-5xl text-gray-900 mb-4">Nuestros Temas</h2>
+      <p class="font-josefin text-gray-400 text-xs tracking-[0.3em] uppercase max-w-md mx-auto">
+        Cada diseño cuenta una historia única — elige el que refleje tu personalidad
       </p>
     </div>
 
-    <!-- Event Types Grid -->
+    <!-- Divider: Quinceañeras -->
+    <div class="flex items-center gap-4 mb-10">
+      <div class="h-px flex-1 bg-gray-100"></div>
+      <span class="font-josefin text-[10px] tracking-[0.35em] uppercase text-gray-400">Quinceañeras</span>
+      <div class="h-px flex-1 bg-gray-100"></div>
+    </div>
+
     <div class="grid md:grid-cols-3 gap-8 mb-16">
-      <!-- Quinceañeras -->
-      <div
-        class="bg-white rounded-3xl shadow-xl p-8 transform hover:scale-105 transition-transform duration-300"
-      >
-        <div class="text-center mb-8">
-          <div
-            class="w-16 h-16 bg-pink-500 rounded-full mx-auto mb-4 flex items-center justify-center"
-          >
-            <span class="text-white text-2xl font-bold">XV</span>
+
+      <!-- Tema: Divina -->
+      <div class="group rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+        <div class="h-72 bg-gradient-to-br from-[#3d0c25] via-[#6b1e3d] to-[#1e0840] relative flex items-end justify-center pb-10 overflow-hidden">
+          <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_60%_30%,_rgba(220,38,127,0.2)_0%,_transparent_70%)]"></div>
+          <!-- Ornament lines -->
+          <div class="absolute top-6 left-1/2 -translate-x-1/2 w-24 h-px bg-rose-300/30"></div>
+          <div class="absolute top-8 left-1/2 -translate-x-1/2 w-16 h-px bg-rose-300/20"></div>
+          <div class="text-center z-10">
+            <p class="font-great-vibes text-5xl text-rose-200 mb-1">Hiromi</p>
+            <div class="flex items-center justify-center gap-2 mb-1">
+              <div class="h-px w-8 bg-rose-300/50"></div>
+              <div class="w-1 h-1 rounded-full bg-rose-300/70"></div>
+              <div class="h-px w-8 bg-rose-300/50"></div>
+            </div>
+            <p class="font-josefin text-[10px] tracking-[0.3em] uppercase text-rose-300/70">XV Años</p>
           </div>
-          <h2 class="font-abril text-3xl text-gray-800 mb-2">Quinceañeras</h2>
-          <p class="text-gray-600">Celebra este momento único</p>
         </div>
-
-        <!-- Temas disponibles -->
-        <div class="space-y-4">
-          <h3 class="font-merriweather font-bold text-lg text-gray-700 mb-4">
-            Temas disponibles:
-          </h3>
-
-          <!-- Tema Divina -->
-          <div
-            class="border rounded-2xl p-4 hover:border-pink-300 transition-colors"
-          >
-            <div class="flex items-center justify-between mb-2">
-              <h4 class="font-bold text-gray-800">Divina</h4>
-              <div class="flex space-x-2">
-                <div class="w-4 h-4 bg-pink-500 rounded-full"></div>
-                <div class="w-4 h-4 bg-purple-500 rounded-full"></div>
-                <div class="w-4 h-4 bg-rose-500 rounded-full"></div>
-              </div>
+        <div class="p-6 bg-white">
+          <div class="flex items-start justify-between mb-2">
+            <h3 class="font-abril text-2xl text-gray-900">Divina</h3>
+            <div class="flex gap-1 mt-1">
+              <div class="w-3.5 h-3.5 rounded-full bg-rose-500"></div>
+              <div class="w-3.5 h-3.5 rounded-full bg-purple-500"></div>
+              <div class="w-3.5 h-3.5 rounded-full bg-pink-400"></div>
             </div>
-            <p class="text-sm text-gray-600 mb-3">
-              Elegante con ornamentos sofisticados
-            </p>
-            <a
-              href="/xv/divina/hiromi"
-              class="inline-block bg-pink-500 text-white px-4 py-2 rounded-lg text-sm hover:bg-pink-600 transition-colors"
-            >
-              Ver ejemplo
-            </a>
           </div>
-
-          <!-- Tema Floral -->
-          <div
-            class="border rounded-2xl p-4 hover:border-green-300 transition-colors"
+          <p class="text-gray-400 text-sm mb-4 leading-relaxed">Elegante y sofisticada, con ornamentos dorados y scroll completo.</p>
+          <a
+            href="/xv/divina/hiromi"
+            class="inline-flex items-center gap-2 text-rose-500 font-semibold text-sm group/link hover:gap-3 transition-all duration-200"
           >
-            <div class="flex items-center justify-between mb-2">
-              <h4 class="font-bold text-gray-800">Floral</h4>
-              <div class="flex space-x-2">
-                <div class="w-4 h-4 bg-green-500 rounded-full"></div>
-                <div class="w-4 h-4 bg-amber-500 rounded-full"></div>
-                <div class="w-4 h-4 bg-emerald-500 rounded-full"></div>
-              </div>
-            </div>
-            <p class="text-sm text-gray-600 mb-3">
-              Natural con motivos florales
-            </p>
-            <a
-              href="/xv/floral/hiromi"
-              class="inline-block bg-green-500 text-white px-4 py-2 rounded-lg text-sm hover:bg-green-600 transition-colors"
-            >
-              Ver ejemplo
-            </a>
-          </div>
-
-          <!-- Tema Moderna -->
-          <div
-            class="border rounded-2xl p-4 hover:border-blue-300 transition-colors opacity-75"
-          >
-            <div class="flex items-center justify-between mb-2">
-              <h4 class="font-bold text-gray-800">Moderna</h4>
-              <div class="flex space-x-2">
-                <div class="w-4 h-4 bg-blue-500 rounded-full"></div>
-                <div class="w-4 h-4 bg-slate-500 rounded-full"></div>
-                <div class="w-4 h-4 bg-indigo-500 rounded-full"></div>
-              </div>
-            </div>
-            <p class="text-sm text-gray-600 mb-3">
-              Minimalista y contemporáneo
-            </p>
-            <span
-              class="inline-block bg-gray-400 text-white px-4 py-2 rounded-lg text-sm cursor-not-allowed"
-            >
-              Próximamente
-            </span>
-          </div>
+            Ver invitación
+            <svg class="w-4 h-4 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
         </div>
       </div>
 
-      <!-- Bodas -->
-      <div class="bg-white rounded-3xl shadow-xl p-8 opacity-75">
-        <div class="text-center mb-8">
-          <div
-            class="w-16 h-16 bg-rose-500 rounded-full mx-auto mb-4 flex items-center justify-center"
-          >
-            <span class="text-white text-xl">💕</span>
+      <!-- Tema: Floral -->
+      <div class="group rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+        <div class="h-72 bg-gradient-to-br from-[#1a3d22] via-[#2d6b3a] to-[#0d2b15] relative flex items-end justify-center pb-10 overflow-hidden">
+          <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_40%_30%,_rgba(74,222,128,0.15)_0%,_transparent_70%)]"></div>
+          <div class="absolute top-6 left-1/2 -translate-x-1/2 w-24 h-px bg-green-300/30"></div>
+          <div class="absolute top-8 left-1/2 -translate-x-1/2 w-16 h-px bg-green-300/20"></div>
+          <div class="text-center z-10">
+            <p class="font-great-vibes text-5xl text-green-200 mb-1">Hiromi</p>
+            <div class="flex items-center justify-center gap-2 mb-1">
+              <div class="h-px w-8 bg-green-300/50"></div>
+              <div class="w-1 h-1 rounded-full bg-green-300/70"></div>
+              <div class="h-px w-8 bg-green-300/50"></div>
+            </div>
+            <p class="font-josefin text-[10px] tracking-[0.3em] uppercase text-green-300/70">XV Años</p>
           </div>
-          <h2 class="font-abril text-3xl text-gray-800 mb-2">Bodas</h2>
-          <p class="text-gray-600">El día más especial</p>
         </div>
-
-        <div class="text-center py-8">
-          <p class="text-gray-500 mb-4">Próximamente disponible</p>
-          <span
-            class="inline-block bg-gray-400 text-white px-6 py-3 rounded-lg cursor-not-allowed"
+        <div class="p-6 bg-white">
+          <div class="flex items-start justify-between mb-2">
+            <h3 class="font-abril text-2xl text-gray-900">Floral</h3>
+            <div class="flex gap-1 mt-1">
+              <div class="w-3.5 h-3.5 rounded-full bg-emerald-500"></div>
+              <div class="w-3.5 h-3.5 rounded-full bg-amber-500"></div>
+              <div class="w-3.5 h-3.5 rounded-full bg-teal-500"></div>
+            </div>
+          </div>
+          <p class="text-gray-400 text-sm mb-4 leading-relaxed">Natural y vibrante, con motivos florales y galería de fotos.</p>
+          <a
+            href="/xv/floral/hiromi"
+            class="inline-flex items-center gap-2 text-emerald-600 font-semibold text-sm group/link hover:gap-3 transition-all duration-200"
           >
-            En desarrollo
-          </span>
+            Ver invitación
+            <svg class="w-4 h-4 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
         </div>
       </div>
 
-      <!-- Fiestas -->
-      <div class="bg-white rounded-3xl shadow-xl p-8 opacity-75">
-        <div class="text-center mb-8">
-          <div
-            class="w-16 h-16 bg-amber-500 rounded-full mx-auto mb-4 flex items-center justify-center"
-          >
-            <span class="text-white text-xl">🎉</span>
+      <!-- Tema: Just Green Floral -->
+      <div class="group rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+        <div class="h-72 bg-gradient-to-br from-[#2d5a27] via-[#4a8c42] to-[#1a3d15] relative flex items-end justify-center pb-10 overflow-hidden">
+          <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_30%,_rgba(163,230,53,0.12)_0%,_transparent_70%)]"></div>
+          <div class="absolute top-6 left-1/2 -translate-x-1/2 w-24 h-px bg-lime-300/30"></div>
+          <div class="absolute top-8 left-1/2 -translate-x-1/2 w-16 h-px bg-lime-300/20"></div>
+          <div class="text-center z-10">
+            <p class="font-great-vibes text-5xl text-green-100 mb-1">Florencia</p>
+            <div class="flex items-center justify-center gap-2 mb-1">
+              <div class="h-px w-8 bg-green-200/50"></div>
+              <div class="w-1 h-1 rounded-full bg-green-200/70"></div>
+              <div class="h-px w-8 bg-green-200/50"></div>
+            </div>
+            <p class="font-josefin text-[10px] tracking-[0.3em] uppercase text-green-200/70">XV Años</p>
           </div>
-          <h2 class="font-abril text-3xl text-gray-800 mb-2">Fiestas</h2>
-          <p class="text-gray-600">Celebraciones especiales</p>
         </div>
-
-        <div class="text-center py-8">
-          <p class="text-gray-500 mb-4">Próximamente disponible</p>
-          <span
-            class="inline-block bg-gray-400 text-white px-6 py-3 rounded-lg cursor-not-allowed"
+        <div class="p-6 bg-white">
+          <div class="flex items-start justify-between mb-2">
+            <h3 class="font-abril text-2xl text-gray-900">Just Green Floral</h3>
+            <div class="flex gap-1 mt-1">
+              <div class="w-3.5 h-3.5 rounded-full bg-green-700"></div>
+              <div class="w-3.5 h-3.5 rounded-full bg-lime-400"></div>
+              <div class="w-3.5 h-3.5 rounded-full bg-green-400"></div>
+            </div>
+          </div>
+          <p class="text-gray-400 text-sm mb-4 leading-relaxed">Minimalista y elegante, con snap scroll y sin necesidad de fotos.</p>
+          <a
+            href="/xv/justgreenfloral/flor"
+            class="inline-flex items-center gap-2 text-green-700 font-semibold text-sm group/link hover:gap-3 transition-all duration-200"
           >
-            En desarrollo
-          </span>
+            Ver invitación
+            <svg class="w-4 h-4 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
         </div>
       </div>
+
     </div>
 
-    <!-- Call to Action -->
-    <div class="text-center">
-      <h2 class="font-abril text-3xl text-gray-800 mb-4">
-        ¿Listo para crear tu invitación perfecta?
-      </h2>
-      <p class="font-merriweather text-gray-600 mb-8 max-w-2xl mx-auto">
-        Elige tu tema favorito, personaliza los colores y crea una invitación
-        única para tu evento especial
-      </p>
-      <button
-        class="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-bold hover:from-pink-600 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg"
-      >
-        Comenzar ahora
-      </button>
+    <!-- Divider: Bodas -->
+    <div class="flex items-center gap-4 mb-8">
+      <div class="h-px flex-1 bg-gray-100"></div>
+      <span class="font-josefin text-[10px] tracking-[0.35em] uppercase text-gray-400">Bodas</span>
+      <div class="h-px flex-1 bg-gray-100"></div>
     </div>
+    <div class="rounded-3xl border-2 border-dashed border-gray-100 py-14 text-center">
+      <p class="font-great-vibes text-rose-300 text-4xl mb-2">Próximamente</p>
+      <p class="font-josefin text-gray-400 text-xs tracking-[0.3em] uppercase">Temas para bodas en desarrollo</p>
+    </div>
+
   </div>
 </section>
 
-<!-- Galerías Section -->
-<section id="galerias" class="py-20 bg-white">
+<!-- ═══════════════ CÓMO FUNCIONA ═══════════════ -->
+<section class="py-24 bg-gradient-to-b from-gray-50 to-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-16">
-      <h2 class="font-abril text-4xl md:text-5xl text-gray-800 mb-6">
-        Galerías de Inspiración
-      </h2>
-      <p class="font-merriweather text-xl text-gray-600 max-w-3xl mx-auto">
-        Explora nuestros diseños únicos y encuentra la inspiración perfecta para tu evento
-      </p>
+      <p class="font-great-vibes text-rose-400 text-4xl mb-2">Sencillo</p>
+      <h2 class="font-abril text-4xl md:text-5xl text-gray-900">¿Cómo funciona?</h2>
     </div>
-    <div class="text-center py-20">
-      <p class="text-gray-500 text-lg">Contenido de galerías próximamente...</p>
+
+    <div class="grid md:grid-cols-3 gap-10 relative">
+      <!-- Connecting line (desktop) -->
+      <div class="hidden md:block absolute top-10 left-1/3 right-1/3 h-px bg-gradient-to-r from-transparent via-rose-200 to-transparent"></div>
+
+      <!-- Step 1 -->
+      <div class="text-center relative">
+        <div class="w-20 h-20 bg-rose-50 border border-rose-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm">
+          <span class="font-abril text-3xl text-rose-400">1</span>
+        </div>
+        <h3 class="font-abril text-xl text-gray-900 mb-3">Elige tu tema</h3>
+        <p class="text-gray-400 text-sm leading-relaxed max-w-xs mx-auto">
+          Explora nuestra colección y selecciona el diseño que mejor refleje el estilo de tu celebración.
+        </p>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="text-center relative">
+        <div class="w-20 h-20 bg-rose-50 border border-rose-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm">
+          <span class="font-abril text-3xl text-rose-400">2</span>
+        </div>
+        <h3 class="font-abril text-xl text-gray-900 mb-3">Personaliza</h3>
+        <p class="text-gray-400 text-sm leading-relaxed max-w-xs mx-auto">
+          Nos envías los datos del evento, fotos y colores. Nosotros preparamos todo en menos de 24 horas.
+        </p>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="text-center relative">
+        <div class="w-20 h-20 bg-rose-50 border border-rose-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm">
+          <span class="font-abril text-3xl text-rose-400">3</span>
+        </div>
+        <h3 class="font-abril text-xl text-gray-900 mb-3">Comparte</h3>
+        <p class="text-gray-400 text-sm leading-relaxed max-w-xs mx-auto">
+          Recibe el enlace de tu invitación y compártelo con todos tus invitados en WhatsApp o redes sociales.
+        </p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Comprar Section -->
-<section id="comprar" class="py-20 bg-gray-50">
+<!-- ═══════════════ PRECIOS ═══════════════ -->
+<section id="comprar" class="py-24 bg-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-16">
-      <h2 class="font-abril text-4xl md:text-5xl text-gray-800 mb-6">
-        Planes y Precios
-      </h2>
-      <p class="font-merriweather text-xl text-gray-600 max-w-3xl mx-auto">
-        Encuentra el plan perfecto para tu celebración
-      </p>
+      <p class="font-great-vibes text-rose-400 text-4xl mb-2">Accesible</p>
+      <h2 class="font-abril text-4xl md:text-5xl text-gray-900 mb-4">Planes y Precios</h2>
+      <p class="font-josefin text-gray-400 text-xs tracking-[0.3em] uppercase">Sin sorpresas — todo incluido</p>
     </div>
-    <div class="text-center py-20">
-      <p class="text-gray-500 text-lg">Información de precios próximamente...</p>
+
+    <div class="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+
+      <!-- Esencial -->
+      <div class="rounded-3xl border border-gray-200 p-9 hover:border-rose-200 hover:shadow-lg transition-all duration-300">
+        <p class="font-josefin text-xs tracking-[0.3em] uppercase text-gray-400 mb-2">Plan</p>
+        <h3 class="font-abril text-3xl text-gray-900 mb-1">Esencial</h3>
+        <p class="text-gray-400 text-sm mb-8">Perfecta para comenzar</p>
+        <div class="flex items-end gap-1 mb-8">
+          <span class="font-abril text-5xl text-gray-900">$299</span>
+          <span class="text-gray-400 text-sm mb-2">MXN</span>
+        </div>
+        <ul class="space-y-3 mb-8">
+          {[
+            "Invitación digital completa",
+            "Enlace compartible ilimitado",
+            "Confirmación de asistencia (RSVP)",
+            "Música de fondo",
+            "Mapa del lugar",
+          ].map((item) => (
+            <li class="flex items-center gap-3 text-sm text-gray-600">
+              <svg class="w-4 h-4 text-rose-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+              </svg>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <a
+          href="#contacto"
+          class="block text-center border-2 border-rose-300 text-rose-600 px-6 py-3.5 rounded-full font-bold hover:bg-rose-50 transition-colors"
+        >
+          Solicitar
+        </a>
+      </div>
+
+      <!-- Premium -->
+      <div class="rounded-3xl bg-gradient-to-br from-rose-500 via-pink-500 to-purple-600 p-9 text-white shadow-2xl shadow-rose-200 relative overflow-hidden">
+        <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full">
+          <span class="font-josefin text-[10px] tracking-widest uppercase text-white">Popular</span>
+        </div>
+        <p class="font-josefin text-xs tracking-[0.3em] uppercase text-rose-100 mb-2">Plan</p>
+        <h3 class="font-abril text-3xl mb-1">Premium</h3>
+        <p class="text-rose-100 text-sm mb-8">La experiencia completa</p>
+        <div class="flex items-end gap-1 mb-8">
+          <span class="font-abril text-5xl">$499</span>
+          <span class="text-rose-200 text-sm mb-2">MXN</span>
+        </div>
+        <ul class="space-y-3 mb-8">
+          {[
+            "Todo lo del plan Esencial",
+            "Galería de fotos",
+            "Cuenta regresiva animada",
+            "Diseño personalizado de colores",
+            "Soporte prioritario 24/7",
+          ].map((item) => (
+            <li class="flex items-center gap-3 text-sm text-rose-50">
+              <svg class="w-4 h-4 text-white shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+              </svg>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <a
+          href="#contacto"
+          class="block text-center bg-white text-rose-600 px-6 py-3.5 rounded-full font-bold hover:bg-rose-50 transition-colors shadow-lg"
+        >
+          Solicitar
+        </a>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- Nosotros Section -->
-<section id="nosotros" class="py-20 bg-white">
+<!-- ═══════════════ NOSOTROS ═══════════════ -->
+<section id="nosotros" class="py-24 bg-gradient-to-br from-gray-900 via-gray-900 to-gray-800 text-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-16">
-      <h2 class="font-abril text-4xl md:text-5xl text-gray-800 mb-6">
-        Nosotros
-      </h2>
-      <p class="font-merriweather text-xl text-gray-600 max-w-3xl mx-auto">
-        Conoce el equipo detrás de las invitaciones más hermosas
-      </p>
-    </div>
-    <div class="text-center py-20">
-      <p class="text-gray-500 text-lg">Información sobre nosotros próximamente...</p>
+    <div class="grid md:grid-cols-2 gap-16 items-center">
+
+      <div>
+        <p class="font-great-vibes text-rose-400 text-4xl mb-3">Nuestra historia</p>
+        <h2 class="font-abril text-4xl md:text-5xl mb-6 leading-tight">
+          Creamos experiencias,<br/>no solo invitaciones
+        </h2>
+        <p class="text-gray-300 leading-relaxed mb-5 text-sm">
+          Nacimos de la idea de que cada celebración merece ser anunciada de manera única. Las invitaciones digitales no solo son modernas — son memorables, accesibles y perfectas para compartir.
+        </p>
+        <p class="text-gray-400 leading-relaxed text-sm">
+          Cada diseño es elaborado con atención al detalle, fusionando estética contemporánea con la calidez de las tradiciones latinoamericanas.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 gap-5">
+        {[
+          { num: "50+", label: "Invitaciones creadas" },
+          { num: "3", label: "Temas disponibles" },
+          { num: "100%", label: "Clientes satisfechos" },
+          { num: "24h", label: "Tiempo de entrega" },
+        ].map(({ num, label }) => (
+          <div class="bg-white/5 border border-white/10 rounded-2xl p-7 text-center hover:bg-white/10 transition-colors">
+            <p class="font-abril text-4xl text-rose-400 mb-2">{num}</p>
+            <p class="font-josefin text-[10px] tracking-[0.25em] uppercase text-gray-400">{label}</p>
+          </div>
+        ))}
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- Contacto Section -->
-<section id="contacto" class="py-20 bg-gray-50">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-16">
-      <h2 class="font-abril text-4xl md:text-5xl text-gray-800 mb-6">
-        Contacto
-      </h2>
-      <p class="font-merriweather text-xl text-gray-600 max-w-3xl mx-auto">
-        Estamos aquí para ayudarte a crear la invitación perfecta
-      </p>
-    </div>
-    <div class="text-center py-20">
-      <p class="text-gray-500 text-lg">Formulario de contacto próximamente...</p>
-    </div>
+<!-- ═══════════════ CONTACTO ═══════════════ -->
+<section id="contacto" class="py-24 bg-white">
+  <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <p class="font-great-vibes text-rose-400 text-4xl mb-3">Hablemos</p>
+    <h2 class="font-abril text-4xl md:text-5xl text-gray-900 mb-5">¿Lista para tu invitación?</h2>
+    <p class="text-gray-400 mb-10 text-base leading-relaxed">
+      Contáctanos por WhatsApp y con gusto te ayudamos a crear la invitación perfecta para tu evento.
+    </p>
+    <a
+      href="https://wa.me/521XXXXXXXXXX?text=Hola%2C%20me%20interesa%20una%20invitaci%C3%B3n%20digital"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center gap-3 bg-green-500 text-white px-10 py-5 rounded-full text-base font-bold hover:bg-green-600 hover:scale-105 transition-all duration-300 shadow-lg shadow-green-200"
+    >
+      <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+      Escribir por WhatsApp
+    </a>
   </div>
 </section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer class="bg-gray-950 text-gray-500 py-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+    <p class="font-abril text-white text-xl">InviDigital</p>
+    <p class="text-xs">© 2025 InviDigital. Todos los derechos reservados.</p>
+    <div class="flex gap-6 text-xs">
+      <a href="#inicio" class="hover:text-white transition-colors">Inicio</a>
+      <a href="#galerias" class="hover:text-white transition-colors">Temas</a>
+      <a href="#comprar" class="hover:text-white transition-colors">Precios</a>
+      <a href="#contacto" class="hover:text-white transition-colors">Contacto</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  /* Hero entrance animations */
+  .hero-fade-1 { animation: fadeUp 0.8s ease both; animation-delay: 0.1s; }
+  .hero-fade-2 { animation: fadeUp 0.8s ease both; animation-delay: 0.25s; }
+  .hero-fade-3 { animation: fadeUp 0.8s ease both; animation-delay: 0.4s; }
+  .hero-fade-4 { animation: fadeUp 0.8s ease both; animation-delay: 0.55s; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Animated scroll line */
+  .scroll-line {
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50%       { opacity: 0.8; transform: scaleY(1.2); }
+  }
+</style>

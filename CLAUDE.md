@@ -78,6 +78,11 @@ This theme uses full-page snap scroll instead of traditional scroll:
 - `astro.config.mjs` — Astro configuration with Tailwind integration
 - `tsconfig.json` — TypeScript configuration
 
+## Deployment
+- Hosted on **Vercel**
+- Auto-deploys on push to `main`
+- Build command: `npm run build` (output: `./dist/`)
+
 ## Development Notes
 
 ### Fonts

@@ -3,7 +3,7 @@
 ---
 
 <nav
-  class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 transition-all duration-300"
+  class="fixed top-0 left-0 right-0 z-50 bg-white/10 backdrop-blur-xl border-b border-white/15 shadow-sm transition-all duration-300"
   id="navbar"
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -12,7 +12,7 @@
       <div class="flex-shrink-0">
         <a
           href="/"
-          class="text-2xl font-bold text-pink-600 hover:text-pink-700 transition-colors duration-200"
+          class="font-abril text-2xl text-white hover:text-rose-300 transition-colors duration-200 drop-shadow-sm"
         >
           InviDigital
         </a>
@@ -23,31 +23,31 @@
         <div class="ml-10 flex items-baseline space-x-8">
           <a
             href="#inicio"
-            class="nav-link text-gray-700 hover:text-pink-600 px-3 py-2 text-sm font-medium transition-colors duration-200"
+            class="nav-link text-white/80 hover:text-white px-3 py-2 text-sm font-medium tracking-wide transition-colors duration-200"
           >
             Inicio
           </a>
           <a
             href="#galerias"
-            class="nav-link text-gray-700 hover:text-pink-600 px-3 py-2 text-sm font-medium transition-colors duration-200"
+            class="nav-link text-white/80 hover:text-white px-3 py-2 text-sm font-medium tracking-wide transition-colors duration-200"
           >
             Invitaciones
           </a>
           <a
             href="#comprar"
-            class="nav-link text-gray-700 hover:text-pink-600 px-3 py-2 text-sm font-medium transition-colors duration-200"
+            class="nav-link text-white/80 hover:text-white px-3 py-2 text-sm font-medium tracking-wide transition-colors duration-200"
           >
             Comprar
           </a>
           <a
             href="#nosotros"
-            class="nav-link text-gray-700 hover:text-pink-600 px-3 py-2 text-sm font-medium transition-colors duration-200"
+            class="nav-link text-white/80 hover:text-white px-3 py-2 text-sm font-medium tracking-wide transition-colors duration-200"
           >
             Nosotros
           </a>
           <a
             href="#contacto"
-            class="nav-link text-gray-700 hover:text-pink-600 px-3 py-2 text-sm font-medium transition-colors duration-200"
+            class="nav-link text-white/80 hover:text-white px-3 py-2 text-sm font-medium tracking-wide transition-colors duration-200"
           >
             Contacto
           </a>
@@ -58,7 +58,7 @@
       <div class="md:hidden">
         <button
           id="mobile-menu-button"
-          class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-pink-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-pink-500 transition-colors duration-200"
+          class="inline-flex items-center justify-center p-2 rounded-md text-white/80 hover:text-white hover:bg-white/10 focus:outline-none transition-colors duration-200"
         >
           <span class="sr-only">Abrir men� principal</span>
           <!-- Hamburger icon -->
@@ -99,36 +99,36 @@
   <!-- Mobile Navigation Menu -->
   <div
     id="mobile-menu"
-    class="md:hidden opacity-0 max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-white border-t border-gray-200"
+    class="md:hidden opacity-0 max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-white/10 backdrop-blur-xl border-t border-white/15"
   >
     <div class="px-2 pt-2 pb-3 space-y-1">
       <a
         href="#inicio"
-        class="mobile-nav-link block px-3 py-2 text-base font-medium text-gray-700 hover:text-pink-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
+        class="mobile-nav-link block px-3 py-2 text-base font-medium text-white/80 hover:text-white hover:bg-white/10 rounded-md transition-colors duration-200"
       >
         Inicio
       </a>
       <a
         href="#galerias"
-        class="mobile-nav-link block px-3 py-2 text-base font-medium text-gray-700 hover:text-pink-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
+        class="mobile-nav-link block px-3 py-2 text-base font-medium text-white/80 hover:text-white hover:bg-white/10 rounded-md transition-colors duration-200"
       >
         Galer�as
       </a>
       <a
         href="#comprar"
-        class="mobile-nav-link block px-3 py-2 text-base font-medium text-gray-700 hover:text-pink-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
+        class="mobile-nav-link block px-3 py-2 text-base font-medium text-white/80 hover:text-white hover:bg-white/10 rounded-md transition-colors duration-200"
       >
         Comprar
       </a>
       <a
         href="#nosotros"
-        class="mobile-nav-link block px-3 py-2 text-base font-medium text-gray-700 hover:text-pink-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
+        class="mobile-nav-link block px-3 py-2 text-base font-medium text-white/80 hover:text-white hover:bg-white/10 rounded-md transition-colors duration-200"
       >
         Nosotros
       </a>
       <a
         href="#contacto"
-        class="mobile-nav-link block px-3 py-2 text-base font-medium text-gray-700 hover:text-pink-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
+        class="mobile-nav-link block px-3 py-2 text-base font-medium text-white/80 hover:text-white hover:bg-white/10 rounded-md transition-colors duration-200"
       >
         Contacto
       </a>
@@ -205,13 +205,11 @@
       const currentScrollY = window.scrollY;
 
       if (currentScrollY > 10) {
-        navbar.classList.add("shadow-lg");
-        navbar.classList.remove("bg-white/90");
-        navbar.classList.add("bg-white/95");
+        navbar.classList.add("bg-white/15", "shadow-lg", "shadow-black/10");
+        navbar.classList.remove("bg-white/10");
       } else {
-        navbar.classList.remove("shadow-lg");
-        navbar.classList.remove("bg-white/95");
-        navbar.classList.add("bg-white/90");
+        navbar.classList.remove("bg-white/15", "shadow-lg", "shadow-black/10");
+        navbar.classList.add("bg-white/10");
       }
 
       // Hide/show navbar on scroll
@@ -238,11 +236,11 @@
       });
 
       navLinksList.forEach((link) => {
-        link.classList.remove("text-pink-600", "font-semibold");
-        link.classList.add("text-gray-700");
+        link.classList.remove("text-white", "font-semibold");
+        link.classList.add("text-white/80");
         if (link.getAttribute("href") === `#${current}`) {
-          link.classList.remove("text-gray-700");
-          link.classList.add("text-pink-600", "font-semibold");
+          link.classList.remove("text-white/80");
+          link.classList.add("text-white", "font-semibold");
         }
       });
     });
@@ -282,7 +280,7 @@
     left: 50%;
     width: 0;
     height: 2px;
-    background-color: #ec4899;
+    background-color: rgba(255,255,255,0.7);
     transition: all 0.3s ease;
     transform: translateX(-50%);
   }
