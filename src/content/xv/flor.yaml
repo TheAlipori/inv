@@ -43,10 +43,10 @@ recepcion:
   hora: "8:00 pm"
 
 # Música
-musica: "/justgreenfloral/cancion.mp3"
+musica: "https://res.cloudinary.com/dtzbal4zp/video/upload/v1778266780/Stephen_Sanchez_-_Until_I_Found_You_umvvnp.mp3"
 
 # Contacto
-whatsapp: ""
+whatsapp: "https://chat.whatsapp.com/HlqDHQP6YjeEfmqugX9nNB"
 
 # Google Photos
 google_fotos: ""
