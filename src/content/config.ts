@@ -26,6 +26,8 @@ const xvCollection = defineCollection({
       madre: z.string().optional(),
       padrino: z.string().optional(),
       madrina: z.string().optional(),
+      agradecimiento: z.string().optional(),
+      abuelos: z.string().optional(),
     }),
 
     // Fecha

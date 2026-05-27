@@ -5,7 +5,7 @@ import Ornamento2 from "../../../assets/icons/Ornamento2.astro";
 import Ornamento3 from "../../../assets/icons/Ornamento3.astro";
 
 const { familiares, colorPrimario } = Astro.props;
-const { padre, madre, padrino, madrina } = familiares;
+const { padre, madre, padrino, madrina, agradecimiento, abuelos } = familiares;
 ---
 
 <section class="h-full flex flex-col items-center justify-center px-6">
@@ -53,8 +53,45 @@ const { padre, madre, padrino, madrina } = familiares;
       )}
     </div>
 
+    {agradecimiento && (
+      <p
+        class="text-xs leading-relaxed max-w-xs"
+        style={`font-family: 'Josefin Sans', sans-serif; color: ${colorPrimario}; opacity: 0.75;`}
+        data-aos="fade-up"
+        data-aos-duration="800"
+        data-aos-delay="250"
+      >
+        {agradecimiento}
+      </p>
+    )}
+
+    {abuelos && (
+      <div
+        class="flex flex-col items-center gap-1"
+        data-aos="fade-up"
+        data-aos-duration="800"
+        data-aos-delay="300"
+      >
+        <div class="w-full">
+          <Ornamento2 style={`fill: ${colorPrimario};`} class="w-full opacity-40" />
+        </div>
+        <p
+          class="text-xs tracking-widest uppercase opacity-60 mt-1"
+          style={`font-family: 'Josefin Sans', sans-serif; color: ${colorPrimario};`}
+        >
+          Con gratitud a mis abuelitos
+        </p>
+        <p
+          class="text-sm leading-relaxed max-w-xs"
+          style={`font-family: 'Josefin Sans', sans-serif; color: ${colorPrimario}; opacity: 0.75;`}
+        >
+          {abuelos}
+        </p>
+      </div>
+    )}
+
     {(padrino || madrina) && (
-      <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="300" class="w-full">
+      <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="350" class="w-full">
         <Ornamento2 style={`fill: ${colorPrimario};`} class="w-full opacity-40" />
       </div>
     )}
