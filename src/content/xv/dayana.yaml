@@ -1,0 +1,34 @@
+tipo_evento: "xv"
+tema: "vitreo"
+color_primario: "#ffffff"
+color_secundario: "#000000"
+titulo: "Los XV de Dayana Hisui"
+descripcion: "Estás cordialmente invitada a los XV de Dayana Hisui"
+
+imagen_fondo: "/vitreo/bgbluedark.webp"
+
+frase: "Solo necesitas a las personas correctas a tu lado para que todo valga la pena."
+
+quinceanera:
+  nombre: "Dayana Hisui"
+
+familiares:
+  madre: "Diana López Solís"
+
+fecha:
+  dia: "18"
+  mes: "Julio"
+  anio: "2026"
+  fecha_iso: "2026-07-18T13:00:00"
+
+recepcion:
+  lugar: 'Quinta "Donde siempre"'
+  direccion: ""
+  maps: "https://maps.app.goo.gl/96WYGWiUtanWa8Qu9"
+  hora: "1:00 pm"
+
+whatsapp: "https://chat.whatsapp.com/Be6muahsZ8JBQvIylhvTpB"
+
+musica: "https://res.cloudinary.com/dtzbal4zp/video/upload/v1779840991/Insomniac_ymo2du.mp3"
+
+regalo: "Lluvia de sobres"

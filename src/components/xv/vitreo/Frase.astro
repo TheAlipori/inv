@@ -1,0 +1,54 @@
+---
+import "@fontsource/great-vibes";
+import "@fontsource/josefin-sans";
+import Ornamento1 from "../../../assets/icons/Ornamento1.astro";
+const { colorPrimario, frase } = Astro.props;
+const fraseTexto = frase ?? "He aprendido que estar con quienes quiero es suficiente para ser feliz.";
+---
+
+<section class="h-full flex flex-col items-center justify-center px-6">
+  <div
+    class="flex flex-col items-center gap-8 text-center px-8 py-12 rounded-3xl w-full max-w-sm"
+    style="background: rgba(255,255,255,0.12); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,0.25);"
+  >
+    <div data-aos="fade-down" data-aos-duration="1000">
+      <Ornamento1 style={`fill: ${colorPrimario};`} class="w-36 opacity-80" />
+    </div>
+
+    <blockquote
+      class="text-3xl leading-relaxed"
+      style={`font-family: 'Great Vibes', cursive; color: ${colorPrimario};`}
+      data-aos="zoom-in"
+      data-aos-duration="1400"
+      data-aos-delay="200"
+    >
+      {fraseTexto}
+    </blockquote>
+
+    <div
+      class="flex items-center gap-2"
+      data-aos="fade-up"
+      data-aos-duration="800"
+      data-aos-delay="400"
+    >
+      <div class="w-8 h-px" style={`background-color: ${colorPrimario};`}></div>
+      <div class="w-2 h-2 rounded-full" style={`background-color: ${colorPrimario};`}></div>
+      <div class="w-8 h-px" style={`background-color: ${colorPrimario};`}></div>
+    </div>
+
+    <p
+      class="text-sm tracking-wider leading-loose uppercase"
+      style={`font-family: 'Josefin Sans', sans-serif; color: ${colorPrimario};`}
+      data-aos="fade-up"
+      data-aos-duration="1000"
+      data-aos-delay="600"
+    >
+      Por eso deseo que me acompañes en uno de los momentos más importantes de mi vida,<br/>
+      algo que solo se vive una vez.
+    </p>
+
+    <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="800">
+      <Ornamento1 style={`fill: ${colorPrimario};`} class="w-36 opacity-80 rotate-180" />
+    </div>
+  </div>
+</section>

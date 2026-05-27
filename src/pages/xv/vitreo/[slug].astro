@@ -1,0 +1,160 @@
+---
+import { getCollection, getEntry } from "astro:content";
+import "../../../styles/global.css";
+import Layout from "../../../layouts/Layout.astro";
+import Portada from "../../../components/xv/vitreo/Portada.astro";
+import Reproductor from "../../../components/xv/vitreo/Reproductor.astro";
+import Frase from "../../../components/xv/vitreo/Frase.astro";
+import Fecha from "../../../components/xv/vitreo/Fecha.astro";
+import Calendario from "../../../components/xv/vitreo/Calendario.astro";
+import Ubicacion from "../../../components/xv/vitreo/Ubicacion.astro";
+import DressCode from "../../../components/xv/vitreo/DressCode.astro";
+import Familiares from "../../../components/xv/vitreo/Familiares.astro";
+import Alberca from "../../../components/xv/vitreo/Alberca.astro";
+import LluviadeSobres from "../../../components/xv/vitreo/LluviadeSobres.astro";
+import Confirmacion from "../../../components/xv/vitreo/Confirmacion.astro";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("xv");
+  const filtered = entries.filter((e) => e.data.tema === "vitreo");
+  return filtered.map((entry) => ({
+    params: { slug: entry.id },
+  }));
+}
+
+const { slug } = Astro.params;
+const entry = await getEntry("xv", slug);
+
+if (!entry) {
+  throw new Error(`No se encontró contenido para el slug: ${slug}`);
+}
+
+const {
+  quinceanera,
+  familiares,
+  fecha,
+  recepcion,
+  whatsapp,
+  color_primario,
+  color_secundario,
+  imagen_fondo,
+  regalo,
+  frase,
+} = entry.data;
+
+const TOTAL_SECCIONES = 11;
+---
+
+<Layout titulo={quinceanera.nombre} quinceanera={quinceanera} fecha={fecha}>
+  <!-- Fondo fijo -->
+  <div
+    class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-[768px] h-full -z-10"
+    style={`background-image: url('${imagen_fondo}'); background-size: cover; background-position: center;`}
+  ></div>
+
+  <!-- Overlay oscuro sutil para mejorar el glass -->
+  <div class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-[768px] h-full -z-10 bg-black/20"></div>
+
+  <!-- Snap container -->
+  <div
+    id="snap-container"
+    class="max-w-[768px] mx-auto h-screen overflow-y-scroll"
+    style="scroll-snap-type: y mandatory;"
+  >
+    <section id="section-0" class="h-screen" style="scroll-snap-align: start;">
+      <Portada quinceanera={quinceanera} colorPrimario={color_primario} />
+    </section>
+
+    <section id="section-1" class="h-screen" style="scroll-snap-align: start;">
+      <Reproductor colorPrimario={color_primario} colorSecundario={color_secundario} musica={entry.data.musica} />
+    </section>
+
+    <section id="section-2" class="h-screen" style="scroll-snap-align: start;">
+      <Familiares familiares={familiares} colorPrimario={color_primario} />
+    </section>
+
+    <section id="section-3" class="h-screen" style="scroll-snap-align: start;">
+      <Frase colorPrimario={color_primario} frase={frase} />
+    </section>
+
+    <section id="section-4" class="h-screen" style="scroll-snap-align: start;">
+      <Fecha fecha={fecha} colorPrimario={color_primario} />
+    </section>
+
+    <section id="section-5" class="h-screen" style="scroll-snap-align: start;">
+      <Calendario fecha={fecha} colorPrimario={color_primario} colorSecundario={color_secundario} />
+    </section>
+
+    <section id="section-6" class="h-screen" style="scroll-snap-align: start;">
+      <Ubicacion recepcion={recepcion} colorPrimario={color_primario} colorSecundario={color_secundario} />
+    </section>
+
+    <section id="section-7" class="h-screen" style="scroll-snap-align: start;">
+      <DressCode colorPrimario={color_primario} />
+    </section>
+
+    <section id="section-8" class="h-screen" style="scroll-snap-align: start;">
+      <Alberca colorPrimario={color_primario} />
+    </section>
+
+    <section id="section-9" class="h-screen" style="scroll-snap-align: start;">
+      <LluviadeSobres colorPrimario={color_primario} regalo={regalo} />
+    </section>
+
+    <section id="section-10" class="h-screen" style="scroll-snap-align: start;">
+      <Confirmacion quinceanera={quinceanera} whatsapp={whatsapp} colorPrimario={color_primario} colorSecundario={color_secundario} />
+    </section>
+  </div>
+
+  <!-- Dots de navegación -->
+  <nav class="fixed right-5 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-3">
+    {Array.from({ length: TOTAL_SECCIONES }).map((_, i) => (
+      <button
+        class="dot w-2.5 h-2.5 rounded-full border-2 transition-all duration-300"
+        style={`border-color: ${color_primario};`}
+        data-index={i}
+        aria-label={`Ir a sección ${i + 1}`}
+      />
+    ))}
+  </nav>
+</Layout>
+
+<script define:vars={{ colorPrimario: color_primario, total: TOTAL_SECCIONES }}>
+  const container = document.getElementById("snap-container");
+  const dots = document.querySelectorAll(".dot");
+  const sections = Array.from({ length: total }, (_, i) =>
+    document.getElementById(`section-${i}`)
+  );
+
+  function setActive(index) {
+    dots.forEach((dot, i) => {
+      dot.style.backgroundColor = i === index ? colorPrimario : "transparent";
+      dot.style.transform = i === index ? "scale(1.4)" : "scale(1)";
+    });
+  }
+
+  dots.forEach((dot) => {
+    dot.addEventListener("click", () => {
+      const index = parseInt(dot.dataset.index);
+      sections[index]?.scrollIntoView({ behavior: "smooth" });
+    });
+  });
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const index = parseInt(entry.target.id.split("-")[1]);
+          setActive(index);
+          entry.target.querySelectorAll("[data-aos]").forEach((el) => {
+            el.classList.add("aos-animate");
+          });
+        }
+      });
+    },
+    { root: container, threshold: 0.5 }
+  );
+
+  sections.forEach((s) => s && observer.observe(s));
+  setActive(0);
+</script>

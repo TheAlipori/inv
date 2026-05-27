@@ -50,13 +50,16 @@ const xvCollection = defineCollection({
       galeria7: z.string().optional(),
     }).optional(),
 
+    // Frase personalizada
+    frase: z.string().optional(),
+
     // Eventos
     misa: z.object({
       lugar: z.string(),
       direccion: z.string(),
       maps: z.string(),
       hora: z.string(),
-    }),
+    }).optional(),
 
     recepcion: z.object({
       lugar: z.string(),
@@ -76,6 +79,9 @@ const xvCollection = defineCollection({
 
     // Regalo
     regalo: z.string().optional(),
+
+    // Fondo (para tema vitreo y futuros temas con imagen configurable)
+    imagen_fondo: z.string().optional(),
   }),
 });
 

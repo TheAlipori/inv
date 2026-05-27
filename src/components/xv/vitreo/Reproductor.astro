@@ -1,0 +1,113 @@
+---
+import "@fontsource/josefin-sans";
+const { colorPrimario, colorSecundario, musica } = Astro.props;
+---
+
+<section class="h-full flex flex-col items-center justify-center px-6">
+  <div
+    class="flex flex-col items-center gap-8 px-10 py-12 rounded-3xl w-full max-w-sm"
+    style="background: rgba(255,255,255,0.12); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,0.25);"
+  >
+    <p
+      class="text-sm tracking-widest uppercase"
+      style={`color: ${colorPrimario}; font-family: 'Josefin Sans', sans-serif;`}
+      data-aos="fade-down"
+      data-aos-duration="1000"
+    >
+      Mi canción
+    </p>
+
+    <!-- Botón play -->
+    <div class="relative" data-aos="zoom-in" data-aos-duration="1200">
+      <button
+        id="playButton"
+        class="flex items-center justify-center w-28 h-28 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 focus:outline-none"
+        style={`background-color: ${colorPrimario}; color: ${colorSecundario};`}
+        aria-label="Reproducir música"
+      >
+        <svg id="playIcon" class="w-12 h-12 ml-2" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M8 5v14l11-7z"></path>
+        </svg>
+        <svg id="pauseIcon" class="w-12 h-12 hidden" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"></path>
+        </svg>
+        <div id="loadingSpinner" class="hidden w-12 h-12">
+          <div class="animate-spin rounded-full border-2 border-white border-t-transparent w-full h-full"></div>
+        </div>
+      </button>
+
+      <div
+        id="pulseRing"
+        class="absolute inset-0 rounded-full opacity-0 pointer-events-none"
+        style={`background-color: ${colorPrimario}; animation: pulseRing 2s infinite;`}
+      ></div>
+    </div>
+
+    <p
+      class="text-xs tracking-widest uppercase opacity-60"
+      style={`color: ${colorPrimario}; font-family: 'Josefin Sans', sans-serif;`}
+      data-aos="fade-up"
+      data-aos-duration="1000"
+    >
+      Toca para reproducir
+    </p>
+  </div>
+</section>
+
+<audio id="audio" src={musica} preload="auto" loop></audio>
+
+<style>
+  @keyframes pulseRing {
+    0%   { transform: scale(1);    opacity: 0.4; }
+    50%  { transform: scale(1.35); opacity: 0.15; }
+    100% { transform: scale(1.7);  opacity: 0; }
+  }
+</style>
+
+<script>
+  const playButton = document.getElementById("playButton");
+  const audio = document.getElementById("audio") as HTMLAudioElement;
+  const playIcon = document.getElementById("playIcon");
+  const pauseIcon = document.getElementById("pauseIcon");
+  const loadingSpinner = document.getElementById("loadingSpinner");
+  const pulseRing = document.getElementById("pulseRing");
+
+  let isPlaying = false;
+
+  playButton?.addEventListener("click", async () => {
+    try {
+      if (isPlaying) {
+        audio.pause();
+      } else {
+        loadingSpinner?.classList.remove("hidden");
+        playIcon?.classList.add("hidden");
+        await audio.play();
+      }
+    } catch {
+      loadingSpinner?.classList.add("hidden");
+      playIcon?.classList.remove("hidden");
+    }
+  });
+
+  audio?.addEventListener("play", () => {
+    isPlaying = true;
+    loadingSpinner?.classList.add("hidden");
+    playIcon?.classList.add("hidden");
+    pauseIcon?.classList.remove("hidden");
+    pulseRing?.classList.remove("opacity-0");
+    pulseRing?.classList.add("opacity-30");
+  });
+
+  audio?.addEventListener("pause", () => {
+    isPlaying = false;
+    pauseIcon?.classList.add("hidden");
+    playIcon?.classList.remove("hidden");
+    pulseRing?.classList.add("opacity-0");
+    pulseRing?.classList.remove("opacity-30");
+  });
+
+  audio?.addEventListener("canplay", () => {
+    loadingSpinner?.classList.add("hidden");
+    if (!isPlaying) playIcon?.classList.remove("hidden");
+  });
+</script>

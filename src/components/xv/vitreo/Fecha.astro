@@ -1,0 +1,138 @@
+---
+import "@fontsource/great-vibes";
+import "@fontsource/josefin-sans";
+import Ornamento1 from "../../../assets/icons/Ornamento1.astro";
+const { fecha, colorPrimario } = Astro.props;
+---
+
+<section class="h-full flex flex-col items-center justify-center px-6">
+  <div
+    class="flex flex-col items-center gap-5 text-center px-8 py-10 rounded-3xl w-full max-w-sm"
+    style="background: rgba(255,255,255,0.12); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,0.25);"
+  >
+    <p
+      class="text-sm tracking-widest uppercase"
+      style={`font-family: 'Josefin Sans', sans-serif; color: ${colorPrimario};`}
+      data-aos="fade-down"
+      data-aos-duration="800"
+    >
+      Aparta la fecha
+    </p>
+
+    <div data-aos="zoom-in" data-aos-duration="800" data-aos-delay="100">
+      <Ornamento1 style={`fill: ${colorPrimario};`} class="w-32 opacity-80" />
+    </div>
+
+    <div
+      class="flex items-center gap-4"
+      data-aos="fade-up"
+      data-aos-duration="1000"
+      data-aos-delay="200"
+    >
+      <span
+        class="text-8xl leading-none"
+        style={`font-family: 'Great Vibes', cursive; color: ${colorPrimario};`}
+      >
+        {fecha.dia}
+      </span>
+      <div class="flex flex-col items-start">
+        <span
+          class="text-5xl"
+          style={`font-family: 'Great Vibes', cursive; color: ${colorPrimario};`}
+        >
+          {fecha.mes}
+        </span>
+        <span
+          class="text-5xl"
+          style={`font-family: 'Great Vibes', cursive; color: ${colorPrimario};`}
+        >
+          {fecha.anio}
+        </span>
+      </div>
+    </div>
+
+    <div
+      class="flex items-center gap-2 w-full"
+      data-aos="fade-up"
+      data-aos-duration="600"
+      data-aos-delay="300"
+    >
+      <div class="flex-1 h-px opacity-40" style={`background-color: ${colorPrimario};`}></div>
+      <div class="w-1.5 h-1.5 rounded-full" style={`background-color: ${colorPrimario};`}></div>
+      <div class="flex-1 h-px opacity-40" style={`background-color: ${colorPrimario};`}></div>
+    </div>
+
+    <div
+      id="contador"
+      class="grid grid-cols-4 gap-3 w-full max-w-xs"
+      data-aos="fade-up"
+      data-aos-duration="1000"
+      data-aos-delay="400"
+    >
+      {["dias", "horas", "minutos", "segundos"].map((id, i) => (
+        <div class="flex flex-col items-center">
+          <span
+            id={id}
+            class="text-3xl font-bold"
+            style={`font-family: 'Josefin Sans', sans-serif; color: ${colorPrimario};`}
+          >00</span>
+          <span
+            class="text-xs uppercase tracking-wider opacity-60 mt-1"
+            style={`font-family: 'Josefin Sans', sans-serif; color: ${colorPrimario};`}
+          >
+            {["Días", "Horas", "Min", "Seg"][i]}
+          </span>
+        </div>
+      ))}
+    </div>
+
+    <div id="mensaje-especial" class="hidden text-center">
+      <p
+        id="texto-especial"
+        class="text-xl"
+        style={`font-family: 'Great Vibes', cursive; color: ${colorPrimario};`}
+      ></p>
+    </div>
+  </div>
+</section>
+
+<script is:inline data-fecha={fecha.fecha_iso}>
+  (function () {
+    const fechaIso = document.currentScript.getAttribute("data-fecha");
+
+    function updateCountdown() {
+      const target = new Date(fechaIso).getTime();
+      const now = new Date().getTime();
+      const distance = target - now;
+
+      const contador = document.getElementById("contador");
+      const mensajeEspecial = document.getElementById("mensaje-especial");
+      const textoEspecial = document.getElementById("texto-especial");
+
+      const esHoy = new Date(fechaIso).toDateString() === new Date().toDateString();
+
+      if (distance < -24 * 60 * 60 * 1000) {
+        contador.classList.add("hidden");
+        mensajeEspecial.classList.remove("hidden");
+        textoEspecial.innerText = "¡Gracias por acompañarme en mi gran noche!";
+        return;
+      }
+
+      if (esHoy || (distance < 0 && distance > -24 * 60 * 60 * 1000)) {
+        contador.classList.add("hidden");
+        mensajeEspecial.classList.remove("hidden");
+        textoEspecial.innerText = "¡La fiesta es hoy!";
+        return;
+      }
+
+      const pad = (n) => String(n).padStart(2, "0");
+      document.getElementById("dias").innerText = Math.floor(distance / 86400000);
+      document.getElementById("horas").innerText = pad(Math.floor((distance % 86400000) / 3600000));
+      document.getElementById("minutos").innerText = pad(Math.floor((distance % 3600000) / 60000));
+      document.getElementById("segundos").innerText = pad(Math.floor((distance % 60000) / 1000));
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  })();
+</script>

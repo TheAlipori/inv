@@ -1,0 +1,38 @@
+---
+import "@fontsource/great-vibes";
+import "@fontsource/josefin-sans";
+const { quinceanera, colorPrimario } = Astro.props;
+---
+
+<section class="h-full flex flex-col items-center justify-center px-6">
+  <div
+    class="flex flex-col items-center gap-3 text-center px-10 py-12 rounded-3xl w-full max-w-sm"
+    style="background: rgba(255,255,255,0.12); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,0.25);"
+  >
+    <p
+      class="text-2xl tracking-widest uppercase"
+      style={`color: ${colorPrimario}; font-family: 'Josefin Sans', sans-serif;`}
+      data-aos="fade-down"
+      data-aos-duration="1200"
+    >
+      Mis
+    </p>
+    <h1
+      class="text-8xl"
+      style={`font-family: 'Great Vibes', cursive; color: ${colorPrimario};`}
+      data-aos="zoom-in"
+      data-aos-duration="1500"
+    >
+      XV Años
+    </h1>
+    <h2
+      class="text-5xl mt-1"
+      style={`font-family: 'Great Vibes', cursive; color: ${colorPrimario};`}
+      data-aos="fade-up"
+      data-aos-duration="1500"
+      data-aos-delay="400"
+    >
+      {quinceanera.nombre}
+    </h2>
+  </div>
+</section>
